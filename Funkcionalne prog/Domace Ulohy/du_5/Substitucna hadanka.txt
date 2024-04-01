@@ -1,0 +1,22 @@
+(Marian Kravec)
+Za akých podmienok (samozrejme najslabších) platia jednotlivé tvrdenia.
+
+1. M[x:N][y:L] = M[y:L][x:N]
+malo by stacit keby 
+x!=y 
+x nie je volna v L 
+y nie je volna v N
+ziadna viazana premenna z M nie je volna ani v L ani v N
+
+logika je viacmenej rovnaka ako pri superpozicii substitucii
+s pridanim jednej podmienky pre volnost y v N aby to bolo simetricke 
+
+2. M[x:y][y:N] = M[x:N]
+... y nie je volna premenna v M?
+inak by sa mohlo stat, ze x substituuje
+za y ale potom sa za N substituuje aj nove y
+aj povodne y?
+
+3. M[x:y][y:x] = M
+zase y nie je volna v M?
+s tym istym odovodnenin

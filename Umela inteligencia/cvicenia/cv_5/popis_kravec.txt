@@ -1,0 +1,20 @@
+Vypracoval: Marián Kravec
+Algoritmus pre Monte Carlo tree search je implementovaný následovne:
+
+- v súčasnej pozícii zavoláme metódu monte_carlo_tree_search na určenie ďalšieho ťahu
+
+- v tejto metóde začne generovať strom kde koreň je súčasný stav a je určený počet simulácii
+
+- v tomto algorimu prebehnú jednotlivé fázy MCTS následovne:
+
+	- SELEKCIA -> využiva metódu traverse, ide hlbšie v strome kým všetci potomkovia už boli navštívený aspoň raz prehľadaný tak vyberie ten s najvyšším UCB (tú počíta ako: [počet výťaztiev]/[počet navštívení] + C*sqrt(log([počet prebehnutých simulácii])/[počet navštívení])), ak existuje nenavšívený potomok ide do ďalšej fázy
+
+	-  EXPANZIA -> ak už existuje nenavštívený potomok toho vyberie a ide o ďalšej fázy, toto sa deje na konci metódy traverse, pomocou metódy pick_unvisited, ktorá vyberie prvého nenavšíveného potomka, vloží ho do stromu a pokračuje do ďalšej fázy
+	
+	- SIMULÁCIA -> v tejto fáze, pomocou metódy rollout, začne v stave nového listu stromu a robí náhodné kroky kým nedôjde do terminálneho stavu a vráti hodnotu výsledku v tomto stave
+	
+	- BACKPROPAGÁCIA -> finálna fáza je implementová pomocou funkcie backpropagate, v tejto fáze spatne propaguje informáciu o výsledku z predchádzajúcej fázy postupne od nového listu z druhej fázy az po koreň
+
+- tento celý proces sa opakuje na určený počet simulácii (myslené opakovaní všetkých fáz nie len tretej)
+
+- nakoniec vyberie krok pre ktorý je najvyššia hodnoty UCB

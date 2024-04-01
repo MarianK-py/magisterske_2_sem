@@ -1,0 +1,48 @@
+(Marian Kravec)
+Nech
+
+x≠y sú rôzne premenné,
+x nie je voľná v L, x ∉ Free(L),
+ak každá viazaná premenná v M nie je voľná v (N L), Bound(M) ⇒ v ∉ Free((N L)),
+potom
+
+M[y:N] [y:L] = M[y:N[y:L]]
+
+(neviem ci to je chyba zadania ale v tom vyraze nevidim x)
+
+1. M je premenná
+1.1 M = y
+LS: y[y:N][y:L] = N[y:L]
+PS: y[y:N[y:L]] = N[y:L]
+LS = PS
+1.2 M = x (iná premenná)
+LS: x[y:N][y:L] = x[y:L] = x
+PS: x[y:N[y:L]] = x
+LS = PS
+
+2. M je aplikacia
+M = (A B)
+LS: (A B)[y:N][y:L] = (A[y:N] B[y:N])[y:L] = (A[y:N][y:L] B[y:N][y:L])
+PS: (A B)[y:N[y:L]] = (A[y:N[y:L]] B[y:N[y:L]])
+z indukcneho predpokladu predpokladame A[y:N][y:L] = A[y:N[y:L]] a B[y:N][y:L] = B[y:N[y:L]]
+LS = PS
+
+3. M je abstrakcia
+3.1 M = (\y.B)
+LS: (\y.B)[y:N][y:L] = (\y.B)[y:L] = (\y.B)
+PS: (\y.B)[y:N[y:L]] = (\y.B)
+LS = PS
+3.2 M = (\x.B) (x je viazana v M takze nie je volna v N ani L a tym padom ani v N[y:L])
+LS: (\x.B)[y:N][y:L] = (\x.B[y:N])[y:L] = (\x.B[y:N][y:L]) 
+PS: (\x.B)[y:N[y:L]] = (\x.B[y:N[y:L]])
+z indukcneho predpokladu predpokladame B[y:N][y:L] = B[y:N[y:L]]
+LS = PS
+
+Pre vsetky pripady to plati takze to plati
+
+
+
+
+
+
+

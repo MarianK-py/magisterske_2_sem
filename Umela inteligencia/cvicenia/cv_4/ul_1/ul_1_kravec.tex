@@ -1,0 +1,94 @@
+% !TeX spellcheck = sk_SK-Slovak
+\documentclass[a4paper]{article}
+\usepackage[slovak]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{a4wide}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage[small,bf]{caption}
+\usepackage{subcaption}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{hyperref}
+
+
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+\newenvironment{modenumerate}
+{\enumerate\setupmodenumerate}
+{\endenumerate}
+
+\newif\ifmoditem
+\newcommand{\setupmodenumerate}{%
+	\global\moditemfalse
+	\let\origmakelabel\makelabel
+	\def\moditem##1{\global\moditemtrue\def\mesymbol{##1}\item}%
+	\def\makelabel##1{%
+		\origmakelabel{##1\ifmoditem\rlap{\mesymbol}\fi\enspace}%
+		\global\moditemfalse}%
+}
+
+\makeatletter
+\def\@seccntformat#1{%
+	\expandafter\ifx\csname c@#1\endcsname\c@section\else
+	\csname the#1\endcsname\quad
+	\fi}
+\makeatother
+
+\begin{document} 
+	
+\pagenumbering{arabic}
+\pagestyle{plain}
+
+\begin{center}
+	\sc\large
+	Umelá inteligencia - cvičenia 4
+\end{center}
+
+Autor: Marián Kravec
+
+\section{Úloha 1}
+
+Z nazbieraných dát sme zistili, že $\bar{s} = 3.744$ a $\sigma = 1.799$. Pričom máme $n = 100$ meraní.
+
+Pri počítaní intervalu spoľahlivosti budeme vychádzať z takéhoto predpokladu:
+
+$P(\bar{s} - z_{\alpha/2}\frac{\sigma}{\sqrt{n}}) \leq \mu \leq \bar{s} + z_{\alpha/2}\frac{\sigma}{\sqrt{n}}) = 1-\alpha$
+
+Čiže interval spoľahlivosti je:
+
+$[\bar{s} - z_{\alpha/2}\frac{\sigma}{\sqrt{n}}), \bar{s} + z_{\alpha/2}\frac{\sigma}{\sqrt{n}}]$
+
+Pre jednotlivé hodnoty $\alpha$:
+\\
+
+Pre $\alpha = 0.1$ ($p=0.9$) dostaneme:
+\\
+$Z=1.65$
+$[3.448, 4.04]$
+\\
+
+Pre $\alpha = 0.05$ ($p=0.95$) dostaneme:
+\\
+$Z=1.96$
+\\
+$[3.391, 4.097]$
+\\
+
+Pre $\alpha = 0.02$ ($p=0.98$) dostaneme:
+\\
+$Z=2.33$
+\\
+$[3.325, 4.163]$
+
+\section{Úloha 2}
+
+
+
+\end{document}

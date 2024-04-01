@@ -1,0 +1,2265 @@
+{
+  "neighbors": {
+    "Ursinyho": [
+      "Pionierska",
+      "Racianske myto"
+    ],
+    "Klepac": [
+      "Cerveny most P+R",
+      "Deviaty mlyn"
+    ],
+    "Mlada garda": [
+      "Pionierska",
+      "ZST Vinohrady",
+      "Nam. Biely kriz",
+      "Riazanska"
+    ],
+    "Vihorlatska": [
+      "Radiova",
+      "Mierova kolonia"
+    ],
+    "Pri zvonici": [
+      "Bulharska",
+      "Stara Ivanska"
+    ],
+    "Komisarky": [
+      "Puchovska"
+    ],
+    "Hany Melickovej": [
+      "Tomankova",
+      "Pri podchode"
+    ],
+    "Zlate piesky": [
+      "Shopping Park Soravia",
+      "Kon-Rad",
+      "Shopping Palace",
+      "Pri mlyne"
+    ],
+    "Budatinska": [
+      "Luky II",
+      "Lucanka",
+      "ZS Budatinska",
+      "Luky V",
+      "Znievska"
+    ],
+    "Mierova": [
+      "Nevadzova-OC Retro",
+      "Krasna"
+    ],
+    "Televizia": [
+      "Cintorin Slavicie udolie",
+      "Zoo"
+    ],
+    "TV Markiza": [
+      "Dievci hradok",
+      "Krce"
+    ],
+    "Chatam Sofer": [
+      "Most SNP",
+      "Park kultury",
+      "Zochova"
+    ],
+    "Drienovske luky": [
+      "Bukva",
+      "Lanovka"
+    ],
+    "Zochova": [
+      "Chatam Sofer",
+      "Einsteinova",
+      "Aupark",
+      "Ekonomicka univerzita"
+    ],
+    "Tomasikova": [
+      "Maximiliana Hella",
+      "Herlianska-OC Retro",
+      "Sumracna"
+    ],
+    "Pri podchode": [
+      "Hany Melickovej",
+      "Janotova"
+    ],
+    "Nad internatmi": [
+      "Nad vinicami",
+      "Grunty"
+    ],
+    "Pri Vapenickom potoku": [
+      "Krce",
+      "Pri kaplnke"
+    ],
+    "Tomankova": [
+      "Matejkova",
+      "Hany Melickovej"
+    ],
+    "Holicska": [
+      "Smolenicka",
+      "Sintavska",
+      "Luky II"
+    ],
+    "Vretenova": [
+      "Konvalinkova",
+      "Na Sitine"
+    ],
+    "Havlickova": [
+      "Kalvaria",
+      "Misikova"
+    ],
+    "Kacinska dolina": [
+      "Kamenolom"
+    ],
+    "Hodoninska": [
+      "Vrancovicova",
+      "ZST Lamac",
+      "Segnare"
+    ],
+    "Spalovna": [
+      "COV Vlcie hrdlo"
+    ],
+    "Vodarenske muzeum": [
+      "Botanicka zahrada",
+      "Jurigrad"
+    ],
+    "Avion Shopping Park": [
+      "Galvaniho",
+      "Stara Ivanska",
+      "Ribezlova",
+      "Avion Shopping Park"
+    ],
+    "Krahulcia": [
+      "Briezky"
+    ],
+    "Kremelska": [
+      "Dolne koruny",
+      "Slovanske nabrezie"
+    ],
+    "Pristavna": [
+      "Most Apollo",
+      "Kosicka",
+      "Panorama City"
+    ],
+    "Kamenne nam.": [
+      "Marianska",
+      "Safarikovo nam.",
+      "Kapucinska"
+    ],
+    "Krpas": [
+      "Vapenka",
+      "Kamenace"
+    ],
+    "Hospodarska": [
+      "MiU Vajnory",
+      "Vajnory"
+    ],
+    "Lieskovec": [
+      "Plniaren plynu",
+      "Ketelec"
+    ],
+    "NUSCH": [
+      "Klenova",
+      "Vlarska"
+    ],
+    "Kamenolom": [
+      "Lanovka",
+      "Kacinska dolina"
+    ],
+    "Valasska": [
+      "Hyrosova",
+      "Lovinskeho"
+    ],
+    "COV Vlcie hrdlo": [
+      "Spalovna",
+      "Vodostav"
+    ],
+    "Drobneho": [
+      "OD Saratov",
+      "Alexyho",
+      "Peknikova"
+    ],
+    "Vajnory-nadjazd": [
+      "Kon-Rad",
+      "Pri starom letisku"
+    ],
+    "ZST Rusovce": [
+      "Kastiel Rusovce",
+      "Gastanova aleja"
+    ],
+    "MiU Ruzinov": [
+      "Hranicna-OC Retro",
+      "Kastielska"
+    ],
+    "Stare ihrisko": [
+      "Odborarska",
+      "Eu. vzdel. akademia"
+    ],
+    "Jeseniova": [
+      "Tupeho",
+      "Cremchova"
+    ],
+    "Nakupna zona Luky": [
+      "Kolma",
+      "Jasovska"
+    ],
+    "Cabanova": [
+      "Cabanova II",
+      "Homolova"
+    ],
+    "Sliacska": [
+      "Pionierska",
+      "Briezky"
+    ],
+    "Lokomotivne depo II": [
+      "Na pasekach",
+      "Sportove letisko"
+    ],
+    "Topolcianska": [
+      "Technopol",
+      "Sintavska"
+    ],
+    "Zitavska": [
+      "Cilizska",
+      "Dudvazska"
+    ],
+    "Slavin": [
+      "Stara vinarska",
+      "Kalvaria"
+    ],
+    "Klanec": [
+      "Lamac",
+      "Studenohorska"
+    ],
+    "Bystricka": [
+      "Panske"
+    ],
+    "Zavodna": [
+      "Refinery Gallery",
+      "Ulica svornosti"
+    ],
+    "Gerulata": [
+      "Vyvojova",
+      "Kastiel Rusovce"
+    ],
+    "Kastiel Rusovce": [
+      "Gerulata",
+      "ZST Rusovce"
+    ],
+    "Karpatska": [
+      "Racianske myto",
+      "SAV"
+    ],
+    "PD P. Biskupice": [
+      "Lieskovska cesta",
+      "Janske hony"
+    ],
+    "Hronska": [
+      "Podzahradna",
+      "Dudvazska",
+      "Bodrocka",
+      "Komarovska",
+      "Toryska"
+    ],
+    "Cesta na letisko": [
+      "Fatruny"
+    ],
+    "Magnetova": [
+      "Mierova kolonia",
+      "Odborarska",
+      "Jurajov dvor"
+    ],
+    "Pri starom letisku": [
+      "Vajnory-nadjazd",
+      "Uhliska",
+      "Sportove letisko"
+    ],
+    "Klenova": [
+      "NUSCH",
+      "Vlarska"
+    ],
+    "Lachova": [
+      "Starohajska",
+      "Sustekova",
+      "Nam. hraniciarov",
+      "Bosakova"
+    ],
+    "Haburska": [
+      "Trnavska",
+      "Maximiliana Hella",
+      "Slovinska"
+    ],
+    "Aupark": [
+      "Dvory",
+      "Zochova",
+      "Most SNP"
+    ],
+    "Radiova": [
+      "Slovinska",
+      "Vozovna Trnavka",
+      "Bocna",
+      "Radiova",
+      "Vihorlatska",
+      "Bulharska"
+    ],
+    "Cilizska": [
+      "Zeleznicna",
+      "Zitavska"
+    ],
+    "Sikma": [
+      "Slovnaftska"
+    ],
+    "Cabanova II": [
+      "Stepna",
+      "Cabanova"
+    ],
+    "Odborarska": [
+      "Polus City Center",
+      "Stare ihrisko",
+      "Magnetova",
+      "ZST Nove Mesto",
+      "Zatisie"
+    ],
+    "Strojnicka": [
+      "Prievoz-most"
+    ],
+    "Technicke sklo": [
+      "Bory-razcestie",
+      "Agatova"
+    ],
+    "Pristavny most": [
+      "Prievozska",
+      "Lucna",
+      "Mliekarenska",
+      "Bosakova",
+      "Ekonomicka univerzita"
+    ],
+    "Zelezna studnicka": [
+      "Deviaty mlyn",
+      "Bukva"
+    ],
+    "Ekonomicka univerzita": [
+      "Bulikova",
+      "Most Apollo",
+      "Zehrianska",
+      "Pristavny most",
+      "Zochova"
+    ],
+    "Gastanova aleja": [
+      "ZST Rusovce",
+      "Pieskovy hon"
+    ],
+    "Legionarska": [
+      "Blumental",
+      "Trnavske myto",
+      "Odborarske nam."
+    ],
+    "Zeleznicna": [
+      "Sipova",
+      "Cilizska",
+      "Podunajska"
+    ],
+    "Segnerova": [
+      "Nad luckami"
+    ],
+    "Bukva": [
+      "Zelezna studnicka",
+      "Drienovske luky"
+    ],
+    "Nove SND": [
+      "Mala scena",
+      "Panorama City"
+    ],
+    "Nakupna": [
+      "Korytnicka",
+      "Ucitelska"
+    ],
+    "Znievska": [
+      "Lucanka",
+      "Budatinska"
+    ],
+    "Most SNP": [
+      "Nam. L. Stura",
+      "Chatam Sofer",
+      "Lafranconi",
+      "Einsteinova",
+      "Aupark",
+      "Mala scena",
+      "Safarikovo nam."
+    ],
+    "Zahumenice-Drevona": [
+      "Puchovska",
+      "Zvoncekova",
+      "Detvianska"
+    ],
+    "Segnare": [
+      "Pod nasypom",
+      "Hodoninska",
+      "Pod Zecakom",
+      "Lediny"
+    ],
+    "Internaty B": [
+      "Cintorin Slavicie udolie",
+      "Konvalinkova"
+    ],
+    "Radvanska": [
+      "Jancova",
+      "Inovecka"
+    ],
+    "Tbiliska": [
+      "Zavadska"
+    ],
+    "Deviaty mlyn": [
+      "Klepac",
+      "Zelezna studnicka"
+    ],
+    "Kopcianska-stred": [
+      "Dargovska",
+      "ZST Petrzalka"
+    ],
+    "Kvacalova": [
+      "Saleziani",
+      "Kuliskova",
+      "Karadzicova"
+    ],
+    "Podzahradna": [
+      "Slovnaftska",
+      "Hronska",
+      "Toryska"
+    ],
+    "Cerveny most P+R": [
+      "ZST Zelezna studienka",
+      "Klepac"
+    ],
+    "Stefana Kralika": [
+      "Milana Marecka",
+      "Vapenka",
+      "Bory-razcestie"
+    ],
+    "Bajkalska": [
+      "Zimny stadion",
+      "Sabinovska",
+      "Nova doba",
+      "Trnavska",
+      "Drienova",
+      "Nemocnica Ruzinov",
+      "Bratislavska zupa",
+      "Mliekarenska"
+    ],
+    "Kuliskova": [
+      "Kvacalova",
+      "Cvernovka",
+      "Karadzicova"
+    ],
+    "Lafranconi": [
+      "Park kultury",
+      "Botanicka zahrada",
+      "Zoo",
+      "Most SNP",
+      "Janotova"
+    ],
+    "Kukucinova": [
+      "OD Slimak",
+      "Halkova"
+    ],
+    "Kremencova": [
+      "Mlynska",
+      "Zamajerske"
+    ],
+    "Priekopnicka": [
+      "Komarovska",
+      "Cintorin Vrakuna"
+    ],
+    "Mokrohajska": [
+      "Patronka",
+      "Bory Mall",
+      "Pridanky",
+      "Huscavova",
+      "ZST Lamac",
+      "Tesco Lamac"
+    ],
+    "Jancova": [
+      "Cerveny kriz",
+      "Radvanska"
+    ],
+    "Devin": [
+      "Strbska",
+      "Morava"
+    ],
+    "Shopping Park Soravia": [
+      "Vozovna Trnavka",
+      "Zlate piesky"
+    ],
+    "Hrobonova": [
+      "Sokolska",
+      "Prokopa Velkeho",
+      "SAV",
+      "Patronka",
+      "Dubova",
+      "Vozovna Hrobonova"
+    ],
+    "Hauerland": [
+      "Subezna",
+      "Slov. nar. archiv"
+    ],
+    "Spolocenska": [
+      "Bulharska",
+      "Hanacka"
+    ],
+    "ZST P. Biskupice": [
+      "Dudvazska",
+      "Petofiho"
+    ],
+    "Solosnicka": [
+      "Kuklovska 44",
+      "Sastinska"
+    ],
+    "Dargovska": [
+      "Udernicka-Kupalisko",
+      "Kopcianska-stred"
+    ],
+    "STU": [
+      "Zilinska",
+      "Vysoka"
+    ],
+    "Refinery Gallery": [
+      "Vlcie hrdlo",
+      "Zavodna"
+    ],
+    "Cesta na Kamzik": [
+      "Stromova"
+    ],
+    "Odborarske nam.": [
+      "Marianska",
+      "Legionarska"
+    ],
+    "Lamac": [
+      "Klanec",
+      "Vrancovicova"
+    ],
+    "Borska": [
+      "Sastinska",
+      "Borska",
+      "Harmincova",
+      "Karlova Ves",
+      "MiU Karlova Ves"
+    ],
+    "Svantnerova": [
+      "Alexyho",
+      "Damborskeho"
+    ],
+    "Sulekova": [
+      "Donovalova",
+      "Kozia"
+    ],
+    "Hradistna": [
+      "Novoveska",
+      "Milana Marecka"
+    ],
+    "Marianska": [
+      "Americke nam.",
+      "Kamenne nam.",
+      "Odborarske nam."
+    ],
+    "Zatisie": [
+      "Polus City Center",
+      "Odborarska"
+    ],
+    "Luky II": [
+      "Smolenicka",
+      "Budatinska",
+      "ZS Budatinska",
+      "Holicska"
+    ],
+    "Zamajerske": [
+      "Kremencova",
+      "Jana Jonasa-VW"
+    ],
+    "Nemecky kulturny dom": [
+      "MiU Raca",
+      "Baronka"
+    ],
+    "Sintavska": [
+      "Topolcianska",
+      "Strecnianska",
+      "Holicska"
+    ],
+    "Bodrocka": [
+      "Hronska",
+      "Korytnicka"
+    ],
+    "Maximiliana Hella": [
+      "Haburska",
+      "Tomasikova",
+      "Solivarska",
+      "DK Ruzinov",
+      "Sumracna"
+    ],
+    "Vajnory": [
+      "Hospodarska"
+    ],
+    "Dievci hradok": [
+      "Podkerepusky",
+      "TV Markiza"
+    ],
+    "Nemocnica Kramare": [
+      "Pri Suchom mlyne",
+      "Magurska",
+      "Vlarska"
+    ],
+    "Stary kamenolom": [
+      "Novy kamenolom",
+      "Dolne koruny"
+    ],
+    "Zahorska Bystrica": [
+      "Zahorska"
+    ],
+    "Vlarska": [
+      "NUSCH",
+      "Magurska",
+      "Nemocnica Kramare",
+      "Klenova"
+    ],
+    "Ulica svornosti": [
+      "Zavodna",
+      "Slovnaftska"
+    ],
+    "Palenisko": [
+      "Lucna",
+      "Terminal"
+    ],
+    "Lucna": [
+      "Pristavny most",
+      "Palenisko",
+      "Pristav"
+    ],
+    "Kapucinska": [
+      "Park kultury",
+      "Postova-Martinus",
+      "Kamenne nam."
+    ],
+    "Einsteinova": [
+      "Zochova",
+      "Kremnicka",
+      "Most SNP",
+      "Zoo",
+      "Dvory"
+    ],
+    "Nemocnica Antolska": [
+      "Lubovnianska",
+      "Vozovna Petrzalka"
+    ],
+    "Stromova": [
+      "Bardosova",
+      "Cesta na Kamzik",
+      "Sokolska"
+    ],
+    "Sady": [
+      "Jarovce",
+      "Kovacsova"
+    ],
+    "SAV": [
+      "Racianske myto",
+      "Patronka",
+      "Hlavna stanica",
+      "Sokolska",
+      "Hrobonova",
+      "Karpatska"
+    ],
+    "Jurajov dvor": [
+      "Vozovna Jurajov dvor",
+      "Pri nadjazde",
+      "Stara Vajnorska",
+      "Vozovna Trnavka",
+      "Magnetova",
+      "PPA Controll"
+    ],
+    "Syslia": [
+      "Krasna",
+      "ZST UNS"
+    ],
+    "Novy kamenolom": [
+      "Pri zahradach",
+      "Stary kamenolom"
+    ],
+    "Luky V": [
+      "Budatinska",
+      "Vysehradska"
+    ],
+    "MiU Karlova Ves": [
+      "Borska",
+      "Nad luckami"
+    ],
+    "ZS Budatinska": [
+      "Luky II",
+      "Budatinska"
+    ],
+    "Pod nasypom": [
+      "Vrancovicova",
+      "Segnare"
+    ],
+    "Sabinovska": [
+      "Bajkalska",
+      "Trnavska"
+    ],
+    "Vodostav": [
+      "COV Vlcie hrdlo",
+      "Micherov majer"
+    ],
+    "Vyvojova": [
+      "Kovacsova",
+      "Gerulata"
+    ],
+    "Tupeho": [
+      "Sancova",
+      "Jeseniova"
+    ],
+    "ZIPP": [
+      "Shopping Palace",
+      "Stara Vajnorska"
+    ],
+    "Park kultury": [
+      "Chatam Sofer",
+      "Lafranconi",
+      "Kapucinska"
+    ],
+    "Koliba": [
+      "Julova"
+    ],
+    "Zvoncekova": [
+      "Zahumenice-Drevona"
+    ],
+    "Pracanska": [
+      "Cierny chodnik",
+      "Pri mlyne",
+      "MiU Vajnory"
+    ],
+    "Lediny": [
+      "Segnare",
+      "Vrancovicova"
+    ],
+    "Vysoka": [
+      "STU",
+      "Postova-Martinus",
+      "Blumental"
+    ],
+    "Shopping Palace": [
+      "Zlate piesky",
+      "ZIPP",
+      "PPA Controll"
+    ],
+    "Pod Zecakom": [
+      "Tesco Lamac",
+      "Segnare"
+    ],
+    "Dvory": [
+      "Racianske myto",
+      "ZST Petrzalka",
+      "Halova",
+      "Aupark",
+      "Einsteinova",
+      "Rusovska cesta"
+    ],
+    "Herlianska-OC Retro": [
+      "Tomasikova",
+      "Nemocnica Ruzinov",
+      "Nevadzova-OC Retro"
+    ],
+    "Hrobakova": [
+      "Romanova",
+      "Starohajska",
+      "Nam. hraniciarov"
+    ],
+    "Panske": [
+      "Paulinske",
+      "Bystricka"
+    ],
+    "Novoveska": [
+      "Mlynska",
+      "Hradistna",
+      "Na Grbe"
+    ],
+    "Hranicna-OC Retro": [
+      "Prievozska",
+      "Nevadzova-OC Retro",
+      "MiU Ruzinov"
+    ],
+    "Guothova": [
+      "L. Derera",
+      "Bardosova"
+    ],
+    "VS Manazmentu": [
+      "ZST Petrzalka",
+      "Jiraskova"
+    ],
+    "Lodenica": [
+      "Povodie Dunaja"
+    ],
+    "Hyrosova": [
+      "Pri Suchom mlyne",
+      "Patronka",
+      "Valasska"
+    ],
+    "Cintorin Vrakuna": [
+      "Ribezlova",
+      "Slovnaftska",
+      "Priekopnicka",
+      "Ondrejovova"
+    ],
+    "Zaporozska": [
+      "Kremnicka",
+      "ZST Petrzalka",
+      "Gercenova"
+    ],
+    "Vozovna Jurajov dvor": [
+      "Jurajov dvor"
+    ],
+    "Patronka": [
+      "SAV",
+      "Mokrohajska",
+      "Bory Mall",
+      "Pri Habanskom mlyne",
+      "Tesco Lamac",
+      "ZST Zelezna studienka",
+      "Hrobonova",
+      "Dubova",
+      "Patronka, Kaufland",
+      "Hyrosova",
+      "Pri Suchom mlyne"
+    ],
+    "Kon-Rad": [
+      "Zlate piesky",
+      "Vajnory-nadjazd"
+    ],
+    "Nad luckami": [
+      "MiU Karlova Ves",
+      "Segnerova"
+    ],
+    "Budkova": [
+      "Stara vinarska",
+      "Cerveny kriz",
+      "Horsky park"
+    ],
+    "ZST Zelezna studienka": [
+      "Patronka",
+      "Cerveny most P+R"
+    ],
+    "Koniarkova": [
+      "Vojensky utvar",
+      "Osloboditelska"
+    ],
+    "Cintorinska": [
+      "Autobusova stanica"
+    ],
+    "MiU P. Biskupice": [
+      "Ucitelska",
+      "Devatinova",
+      "Ul. 8. maja",
+      "Lieskovska cesta"
+    ],
+    "Sprinclov majer": [
+      "Rybnicna",
+      "Vojensky utvar"
+    ],
+    "Nam. Biely kriz": [
+      "ZST Vinohrady",
+      "Mlada garda"
+    ],
+    "Pri kaplnke": [
+      "Pri Vapenickom potoku"
+    ],
+    "Zehrianska": [
+      "Ekonomicka univerzita",
+      "Slnecnice",
+      "Jasovska",
+      "Bzovicka"
+    ],
+    "Morava": [
+      "Devin",
+      "Waitov lom"
+    ],
+    "Pri Suchom mlyne": [
+      "Pri Habanskom mlyne",
+      "Nemocnica Kramare",
+      "Hyrosova",
+      "Patronka"
+    ],
+    "Bory-razcestie": [
+      "Kamenace",
+      "Technicke sklo",
+      "Bory Mall",
+      "Stefana Kralika",
+      "Agatova",
+      "Velkolucky potok"
+    ],
+    "Hrad": [
+      "Inovecka",
+      "Zamocka"
+    ],
+    "Markova": [
+      "Svabinskeho",
+      "Romanova",
+      "Prokofievova"
+    ],
+    "Lamac-Stare zahrady": [
+      "Vrancovicova",
+      "Pri krematoriu",
+      "Bory Mall",
+      "Bakosova"
+    ],
+    "Jasovska": [
+      "Nakupna zona Luky",
+      "Slnecnice",
+      "Zehrianska"
+    ],
+    "Cierny chodnik": [
+      "Uhliska",
+      "Pracanska"
+    ],
+    "Partizanska": [
+      "Zamocka",
+      "Kozia"
+    ],
+    "Podkerepusky": [
+      "Pri krematoriu",
+      "Dievci hradok"
+    ],
+    "Nemocnica Ruzinov": [
+      "Herlianska-OC Retro",
+      "Slovanet",
+      "Bajkalska"
+    ],
+    "Tupolevova": [
+      "Smolenicka",
+      "Technopol"
+    ],
+    "Pri krizi": [
+      "Agatova",
+      "OD Saratov",
+      "Volkswagen",
+      "Homolova",
+      "Pri krizi"
+    ],
+    "Nam. A. Hlinku": [
+      "Baronka",
+      "Zavadska"
+    ],
+    "Pristav": [
+      "Lucna",
+      "Plynarenska"
+    ],
+    "Slovnaftska": [
+      "Cintorin Vrakuna",
+      "Podzahradna",
+      "Ulica svornosti",
+      "Sikma"
+    ],
+    "Volkswagen": [
+      "Jana Jonasa",
+      "Velkolucky potok",
+      "Pri krizi"
+    ],
+    "Vapenka": [
+      "Stefana Kralika",
+      "Krpas"
+    ],
+    "Prvosienkova": [
+      "Safranova",
+      "Na hrebienku"
+    ],
+    "Siravska": [
+      "Estonska",
+      "Sipova"
+    ],
+    "Grunty": [
+      "Nad internatmi",
+      "Panorama"
+    ],
+    "Bosakova": [
+      "Sustekova",
+      "Mlynarovicova",
+      "Lachova",
+      "Pristavny most"
+    ],
+    "Namestie SNP": [
+      "Safarikovo nam.",
+      "Postova-Martinus"
+    ],
+    "Panorama City": [
+      "Twin City",
+      "Most Apollo",
+      "Pristavna",
+      "Nove SND"
+    ],
+    "Mokrad": [
+      "Pri nadjazde"
+    ],
+    "Lieskovska cesta": [
+      "MiU P. Biskupice",
+      "PD P. Biskupice"
+    ],
+    "Bulharska": [
+      "Radiova",
+      "Pri zvonici",
+      "Spolocenska"
+    ],
+    "Suhvezdna": [
+      "Astronomicka",
+      "Vahostav"
+    ],
+    "Majerska": [
+      "Sipova"
+    ],
+    "Trnavska": [
+      "Sabinovska",
+      "ZST Nove Mesto",
+      "Haburska",
+      "Slovinska",
+      "Bajkalska"
+    ],
+    "Estonska": [
+      "Stavbarska",
+      "Siravska"
+    ],
+    "Patronka, Kaufland": [
+      "Patronka"
+    ],
+    "Muchovo nam.": [
+      "Farskeho"
+    ],
+    "Vozovna Krasnany": [
+      "Male Krasnany",
+      "ZST Vinohrady"
+    ],
+    "Devatinova": [
+      "MiU P. Biskupice"
+    ],
+    "Karadzicova": [
+      "Mickiewiczova",
+      "Kvacalova",
+      "Kuliskova"
+    ],
+    "Safarikovo nam.": [
+      "Postova-Martinus",
+      "Sad Janka Krala",
+      "Kamenne nam.",
+      "Most SNP",
+      "Namestie SNP"
+    ],
+    "Stara Vajnorska": [
+      "ZIPP",
+      "Jurajov dvor"
+    ],
+    "Krasna": [
+      "Mierova",
+      "Syslia"
+    ],
+    "Zavadska": [
+      "Cachticka",
+      "Nam. A. Hlinku",
+      "Tbiliska"
+    ],
+    "Karlova Ves": [
+      "Dolne Krcace",
+      "Borska"
+    ],
+    "Dolne koruny": [
+      "Stary kamenolom",
+      "Kremelska"
+    ],
+    "Svabinskeho": [
+      "Smolenicka",
+      "Markova",
+      "Jiraskova"
+    ],
+    "Uhrovecka": [
+      "Na hriadkach",
+      "Ivana Bukovcana"
+    ],
+    "Odbojarov": [
+      "Trnavske myto",
+      "Nova doba"
+    ],
+    "Baronka": [
+      "Nemecky kulturny dom",
+      "Nam. A. Hlinku"
+    ],
+    "Opletalova": [
+      "Paulinske"
+    ],
+    "Pri mlyne": [
+      "Zlate piesky",
+      "Pracanska"
+    ],
+    "Technicka": [
+      "Bocna"
+    ],
+    "Husova": [
+      "Cremchova"
+    ],
+    "Jana Jonasa": [
+      "COV Dev. Nova Ves",
+      "Jana Jonasa-VW",
+      "Volkswagen"
+    ],
+    "Bory Mall": [
+      "Mokrohajska",
+      "Bory-razcestie",
+      "Patronka",
+      "Velkolucky potok",
+      "Lamac-Stare zahrady",
+      "Agatova"
+    ],
+    "Postova-Martinus": [
+      "Vysoka",
+      "Safarikovo nam.",
+      "Kapucinska",
+      "Namestie SNP"
+    ],
+    "Vozovna Petrzalka": [
+      "Betliarska",
+      "Nemocnica Antolska"
+    ],
+    "Nobelova": [
+      "Eu. vzdel. akademia"
+    ],
+    "Uhliska": [
+      "Pri starom letisku",
+      "MiU Vajnory",
+      "Cierny chodnik",
+      "Osloboditelska"
+    ],
+    "Dolne Krcace": [
+      "Horne Krcace",
+      "Karlova Ves"
+    ],
+    "Soltesovej": [
+      "Krizna",
+      "Mlynske nivy",
+      "Autobusova stanica"
+    ],
+    "Lipskeho": [
+      "Damborskeho",
+      "Huscavova",
+      "Harmincova",
+      "Polianky"
+    ],
+    "Na hriadkach": [
+      "Sandberg",
+      "Uhrovecka"
+    ],
+    "Detvianska": [
+      "Zahumenice-Drevona",
+      "Hybesova"
+    ],
+    "Stara Ivanska": [
+      "Galvaniho",
+      "Vozovna Trnavka",
+      "Pri zvonici",
+      "Avion Shopping Park"
+    ],
+    "Slov. nar. archiv": [
+      "Hauerland",
+      "Safranova"
+    ],
+    "Peknikova": [
+      "Tesco Lamac",
+      "Zatevna",
+      "OD Saratov",
+      "Drobneho"
+    ],
+    "Milana Marecka": [
+      "Hradistna",
+      "Stefana Kralika"
+    ],
+    "Bilikova": [
+      "ZST Lamac",
+      "Alexyho"
+    ],
+    "Kadlecik": [
+      "Zlate schody"
+    ],
+    "Matejkova": [
+      "ZS Majernikova",
+      "Tomankova"
+    ],
+    "Vozovna Hrobonova": [
+      "Prokopa Velkeho",
+      "Subezna",
+      "Lovinskeho",
+      "Hrobonova",
+      "Horsky park"
+    ],
+    "Mliekarenska": [
+      "Drienova",
+      "Pristavny most",
+      "Bajkalska"
+    ],
+    "Podhaj": [
+      "Studenohorska",
+      "Bakosova"
+    ],
+    "Bzovicka": [
+      "Lubovnianska",
+      "Betliarska",
+      "Zehrianska"
+    ],
+    "Janotova": [
+      "Pri podchode",
+      "Molecova",
+      "Lafranconi"
+    ],
+    "Vrancovicova": [
+      "Bakosova",
+      "Hodoninska",
+      "Pod nasypom",
+      "ZST Lamac",
+      "Lamac-Stare zahrady",
+      "Lediny",
+      "Lamac"
+    ],
+    "Kremnicka": [
+      "Einsteinova",
+      "Zaporozska"
+    ],
+    "Na pasekach": [
+      "Vychodne",
+      "Lokomotivne depo II"
+    ],
+    "Stolarska": [
+      "Pastierska",
+      "Cachticka"
+    ],
+    "Cremchova": [
+      "Jeseniova",
+      "Husova"
+    ],
+    "Na Grbe": [
+      "Ivana Bukovcana",
+      "Novoveska"
+    ],
+    "Sipova": [
+      "Majerska",
+      "Zeleznicna",
+      "Siravska"
+    ],
+    "Junova": [
+      "Na Revine",
+      "Visnova"
+    ],
+    "Udernicka-Kupalisko": [
+      "ZST Petrzalka",
+      "Dargovska"
+    ],
+    "Zoo": [
+      "Pri Habanskom mlyne",
+      "Lafranconi",
+      "Televizia",
+      "Botanicka zahrada",
+      "Einsteinova"
+    ],
+    "Pridanky": [
+      "ZST Lamac",
+      "Mokrohajska"
+    ],
+    "Strbska": [
+      "Nam. sv. Cyrila a Metoda",
+      "Devin"
+    ],
+    "Na Revine": [
+      "Julova",
+      "Junova"
+    ],
+    "Eu. vzdel. akademia": [
+      "Stare ihrisko",
+      "Nobelova"
+    ],
+    "Puchovska": [
+      "Zahumenice-Drevona",
+      "Rybnicna",
+      "Travna-Drevona",
+      "Na pantoch",
+      "Komisarky"
+    ],
+    "Prokopa Velkeho": [
+      "Hrobonova",
+      "Vozovna Hrobonova"
+    ],
+    "Bradacova": [
+      "Technopol",
+      "Romanova"
+    ],
+    "Safranova": [
+      "Slov. nar. archiv",
+      "Prvosienkova"
+    ],
+    "Bakosova": [
+      "Podhaj",
+      "Vrancovicova",
+      "Lamac-Stare zahrady"
+    ],
+    "MiU Vajnory": [
+      "Uhliska",
+      "Hospodarska",
+      "Pracanska"
+    ],
+    "Vysehradska": [
+      "Luky V",
+      "Lubovnianska"
+    ],
+    "Petofiho": [
+      "ZST P. Biskupice",
+      "Ucitelska"
+    ],
+    "Horne Krcace": [
+      "Damborskeho",
+      "Dolne Krcace"
+    ],
+    "Hlavna stanica": [
+      "SAV"
+    ],
+    "Tulipanova": [
+      "Vendelinska",
+      "Zatevna"
+    ],
+    "Maly Drazdiak": [
+      "Technopol",
+      "Stary haj"
+    ],
+    "Zilinska": [
+      "STU",
+      "Blumental"
+    ],
+    "Strecnianska": [
+      "Sintavska",
+      "Lucanka"
+    ],
+    "Saleziani": [
+      "Trhovisko",
+      "Krizna",
+      "Trnavske myto",
+      "Slovanet",
+      "Zimny stadion",
+      "Kvacalova"
+    ],
+    "Na Sitine": [
+      "Vretenova",
+      "Nad vinicami"
+    ],
+    "Zamocka": [
+      "Hrad",
+      "Partizanska"
+    ],
+    "Pestovatelska": [
+      "Fatruny"
+    ],
+    "Prievozska": [
+      "BBC1 Plus-Mileticova",
+      "Pristavny most",
+      "Hranicna-OC Retro"
+    ],
+    "Pri Habanskom mlyne": [
+      "Patronka",
+      "Zoo",
+      "Pri Suchom mlyne"
+    ],
+    "Damborskeho": [
+      "Svantnerova",
+      "Lipskeho",
+      "Horne Krcace"
+    ],
+    "Hubeneho": [
+      "ZST Vinohrady"
+    ],
+    "Ketelec": [
+      "Lieskovec"
+    ],
+    "DK Ruzinov": [
+      "Maximiliana Hella",
+      "Nevadzova-OC Retro"
+    ],
+    "Kolma": [
+      "ZST Petrzalka",
+      "Nakupna zona Luky"
+    ],
+    "Podunajska": [
+      "Zeleznicna",
+      "Komarovska"
+    ],
+    "Pri nadjazde": [
+      "Jurajov dvor",
+      "Mokrad"
+    ],
+    "Pri Sajbach": [
+      "Sklabinska",
+      "Pastierska"
+    ],
+    "Sustekova": [
+      "Lachova",
+      "Bulikova",
+      "Bosakova"
+    ],
+    "Jana Jonasa-VW": [
+      "Jana Jonasa",
+      "Zamajerske"
+    ],
+    "Slovinska": [
+      "Trnavska",
+      "Radiova",
+      "Haburska",
+      "Hanacka"
+    ],
+    "Janske hony": [
+      "PD P. Biskupice",
+      "Plniaren plynu"
+    ],
+    "Ovsiste": [
+      "Betliarska"
+    ],
+    "Homolova": [
+      "Cabanova",
+      "Pri krizi",
+      "Stepna"
+    ],
+    "Micherov majer": [
+      "Vodostav"
+    ],
+    "Slnecnice": [
+      "Zehrianska",
+      "Jasovska"
+    ],
+    "Pastierska": [
+      "Pri Sajbach",
+      "Stolarska"
+    ],
+    "Dudvazska": [
+      "Hronska",
+      "Zitavska",
+      "ZST P. Biskupice"
+    ],
+    "ZST Lamac": [
+      "Hodoninska",
+      "Bilikova",
+      "Pridanky",
+      "Tesco Lamac",
+      "Vrancovicova",
+      "Mokrohajska"
+    ],
+    "Pieskovy hon": [
+      "Gastanova aleja"
+    ],
+    "Pionierska": [
+      "ZST Vinohrady",
+      "Racianske myto",
+      "Nova doba",
+      "Mlada garda",
+      "Tehelna",
+      "Sliacska",
+      "Riazanska",
+      "Ursinyho"
+    ],
+    "Mlynarovicova": [
+      "Bosakova",
+      "Farskeho"
+    ],
+    "Vojensky utvar": [
+      "Sprinclov majer",
+      "Koniarkova"
+    ],
+    "Sklabinska": [
+      "Lokomotivne depo I",
+      "Pri Sajbach"
+    ],
+    "Stepna": [
+      "Zatevna",
+      "Cabanova II",
+      "Homolova"
+    ],
+    "Jarovce": [
+      "Pila",
+      "Sady"
+    ],
+    "Hajovna": [
+      "Zlate schody",
+      "Pri zahradach"
+    ],
+    "Nad vinicami": [
+      "Na Sitine",
+      "Nad internatmi"
+    ],
+    "Svatoplukova": [
+      "Autobusova stanica",
+      "Cvernovka"
+    ],
+    "Jungmannova": [
+      "Nam. hraniciarov",
+      "Halova",
+      "Farskeho"
+    ],
+    "Stara vinarska": [
+      "Budkova",
+      "Slavin"
+    ],
+    "Betliarska": [
+      "Ovsiste",
+      "Bzovicka",
+      "Vozovna Petrzalka"
+    ],
+    "BBC1 Plus-Mileticova": [
+      "Novohradska",
+      "Prievozska",
+      "Trhovisko",
+      "Trencianska"
+    ],
+    "Velkolucky potok": [
+      "Bory-razcestie",
+      "COV Dev. Nova Ves",
+      "Bory Mall",
+      "Volkswagen"
+    ],
+    "Krizna": [
+      "Autobusova stanica",
+      "Racianske myto",
+      "Saleziani",
+      "Trnavske myto",
+      "Soltesovej"
+    ],
+    "Komarovska": [
+      "Hronska",
+      "Priekopnicka",
+      "Podunajska",
+      "Toryska"
+    ],
+    "Mickiewiczova": [
+      "Karadzicova"
+    ],
+    "Kuklovska": [
+      "ZS Majernikova",
+      "Kuklovska 60"
+    ],
+    "Bratislavska zupa": [
+      "Drienova",
+      "Solivarska",
+      "Bajkalska"
+    ],
+    "Vlcie hrdlo": [
+      "Cierny les",
+      "Refinery Gallery"
+    ],
+    "Rusovska cesta": [
+      "Dvory",
+      "ZST Petrzalka"
+    ],
+    "Donovalova": [
+      "Misikova",
+      "Sulekova"
+    ],
+    "Travna-Drevona": [
+      "Puchovska",
+      "Pekna cesta",
+      "Cachticka"
+    ],
+    "Plniaren plynu": [
+      "Janske hony",
+      "Lieskovec"
+    ],
+    "Na pantoch": [
+      "OU zeleznicne",
+      "Puchovska"
+    ],
+    "Plynarenska": [
+      "Pristav",
+      "Most Apollo"
+    ],
+    "Bocna": [
+      "Technicka",
+      "Radiova"
+    ],
+    "OU obchodne": [
+      "OU zeleznicne",
+      "Rybnicna"
+    ],
+    "Trnavske myto": [
+      "Racianske myto",
+      "Zimny stadion",
+      "Tehelna",
+      "Nova doba",
+      "Krizna",
+      "Legionarska",
+      "Odbojarov",
+      "Saleziani"
+    ],
+    "Cerveny kriz": [
+      "Budkova",
+      "Jancova"
+    ],
+    "Sokolska": [
+      "Bardosova",
+      "SAV",
+      "Hrobonova",
+      "Stromova"
+    ],
+    "Inovecka": [
+      "Radvanska",
+      "Hrad"
+    ],
+    "Gercenova": [
+      "Zaporozska",
+      "Halova"
+    ],
+    "Ucitelska": [
+      "Nakupna",
+      "MiU P. Biskupice",
+      "Petofiho"
+    ],
+    "Ul. 29. augusta": [
+      "Nemocnica sv. Michala",
+      "Autobusova stanica",
+      "Spitalska"
+    ],
+    "Slovanet": [
+      "Nemocnica Ruzinov",
+      "Trhovisko",
+      "Drienova",
+      "Saleziani"
+    ],
+    "Kastielska": [
+      "MiU Ruzinov"
+    ],
+    "Fatruny": [
+      "Pestovatelska",
+      "Cesta na letisko"
+    ],
+    "Vozovna Trnavka": [
+      "Radiova",
+      "Shopping Park Soravia",
+      "Stara Ivanska",
+      "Jurajov dvor"
+    ],
+    "Cierny les": [
+      "Terminal",
+      "Vlcie hrdlo"
+    ],
+    "Hanacka": [
+      "Spolocenska",
+      "Slovinska"
+    ],
+    "Dubova": [
+      "Hrobonova",
+      "Patronka"
+    ],
+    "Panorama": [
+      "Grunty"
+    ],
+    "Mlynske nivy": [
+      "Soltesovej",
+      "Twin City"
+    ],
+    "Polus City Center": [
+      "Halkova",
+      "ZST Nove Mesto",
+      "Odborarska",
+      "Nova doba",
+      "Polus City Center",
+      "Zatisie"
+    ],
+    "Kosicka": [
+      "Pristavna",
+      "Autobusova stanica",
+      "Novohradska",
+      "Cvernovka"
+    ],
+    "L. Derera": [
+      "Visnova",
+      "Guothova"
+    ],
+    "Cachticka": [
+      "Stolarska",
+      "Zavadska",
+      "MiU Raca",
+      "Travna-Drevona"
+    ],
+    "Zatevna": [
+      "Peknikova",
+      "Tulipanova",
+      "Stepna"
+    ],
+    "Misikova": [
+      "Havlickova",
+      "Donovalova"
+    ],
+    "Ondrejovova": [
+      "Cintorin Vrakuna",
+      "Brodna",
+      "Ribezlova"
+    ],
+    "Blumental": [
+      "Racianske myto",
+      "Zilinska",
+      "Legionarska",
+      "Americke nam.",
+      "Vysoka"
+    ],
+    "Terminal": [
+      "Palenisko",
+      "Cierny les"
+    ],
+    "Cintorin Slavicie udolie": [
+      "Televizia",
+      "Internaty B"
+    ],
+    "Technopol": [
+      "Bradacova",
+      "Topolcianska",
+      "Tupolevova",
+      "Maly Drazdiak"
+    ],
+    "Polianky": [
+      "Lipskeho"
+    ],
+    "Autobusova stanica": [
+      "Krizna",
+      "Svatoplukova",
+      "Twin City",
+      "Kosicka",
+      "Ul. 29. augusta",
+      "Cintorinska",
+      "Soltesovej"
+    ],
+    "Kamenace": [
+      "Krpas",
+      "Bory-razcestie"
+    ],
+    "Jiraskova": [
+      "ZST Petrzalka",
+      "Smolenicka",
+      "VS Manazmentu",
+      "Svabinskeho"
+    ],
+    "Zahorska": [
+      "Zahorska Bystrica",
+      "Krce"
+    ],
+    "Vychodne": [
+      "Na pasekach",
+      "Lokomotivne depo I"
+    ],
+    "Kozia": [
+      "Sulekova",
+      "Partizanska"
+    ],
+    "Lanovka": [
+      "Drienovske luky",
+      "Kamenolom"
+    ],
+    "Botanicka zahrada": [
+      "Lafranconi",
+      "Vodarenske muzeum",
+      "Molecova",
+      "Zoo"
+    ],
+    "Konvalinkova": [
+      "Internaty B",
+      "Vretenova"
+    ],
+    "OD Saratov": [
+      "Pri krizi",
+      "Drobneho",
+      "Peknikova"
+    ],
+    "Lokomotivne depo I": [
+      "Vychodne",
+      "Sklabinska"
+    ],
+    "Trhovisko": [
+      "Slovanet",
+      "Saleziani",
+      "BBC1 Plus-Mileticova",
+      "Ruzova dolina"
+    ],
+    "Most Apollo": [
+      "Panorama City",
+      "Ekonomicka univerzita",
+      "Pristavna",
+      "Plynarenska"
+    ],
+    "Harmincova": [
+      "Borska",
+      "Lipskeho"
+    ],
+    "Racianske myto": [
+      "Krizna",
+      "SAV",
+      "Blumental",
+      "Trnavske myto",
+      "Pionierska",
+      "Dvory",
+      "Karpatska",
+      "Ursinyho"
+    ],
+    "Julova": [
+      "Koliba",
+      "Na Revine"
+    ],
+    "Nevadzova-OC Retro": [
+      "DK Ruzinov",
+      "Mierova",
+      "Brodna",
+      "Herlianska-OC Retro",
+      "Hranicna-OC Retro"
+    ],
+    "Mlynska": [
+      "Novoveska",
+      "Kremencova"
+    ],
+    "Lucanka": [
+      "Budatinska",
+      "Lubovnianska",
+      "Strecnianska",
+      "Znievska"
+    ],
+    "Sumracna": [
+      "Astronomicka",
+      "Maximiliana Hella",
+      "Tomasikova",
+      "Chlumeckeho"
+    ],
+    "Pri krematoriu": [
+      "Lamac-Stare zahrady",
+      "Podkerepusky"
+    ],
+    "Sad Janka Krala": [
+      "Safarikovo nam.",
+      "Farskeho"
+    ],
+    "Stary haj": [
+      "Maly Drazdiak"
+    ],
+    "Bulikova": [
+      "Sustekova",
+      "Ekonomicka univerzita"
+    ],
+    "Drienova": [
+      "Slovanet",
+      "Bratislavska zupa",
+      "Bajkalska",
+      "Mliekarenska"
+    ],
+    "Krce": [
+      "TV Markiza",
+      "Zahorska",
+      "Pri Vapenickom potoku"
+    ],
+    "Astronomicka": [
+      "Astronomicka",
+      "Suhvezdna",
+      "Sumracna"
+    ],
+    "PPA Controll": [
+      "Jurajov dvor",
+      "Shopping Palace"
+    ],
+    "Nam. L. Stura": [
+      "Mala scena",
+      "Most SNP"
+    ],
+    "Osloboditelska": [
+      "Koniarkova",
+      "Uhliska"
+    ],
+    "Starohajska": [
+      "Hrobakova",
+      "Lachova"
+    ],
+    "Nemocnica sv. Michala": [
+      "Ul. 29. augusta"
+    ],
+    "Kovacsova": [
+      "Sady",
+      "Vyvojova"
+    ],
+    "ZST Vinohrady": [
+      "Pekna cesta",
+      "Pionierska",
+      "Mlada garda",
+      "Hubeneho",
+      "Vozovna Krasnany",
+      "Nam. Biely kriz"
+    ],
+    "Huscavova": [
+      "Lipskeho",
+      "Tesco Lamac",
+      "Mokrohajska"
+    ],
+    "Toryska": [
+      "Hronska",
+      "Stavbarska",
+      "Komarovska",
+      "Podzahradna"
+    ],
+    "Subezna": [
+      "Vozovna Hrobonova",
+      "Hauerland"
+    ],
+    "Spitalska": [
+      "Ul. 29. augusta"
+    ],
+    "Hybesova": [
+      "Detvianska",
+      "Heckova"
+    ],
+    "Stavitelska": [
+      "Pribylinska"
+    ],
+    "Bardosova": [
+      "Magurska",
+      "Sokolska",
+      "Guothova",
+      "Stromova"
+    ],
+    "OU zeleznicne": [
+      "Na pantoch",
+      "OU obchodne"
+    ],
+    "Povodie Dunaja": [
+      "Lodenica"
+    ],
+    "Tehelna": [
+      "Trnavske myto",
+      "OD Slimak",
+      "Pionierska"
+    ],
+    "Ribezlova": [
+      "Avion Shopping Park",
+      "Cintorin Vrakuna",
+      "Ondrejovova"
+    ],
+    "Ul. 8. maja": [
+      "MiU P. Biskupice"
+    ],
+    "Nam. sv. Cyrila a Metoda": [
+      "Slovanske nabrezie",
+      "Strbska"
+    ],
+    "Clementisova": [
+      "Martinsky cintorin",
+      "Ivanska cesta",
+      "Big Media-Slowackeho"
+    ],
+    "Pila": [
+      "Strelnica",
+      "Jarovce"
+    ],
+    "ZST Nove Mesto": [
+      "Polus City Center",
+      "Trnavska",
+      "Odborarska"
+    ],
+    "Ruzova dolina": [
+      "Trencianska",
+      "Trhovisko"
+    ],
+    "Sancova": [
+      "Stefanovicova",
+      "Tupeho"
+    ],
+    "Studenohorska": [
+      "Klanec",
+      "Podhaj"
+    ],
+    "Magurska": [
+      "Nemocnica Kramare",
+      "Bardosova",
+      "Vlarska"
+    ],
+    "Pri zahradach": [
+      "Hajovna",
+      "Novy kamenolom"
+    ],
+    "Halkova": [
+      "Kukucinova",
+      "Polus City Center"
+    ],
+    "Romanova": [
+      "Markova",
+      "Hrobakova",
+      "Bradacova"
+    ],
+    "ZST Petrzalka": [
+      "Dvory",
+      "Jiraskova",
+      "Zaporozska",
+      "Udernicka-Kupalisko",
+      "Kolma",
+      "Rusovska cesta",
+      "VS Manazmentu",
+      "Halova",
+      "Kopcianska-stred"
+    ],
+    "Martinsky cintorin": [
+      "Clementisova"
+    ],
+    "Jurigrad": [
+      "Vodarenske muzeum"
+    ],
+    "Mala scena": [
+      "Nove SND",
+      "Nam. L. Stura",
+      "Twin City",
+      "Most SNP"
+    ],
+    "Prokofievova": [
+      "Markova"
+    ],
+    "Ivana Bukovcana": [
+      "Uhrovecka",
+      "Na Grbe"
+    ],
+    "Vahostav": [
+      "Suhvezdna"
+    ],
+    "ZST UNS": [
+      "Syslia"
+    ],
+    "Molecova": [
+      "Janotova",
+      "Botanicka zahrada"
+    ],
+    "Ivanska cesta": [
+      "Clementisova"
+    ],
+    "Alexyho": [
+      "Drobneho",
+      "Svantnerova",
+      "Bilikova",
+      "Vendelinska"
+    ],
+    "Cernockeho": [
+      "Heckova",
+      "Pekna cesta"
+    ],
+    "Heckova": [
+      "Hybesova",
+      "Cernockeho"
+    ],
+    "Sportove letisko": [
+      "Lokomotivne depo II",
+      "Pri starom letisku"
+    ],
+    "Sastinska": [
+      "Solosnicka",
+      "Borska"
+    ],
+    "Kalvaria": [
+      "Slavin",
+      "Kalvaria",
+      "Havlickova"
+    ],
+    "Briezky": [
+      "Sliacska",
+      "Krahulcia"
+    ],
+    "Farskeho": [
+      "Mlynarovicova",
+      "Jungmannova",
+      "Muchovo nam.",
+      "Nam. hraniciarov",
+      "Sad Janka Krala"
+    ],
+    "Zimny stadion": [
+      "Trnavske myto",
+      "Bajkalska",
+      "Saleziani"
+    ],
+    "Paulinske": [
+      "Opletalova",
+      "Panske"
+    ],
+    "COV Dev. Nova Ves": [
+      "Velkolucky potok",
+      "Jana Jonasa"
+    ],
+    "Prievoz-most": [
+      "Strojnicka"
+    ],
+    "Mierova kolonia": [
+      "Vihorlatska",
+      "Magnetova"
+    ],
+    "ZS Majernikova": [
+      "Kuklovska",
+      "Matejkova"
+    ],
+    "Smolenicka": [
+      "Jiraskova",
+      "Luky II",
+      "Holicska",
+      "Svabinskeho",
+      "Tupolevova"
+    ],
+    "Kuklovska 44": [
+      "Kuklovska 60",
+      "Solosnicka"
+    ],
+    "Nam. hraniciarov": [
+      "Hrobakova",
+      "Jungmannova",
+      "Lachova",
+      "Farskeho"
+    ],
+    "Nova doba": [
+      "Trnavske myto",
+      "Bajkalska",
+      "Pionierska",
+      "Polus City Center",
+      "Odbojarov"
+    ],
+    "Cvernovka": [
+      "Kuliskova",
+      "Svatoplukova",
+      "Kosicka"
+    ],
+    "OD Slimak": [
+      "Kukucinova",
+      "Tehelna"
+    ],
+    "Waitov lom": [
+      "Morava",
+      "Sandberg"
+    ],
+    "Halova": [
+      "Jungmannova",
+      "Dvory",
+      "Gercenova",
+      "ZST Petrzalka"
+    ],
+    "Americke nam.": [
+      "Blumental",
+      "Marianska"
+    ],
+    "Lubovnianska": [
+      "Lucanka",
+      "Nemocnica Antolska",
+      "Bzovicka",
+      "Vysehradska"
+    ],
+    "Riazanska": [
+      "Mlada garda",
+      "Pionierska"
+    ],
+    "Na hrebienku": [
+      "Prvosienkova"
+    ],
+    "Novohradska": [
+      "Kosicka",
+      "BBC1 Plus-Mileticova"
+    ],
+    "Male Krasnany": [
+      "Pekna cesta",
+      "Vozovna Krasnany"
+    ],
+    "Zlate schody": [
+      "Kadlecik",
+      "Hajovna"
+    ],
+    "Rybnicna": [
+      "OU obchodne",
+      "Puchovska",
+      "Sprinclov majer"
+    ],
+    "Big Media-Slowackeho": [
+      "Galvaniho",
+      "Clementisova"
+    ],
+    "Vendelinska": [
+      "Alexyho",
+      "Tulipanova"
+    ],
+    "Galvaniho": [
+      "Avion Shopping Park",
+      "Big Media-Slowackeho",
+      "Stara Ivanska"
+    ],
+    "Brodna": [
+      "Ondrejovova",
+      "Nevadzova-OC Retro"
+    ],
+    "Kuklovska 60": [
+      "Kuklovska",
+      "Kuklovska 44"
+    ],
+    "Solivarska": [
+      "Bratislavska zupa",
+      "Maximiliana Hella"
+    ],
+    "Stavbarska": [
+      "Toryska",
+      "Estonska"
+    ],
+    "Korytnicka": [
+      "Bodrocka",
+      "Nakupna"
+    ],
+    "Agatova": [
+      "Technicke sklo",
+      "Pri krizi",
+      "Bory-razcestie",
+      "Bory Mall"
+    ],
+    "Visnova": [
+      "Junova",
+      "L. Derera"
+    ],
+    "MiU Raca": [
+      "Cachticka",
+      "Nemecky kulturny dom"
+    ],
+    "Stefanovicova": [
+      "Sancova"
+    ],
+    "Pekna cesta": [
+      "Travna-Drevona",
+      "ZST Vinohrady",
+      "Cernockeho",
+      "Male Krasnany"
+    ],
+    "Lovinskeho": [
+      "Vozovna Hrobonova",
+      "Valasska"
+    ],
+    "Tesco Lamac": [
+      "Huscavova",
+      "Peknikova",
+      "Patronka",
+      "ZST Lamac",
+      "Mokrohajska",
+      "Pod Zecakom"
+    ],
+    "Sandberg": [
+      "Waitov lom",
+      "Na hriadkach"
+    ],
+    "Slovanske nabrezie": [
+      "Kremelska",
+      "Nam. sv. Cyrila a Metoda"
+    ],
+    "Horsky park": [
+      "Vozovna Hrobonova",
+      "Budkova"
+    ],
+    "Twin City": [
+      "Autobusova stanica",
+      "Panorama City",
+      "Mala scena",
+      "Mlynske nivy"
+    ],
+    "Trencianska": [
+      "BBC1 Plus-Mileticova",
+      "Ruzova dolina"
+    ],
+    "Pribylinska": [
+      "Stavitelska"
+    ],
+    "Strelnica": [
+      "Pila"
+    ],
+    "Chlumeckeho": [
+      "Sumracna"
+    ]
+  }
+}

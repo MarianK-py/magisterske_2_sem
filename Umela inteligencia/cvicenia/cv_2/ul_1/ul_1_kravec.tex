@@ -1,0 +1,72 @@
+% !TeX spellcheck = sk_SK-Slovak
+\documentclass[a4paper]{article}
+\usepackage[slovak]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{a4wide}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage[small,bf]{caption}
+\usepackage{subcaption}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{hyperref}
+
+
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+\newenvironment{modenumerate}
+{\enumerate\setupmodenumerate}
+{\endenumerate}
+
+\newif\ifmoditem
+\newcommand{\setupmodenumerate}{%
+	\global\moditemfalse
+	\let\origmakelabel\makelabel
+	\def\moditem##1{\global\moditemtrue\def\mesymbol{##1}\item}%
+	\def\makelabel##1{%
+		\origmakelabel{##1\ifmoditem\rlap{\mesymbol}\fi\enspace}%
+		\global\moditemfalse}%
+}
+
+\makeatletter
+\def\@seccntformat#1{%
+	\expandafter\ifx\csname c@#1\endcsname\c@section\else
+	\csname the#1\endcsname\quad
+	\fi}
+\makeatother
+
+\begin{document} 
+	
+\pagenumbering{arabic}
+\pagestyle{plain}
+
+\begin{center}
+	\sc\large
+	Umelá inteligencia - cvičenia 2
+\end{center}
+
+Autor: Marián Kravec
+
+\section{Úloha 1}
+
+\begin{table}[!h]
+\begin{tabular}{|p{0.15\textwidth}|p{0.10\textwidth}|p{0.12\textwidth}|p{0.5\textwidth}|}
+	\hline
+	Algoritmus                 & Časová zložitosť & Priestorová zložitosť & Pár viet \\ \hline
+	Breadth-First Search (BFS) & $O(b^d)$         & $O(b^d)$              & ($d$ - hĺbka najplytkejšieho cieľa)Algoritmus prechádza strom po úrovniach. Jeho nevýhodou je pomerne veľké množstvo pamäte keďže si musí pamätať celé úrovne ktorých veľkosť môže rásť exponenciálne     \\ \hline
+	Depth-First Search (DFS)   & $O(b^m)$         & $O(bm)$               & ($m$ - hĺbka stromu) Algoritmus prechádza strom do hĺbky, čiže kým sa z daného vrcholu dá pokračovať nižšie tak tam pokračuje. Nevýhodou je, že pri hlbokých stromoch môže tento algoritmus tráviť veľké množstvo čase hlboko v strome aj napriek tomu, že možné riešenie je vo vrchných vrstvách inej vetvy \\ \hline
+	Depth-Limited Search (DLS) & $O(b^l)$         & $O(bl)$ & Modifikácia DFS algoritmu, kde má algoritmus povedanú maximálnu hĺbku $l$ do ktorej sa má vnárať. Výhodou je lepší čas ako DFS avšak nevýhodou je, že nájdenie riešenia nie je zaručené (a to ani v prípade, že vieme, že niekde v strome riešenie je) \\ \hline
+	Iterative Deepening Depth-First Search (IDDFS) & $O(b^d)$         & $O(bd)$               & Modifikácia DLS algoritmu kde sa hodnota limitu $l$ postupne zvyšuje, kým algoritmus nenájde riešenie. Týmto rieši problém DFS, že sa môže dlho pohybovať na nevhodnej vetve (vďaka DLS) a zároveň rieši problém DLS, že nemusí nájsť riešenie postupným zväčšovaním hĺbky \\ \hline
+	Uniform Cost Search (UCS) & $O(b^{1+\lfloor l/e \rfloor}))$ & $O(b^{1+\lfloor l/e \rfloor})$ & ($l$ - dĺžka najkratšej cesty, $e$ - minimálna cena hrany) V tomto algoritme vkladáme nové vrcholy do prioritnej fronty na základe ceny. Ide o variant Dijkstrovho algoritmu \\ \hline
+	Best-First Search (BeFS) & $O(b^m)$ & $O(b^m)$ & Tento algoritmus na základe heuristiky určí pre každý nový očakávanú cenu do cieľa a následne podobne ako UCS ho vložíme do prioritnej fronty z ktorej následne vyberáme, ďalší prehľadávaný vrchol \\ \hline
+	A* & $O(b^d)$ & $O(b^d)$ & Ide o rozšírenie BeFS (v podstate pridanie UCS) kde keď nové vrcholy pridávame do prioritnej fronty na základe súčty ich doterajšej ceny a ceny ktorú predpokladá heuristika do cieľa \\ \hline
+\end{tabular}
+\end{table}
+
+\end{document}

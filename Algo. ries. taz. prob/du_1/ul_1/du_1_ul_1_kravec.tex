@@ -1,0 +1,155 @@
+% !TeX spellcheck = sk_SK-Slovak
+\documentclass[a4paper]{article}
+\usepackage[slovak]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{a4wide}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage[small,bf]{caption}
+\usepackage{subcaption}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{hyperref}
+\usepackage{fancyvrb}
+\usepackage{listings}
+%\usepackage{lstautogobble}
+\usepackage{stmaryrd}
+
+\lstset{basicstyle=\ttfamily,
+	mathescape=true,
+	escapeinside=||%,
+	%autogobble
+}
+
+
+\fvset{tabsize=4}
+
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+\newenvironment{modenumerate}
+{\enumerate\setupmodenumerate}
+{\endenumerate}
+
+\newif\ifmoditem
+\newcommand{\setupmodenumerate}{%
+	\global\moditemfalse
+	\let\origmakelabel\makelabel
+	\def\moditem##1{\global\moditemtrue\def\mesymbol{##1}\item}%
+	\def\makelabel##1{%
+		\origmakelabel{##1\ifmoditem\rlap{\mesymbol}\fi\enspace}%
+		\global\moditemfalse}%
+}
+
+\makeatletter
+\def\@seccntformat#1{%
+	\expandafter\ifx\csname c@#1\endcsname\c@section\else
+	\csname the#1\endcsname\quad
+	\fi}
+\makeatother
+
+\begin{document} 
+	
+\pagenumbering{arabic}
+\pagestyle{plain}
+
+\begin{center}
+	\sc\large
+	Algoritmické riešenia ťažkých problémov\\
+	Domáca úloha 1
+\end{center}
+
+Autor: Marián Kravec
+
+\section{Úloha 1 - Clumsy coins}
+
+\subsection*{a)}
+
+To, že greedy algoritmus berúci vždy najväčšiu mincu prestane dávať vždy optimálne riešenie dokážeme tak, že ukážeme kontrapríklad.
+\\
+
+Našim kontrapríkladom bude vydávanie sumy 40.
+
+Greedy algoritmus najskôr vydá 25 čím zníži zvyšnú sumu na 15, následne vydá 10 a nakoniec 5. Čiže vydá 3 mince. Avšak ak by vydal dvakrát sumu 20 vydal by práve 40 použitím iba dvoch mincí. Keďže neexistuje minca v hodnote 40 vieme, že vydať sumu pomocou iba jednej mince je nemožné, z tohto dôvodu môžeme tvrdiť, že riešenie vydať 2 mince je optimálne. Z toho vyplýva, že greedy algoritmus nevrátil optimálne riešenie keďže vydal 3 mince.
+
+\subsection*{b)}
+
+Na to aby sme dokázali, že greedy algoritmus nájde riešenie ktoré obsahuje nanajvýš o jednu mincu viac ako optimálne riešenie si najskôr dokážeme niekoľko čiastkových tvrdení.
+\\
+
+Tvrdenie 1:
+
+Pre všetky mince menšie ako 200 existuje ich maximálny počet v optimálnom riešení.
+\\
+
+Dôkaz 1:
+
+Dve mince hodnoty 5 vieme nahradiť jednou mincou hodnoty 10, z čoho vyplýva, že v optimálnom riešení môže byť nanajvýš jedna minca hodnoty 5. Podobne dve mince hodnoty 10 vieme nahradiť mincou hodnoty 20, dve 25 za 50, dve 50 za 100 a dve 100 za 200. V prípade mince hodnoty 20, dve mince hodnoty 20 nevieme zameniť za jednu mincu ale tri mince hodnoty 20 vieme zameniť za jednu mincu hodnoty 50 a jednu hodnoty 10 čiže dvomi mincami. 
+\\
+
+Tým sme ukázali, že v optimálnom riešení bude vždy nanajvýš jedna minca pre hodnoty 5, 10, 25, 50 a 100, a nanajvýš dve mince hodnoty 20.
+\\
+
+Tvrdenie 2:
+
+Kým je suma cez 200 vždy je optimálne vydať mincu s hodnotou 200.
+\\
+
+Dôkaz 2:
+V tvrdení 1 sme dokázali, že počet mincí hodnoty menšej ako 200 je v optimálnom riešení obmedzený, ak ich všetky sčítame dohromady dostane súčet 230 (20 je tam dva krát), teraz nám stačí ukázať, že pre každú z hodnôt medzi 200 a 230 je optimálnejšie vydať mince obsahujúce mincu s hodnotou 200.
+
+\begin{table}[!h]
+	\begin{tabular}{|l|l|l|l|l|}
+		\hline
+		Suma & Mince bez 200        & Počet mincí bez 200 & Mince s 200 & Počet mincí s 200 \\ \hline
+		200  & 100+50+25+20+5       & 5                   & 200         & 1                 \\ \hline
+		205  & 100+50+25+20+10      & 5                   & 200+5       & 2                 \\ \hline
+		210  & 100+50+25+20+10+5    & 6                   & 200+10      & 2                 \\ \hline
+		215  & 100+50+25+20+20      & 5                   & 200+10+5    & 3                 \\ \hline
+		220  & 100+50+25+20+20+5    & 6                   & 200+20      & 2                 \\ \hline
+		225  & 100+50+25+20+20+10   & 6                   & 200+25      & 2                 \\ \hline
+		230  & 100+50+25+20+20+10+5 & 7                   & 200+25+5    & 3                 \\ \hline
+	\end{tabular}
+\end{table}
+Vidíme, že pre každú sumu nad 200 je optimálne vrátiť mincu s hodnotou 200. 
+\\
+
+Z tohto nám vyplýva, že pokiaľ je ostatok sumy ktorý potrebujeme vydať väčší ako 200 tak je optimálne vydať 200 čo je presne to čo spraví greedy algoritmus. Preto sa nám stačí zamerať na prípad keď je zostatok už menší ako 200.
+\\
+
+Tvrdenie 3:
+
+Ak je ostatok potrebný na vydanie menší ako 200, greedy algoritmus vráti nanajvýš jednu mincu každej hodnoty.   
+\\
+
+Dôkaz 3:
+
+Na to aby greedy algoritmus vydal mincu hodnoty $n_i$ (kde $i$ je pozícia v zozname mincí utriedenom podľa ich hodnoty od najmenšej) musí byť zostatok $z$ väčší nanajvýš rovný $n_i$ ale menší ako hodnota väčšej mince (inak by zobral väčšiu mincu), čiže $n_i \leq z < n_{i+1}$ respektíve $z \in \langle n_i, n_{i+1} )$. Pozrime sa teraz na tieto intervaly pre jednotlivé mince a ako sa zmenia (posunú) po vydaní mince:
+
+\begin{table}[!h]
+	\begin{tabular}{|l|l|l|}
+		\hline
+		Minca & Interval pred vydaním & Interval po vydaní \\ \hline
+		5     &$z \in \langle 5, 10 )$&$z \in \langle 0, 5 )$\\ \hline
+		10    &$z \in \langle 10, 20 )$&$z \in \langle 0, 10 )$\\ \hline
+		20    &$z \in \langle 20, 25 )$&$z \in \langle 0, 5 )$\\ \hline
+		25    &$z \in \langle 25, 50 )$&$z \in \langle 0, 25 )$\\ \hline
+		50    &$z \in \langle 50, 100 )$&$z \in \langle 0, 50 )$\\ \hline
+		100   &$z \in \langle 100, 200 )$&$z \in \langle 0, 100 )$\\ \hline
+	\end{tabular}
+\end{table} 
+Môžeme si všimnúť, že pre žiadnu mincu nemajú intervaly pred a po vydaní žiaden prienik to znamená, že vydaním mince sa zostatková suma vždy dostanem mimo interval v ktorom by sme danú mincu znova vydali. A keďže zostatková sumu môže iba klesať, tak sa už nikdy späť do tohto intervalu nevráti z čoho vyplýva, že greedy algoritmus vydá každú z týchto hodnôt nanajvýš raz.
+\\
+
+Keď si teraz zistenie z tvrdenia 3 porovnáme so zistením z tvrdenia 1 zistíme, že náš algoritmus môže spraviť chybu iba ak bolo optimálne vydať dve mince hodnoty 20 (v ostatných prípadoch sme ukázali, že ani optimum, ani náš algoritmus nevydá 2 rovnaké mince). 
+\\
+
+Vydanie dvoch mincí hodnoty 20 znamená vydanie hodnoty 40. Takúto sumu greedy algoritmus vydá použitím mincí 25, 10 a 5, čiže použije o jednu mincu viac. Keďže ide o jediný prípad kedy použije o jednu mincu viac, môžeme tvrdiť, že vo všeobecnosti tento algoritmus nikdy nevráti pre žiadnu sumu viac ako o jednu mincu viac, čiže platí $GREEDY(N) \leq OPT(N)+1$ QED.
+
+
+\end{document}

@@ -1,0 +1,114 @@
+% !TeX spellcheck = sk_SK-Slovak
+\documentclass[a4paper]{article}
+\usepackage[slovak]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{a4wide}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage[small,bf]{caption}
+\usepackage{subcaption}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{hyperref}
+\usepackage{fancyvrb}
+\usepackage{listings}
+%\usepackage{lstautogobble}
+\usepackage{stmaryrd}
+
+\lstset{basicstyle=\ttfamily,
+	mathescape=true,
+	escapeinside=||%,
+	%autogobble
+}
+
+
+\fvset{tabsize=4}
+
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+\newenvironment{modenumerate}
+{\enumerate\setupmodenumerate}
+{\endenumerate}
+
+\newif\ifmoditem
+\newcommand{\setupmodenumerate}{%
+	\global\moditemfalse
+	\let\origmakelabel\makelabel
+	\def\moditem##1{\global\moditemtrue\def\mesymbol{##1}\item}%
+	\def\makelabel##1{%
+		\origmakelabel{##1\ifmoditem\rlap{\mesymbol}\fi\enspace}%
+		\global\moditemfalse}%
+}
+
+\makeatletter
+\def\@seccntformat#1{%
+	\expandafter\ifx\csname c@#1\endcsname\c@section\else
+	\csname the#1\endcsname\quad
+	\fi}
+\makeatother
+
+\begin{document} 
+	
+\pagenumbering{arabic}
+\pagestyle{plain}
+
+\begin{center}
+	\sc\large
+	Programovanie paralélnych a distribuovaných systémov\\
+	Domáca úloha 2
+\end{center}
+
+Autor: Marián Kravec
+
+\section{Úloha 1}
+
+Majme program binomial:
+\begin{lstlisting}
+Program binomial
+assign
+    $\langle \oblong$ n: 0 $\leq$ n < N ::
+        c[n, 0] := 1 $\oblong$c[n, n] := 1
+        $\oblong$ $\langle \oblong$ k: 0 < k < n ::
+            c[n, k] := c[n-1, k-1] + c[n-1, k]
+end{binomial}
+\end{lstlisting}
+
+Poďme ukázať, že tento program robí to čo od neho očakávame. Najprv si vytvorme metriku, ako bolo spomenuté na prednáške, vhodnou metrikou môže byť v tomto prípade počet správne vyplnených vrstiev od vrchu plus zlomok správne vyplnených políčok prvej neúplne správnej vrstvy. Túto metriku chceme maximalizovať. Keďže máme N vrstiev (konečný počet) a každá vrstva má konečný počet políčok tak aj počet vrstiev aj zlomok správne vyplnených políčok v neúplnej vrstve zhora ohraničený s konečným počtom hodnôt. Vďaka tomu ak dokážeme, že tento algoritmus túto metriku nikdy nezníži a občas zvýši, dokážeme, že algoritmus v nekonečnom čase určite správne vyplní binomický trojuholník (maticu $c$).
+
+\begin{enumerate}[a)]
+	\item Najprv ukážeme, že tento algoritmus metriku nikdy nezníži, čiže neurobí nič zlé - dokážeme to sporom, na to aby metrika klesla algoritmus by musel zmeniť správnu hodnotu v bunke na niektorej z prvých už správnych vrstiev (alebo na prvej neúplnej) na nesprávnu - ak je bunka na okraji vrstvy (druhú súradnicu ná $0$ alebo $n$) algoritmu na danú pozíciu dá $1$ čo je správna hodnota, ak bunky nie je okrajová, tak spočíta hodnoty na vyššej vrstve a keďže predpokladáme, že všetky vyššie vrstvy sú správne dostávame sa k sporu a preto môžeme tvrdiť, že algoritmus neurobí nič zlé
+	\item Teraz chceme ukázať, že aspoň občas urobí niečo dobré, inými slovami zvýši metriku ak nie je už dosiahnuté maximum metriky. Metriku vieme zvýšiť tým, že na prvej nie úplne správne vyplnenej vrstvy doplníme správnu hodnotu (respektíve keď vyplníme celú prvú nie úplne správne vyplnenú vrstvu čo je iba špeciálny prípad) - keďže existuje príkaz pre vyplnenie každej bunky tak existuje aj príkaz na vyplnenie nesprávne vyplnenej bunky na prvej nie úplne správne vyplnenej vrstve, ak je táto bunka okrajová, zmení jej hodnotu na $1$ čiže nová hodnota bude správna, ak okrajová nie je sčíta hodnoty vrstvy nad touto vrstvou o ktorej predpokladáme, že je správne vyplnená, čiže aj v tejto bunke bude nová hodnota správna a tým pádom sa zvýši hodnota metriky, čo je to čo sme chceli dokázať. Špeciálnym prípadom je prvá vrstva (teoreticky aj druhá) ktorá nemá nad sebou žiadnu vrstvu avšak dôkaz platí aj pre ňu keďže jediná bunka na nej je okrajová z čoho vyplýva, že existuje príkaz ktorý ju správne vyplní aj napriek absencie vrstvy nad ňou 
+	\item Nakoniec chceme ukázať, že program dosiahne pevný bod kde je celý binomický trojuholník správne vyplnený. Tu využijeme už ukázané/dokázané vlastnosti, ukázali sme, že hodnota metriky neklesne, a že vždy existuje príkaz ktorý ju zvýši. Takisto sme na začiatku ukázali, že vďaka konečnému počtu vrstiev a buniek má táto metrika konečný počet hodnôt a existuje maximum, z tohto vyplýva, že vďaka tomu, že vždy kým nie je metrika maximálna existuje príkaz ktorý ju zvýši (a žiaden iný ju nezníži) a každý príkaz sa vykoná nekonečne veľa krát tak metrika dosiahne v konečnom čase maximum čo je v pre tento program pevný bod. Maximum metriky je, že sú všetky riadky binomického trojuholníku (matice) správne vyplnené, čiže v pevnom bode máme kompletne správne vyplnený binomický trojuholník  
+\end{enumerate}
+
+Rozdiel medzi tým, keď začíname s maticou inicializovanou s nulovými a jednotkovými hodnotami veľmi malý, keďže dôkaz nepredpokladá nič o počiatočných hodnotách v bunkách, teoreticky, ak by boli v bunkách hodnoty 1 tak sú prvé dve vrstvy už vopred správne vyplnené... ale neviem či to nejak pomáha dôkazu.
+
+\section{Úloha 2}
+
+\begin{enumerate}[a)]
+	\item $\{x>3\}x:=x+5\{x>4\}$ - pravdivé - ak platí $x>3$ tak po $x:=x+5$ bude platiť $x+5>4$, keďže to vieme upraviť na $x>-1$ a $x>3$ implikuje, že $x>-1$
+	\item $\{x>3\}x:=x+5\{x>2\}$ - pravdivé - ak platí $x>3$ tak po $x:=x+5$ bude platiť $x+5>2$, keďže to vieme upraviť na $x>-3$ a $x>3$ implikuje, že $x>-1$
+	\item $\{x>3\}x:=x+5\{y>2\}$ - nepravdivé - poznáme podmienku pre premennú $x$ a príkaz ktorý ju zmení čo nám nehovorí nič o premennej $y$
+	\item $\{x>3\}x:=x+5\{x>6\}$ - pravdivé - ak platí $x>3$ tak po $x:=x+5$ bude platiť $x+5>6$, keďže to vieme upraviť na $x>1$ a $x>3$ implikuje, že $x>-1$
+	\item $\{\text{true}\}x:=2.x\{\text{x je párne}\}$ - nepravdivé - ak nevieme či je $x$ kladné celé číslo tak nevieme povedať či bude eventually párne
+	\item $\{\text{false}\}x:=2.x\{\text{x je párne}\}$ - pravdivé - tvrdenia začínajúce false sú vždy pravdivé (ak som správne pochopil prednášku)
+	\item $\{\text{k je celé kladné číslo}\}x:=k.x\{\text{x je zložené číslo}\}$ - nepravdivé, ak nevieme, či $x$ je celé kladné číslo toto tvrdenie nemusí platiť
+\end{enumerate} 
+
+\section{Úloha 3}
+
+O programe Binomial môžeme sformulovať napríklad takéto vlastnosti:
+
+\begin{itemize}
+	\item $c[n, 0] \neq 1 \land n \geq 0 \land n \leq N $ ensures $c[n, 0] = 1$ - iba jeden príkaz dokáže zmeniť hodnotu $c[n, 0]$ a ten to zmení iba na $1$
+	\item $c[0, 0] = 1$ stable - v postate len špecifický prípad predchádzajúceho tvrdenia avšak ak sú hodnoty iniciované na $1$ tak platí: $c[0, 0] = 1$ invariant
+	\item $c[n, k] \neq \binom{n}{k} \land n \geq 0 \land n \leq N \land k \leq n$ leads-to $c[n, k] = \binom{n}{k}$ - v podstate samotná podstata programu, hovoriaca, že eventually bude v každej bunke správna hodnoty binomického koeficientu
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,106 @@
+% !TeX spellcheck = sk_SK-Slovak
+\documentclass[a4paper]{article}
+\usepackage[slovak]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{a4wide}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage[small,bf]{caption}
+\usepackage{subcaption}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{hyperref}
+\usepackage{fancyvrb}
+\usepackage{listings}
+%\usepackage{lstautogobble}
+\usepackage{stmaryrd}
+
+\lstset{basicstyle=\ttfamily,
+	mathescape=true,
+	escapeinside=||%,
+	%autogobble
+}
+
+
+\fvset{tabsize=4}
+
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+\newenvironment{modenumerate}
+{\enumerate\setupmodenumerate}
+{\endenumerate}
+
+\newif\ifmoditem
+\newcommand{\setupmodenumerate}{%
+	\global\moditemfalse
+	\let\origmakelabel\makelabel
+	\def\moditem##1{\global\moditemtrue\def\mesymbol{##1}\item}%
+	\def\makelabel##1{%
+		\origmakelabel{##1\ifmoditem\rlap{\mesymbol}\fi\enspace}%
+		\global\moditemfalse}%
+}
+
+\makeatletter
+\def\@seccntformat#1{%
+	\expandafter\ifx\csname c@#1\endcsname\c@section\else
+	\csname the#1\endcsname\quad
+	\fi}
+\makeatother
+
+\begin{document} 
+	
+\pagenumbering{arabic}
+\pagestyle{plain}
+
+\begin{center}
+	\sc\large
+	Programovanie paralélnych a distribuovaných systémov\\
+	Domáca úloha 5
+\end{center}
+
+Autor: Marián Kravec
+
+\section{Úloha 1 - Koordinácia schôdzí}
+
+Bude predstavené riešenie fungovať ak sa profesor sám rozhodne, že nechce
+schôdzovať?
+\\
+
+Zaujímavá otázka... Teoreticky by mal keďže program je schopný riešiť situácie keď profesor prestane chcieť schôdzovať kvôli prítomnosti na inej schôdzi, pričom je nevidím veľký rozdiel medzi tou situáciou a situáciou keď profesor prestane chcieť schôdzovať z vlastnej vôle.
+\\
+
+Ak každý profesor vždy po čase chce schôdzovať, vieme zaručiť, že každá komisia
+zasadne?
+\\
+
+Vieme to zaručiť keďže ak každý profesor bude vždy po čase chce schôdzovať tak každá schôdza bude po určitom čase zase zasadnutia schopná. Vďaka tomu, že schôdzi dávame životný cyklus podobný filozofovi pre ktorého platí, že ak bude hladný tak určite bude raz jesť tak aj pre v prípade schôdze ak vieme o nej povedať, že bude zasadnutia schopná tak raz bude zasadať. Toto by malo platiť aj napriek tomu, že schôdza môže prestať byť uznášania schopná kvôli tomu, že niektorý profesor prestane chcieť schôdzovať kvôli inej schôdze vďaka tomu, že program os od filozofov mu postupne bude zvyšovať prioritu.
+\\
+
+Ak každý profesor nepretržite chce schôdzovať, vieme zaručiť, že každá komisia
+zasadne? 
+\\
+
+Vieme, pričom platí rovnaký princíp ako v predchádzajúcej časti, v tomto prípade tým, že všetci profesori chcú nepretržite zasadať, tak všetky schôdze sú vždy zasadnutia schopné, vďaka tomu a faktu že používame program os z filozofov ktorý zaručuje, že každý hladný filozof príde na radu tak aj každá schôdza príde na radu.
+
+
+\section{Úloha 2 - Pijúce filozofky}
+
+Filozofka môže vypustiť niektorý z nápojov, počas toho ako je v stave smädná. Bude riešenie fungovať?
+\\
+
+Riešenie by malo stále v podstate fungovať, aj napriek tomu, že umožníme filozofke vypustiť niektorý z nápojov keďže to nemôže negatívne ovplyvniť informáciu $u.maydrink$ (pre filozofku $u$) vďaka tomu, ak nastane situácia, že filozofka môže piť tak vypustenie nápoja ju negatívne neovplyvní vďaka čomu je stále garantovaná správnosť riešenia.
+\\
+
+Filozofka môže pridať nápoj, počas toho, ako je v stave smädná. Bude riešenie fungovať?
+\\
+
+V tomto prípade naše riešenie nebude fungovať správne lebo môže nastať takáto situácia: majme filozofku $u$ v stave smädná $u.s = true$, pričom nastane situácia, že všetky má všetky nápoje ktoré chce sú voľné (má všetky fľaše ktoré potrebuje a nikomu ich nemusí dať) vďaka tomu nadobudne hodnotu $u.maydrink = true$ ak v tejto situácia môže nastať to, že si filozofka pridá nápoj ktorý je v konflikte s nejakou z jej susediek a následne skôr ako dôjde k updatu informacie $u.maydrink$ začne piť (keďže spĺňa to, že je smädná $u.s$ a môže piť $u.maydrink$) čo vytvorí konflikt keďže dve susedky budú piť rovnaký nápoj.
+
+
+\end{document}

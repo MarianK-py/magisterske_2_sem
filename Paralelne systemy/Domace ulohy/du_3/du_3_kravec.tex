@@ -1,0 +1,122 @@
+% !TeX spellcheck = sk_SK-Slovak
+\documentclass[a4paper]{article}
+\usepackage[slovak]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{a4wide}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage[small,bf]{caption}
+\usepackage{subcaption}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{hyperref}
+\usepackage{fancyvrb}
+\usepackage{listings}
+%\usepackage{lstautogobble}
+\usepackage{stmaryrd}
+
+\lstset{basicstyle=\ttfamily,
+	mathescape=true,
+	escapeinside=||%,
+	%autogobble
+}
+
+
+\fvset{tabsize=4}
+
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+\newenvironment{modenumerate}
+{\enumerate\setupmodenumerate}
+{\endenumerate}
+
+\newif\ifmoditem
+\newcommand{\setupmodenumerate}{%
+	\global\moditemfalse
+	\let\origmakelabel\makelabel
+	\def\moditem##1{\global\moditemtrue\def\mesymbol{##1}\item}%
+	\def\makelabel##1{%
+		\origmakelabel{##1\ifmoditem\rlap{\mesymbol}\fi\enspace}%
+		\global\moditemfalse}%
+}
+
+\makeatletter
+\def\@seccntformat#1{%
+	\expandafter\ifx\csname c@#1\endcsname\c@section\else
+	\csname the#1\endcsname\quad
+	\fi}
+\makeatother
+
+\begin{document} 
+	
+\pagenumbering{arabic}
+\pagestyle{plain}
+
+\begin{center}
+	\sc\large
+	Programovanie paralélnych a distribuovaných systémov\\
+	Domáca úloha 3
+\end{center}
+
+Autor: Marián Kravec
+
+\section{Úloha 1}
+
+Majme program Maximum3:
+\begin{lstlisting}
+Program Maximum3
+assign $\langle ||$ j: 0 $\leq$ j < M:: A[j] = max(A[2j], A[2j+1])$\rangle$
+end{Maximum3}
+\end{lstlisting}
+
+V čase O($log(N)$) bude zoznam vyzerať následovne:
+\begin{itemize}
+	\item druhá polovica zoznamu bude totožná s pôvodným zoznamom
+	\item druhá štvrtina zoznamu obsahuje maximá z dvojíc po sebe idúcich čísel z druhej polovice zoznamu
+	\item druhá osmina by mala obsahovať maximá z dvojíc po sebe idúcich čísel v druhej štvrtiny súčastného zoznamu (štvoríc z druhej polovice pôvodného zoznamu)
+	\item ...
+	\item prvok $A[1]$ obsahuje maximum z druhej polovice zoznamu
+	\item prvok $A[0]$ je špeciálny keďže ako jediný môže prepísať svoju hodnotu vlastnou hodnotou vďaka čomu obsahuje maximum celého zoznamu (raz ako sa sem maximum dostane už tu ostane)
+\end{itemize}
+
+Teraz sa pozrime na podmienky tohto programu:
+\begin{itemize}
+	\item safety podmienka: maximálny prvok sa bude vždy nachádzať v zozname  a nikdy sa neposunie bližšie ku koncu zoznamu, vďaka tomu, že sú všetky prvky zoznamu spracovávané naraz a vždy ostane väčší z porovnávaných prvkov, maximum sa bude stále nachádzať v zozname a keďže výsledok porovnávania prvkov sa zapíše na pozíciu bližšie (alebo aspoň rovnako vzdialenú) k začiatku zoznamu ako pozície porovnávaných prvkov pozícia maxima sa nemôže zvýšiť  
+	\item progress podmienka: maximum sa niekedy posunie bližšie k začiatku zoznamu, keďže sme v safety podmienke dokázali, že maximum ostane vždy v zozname a všetky príkazy (okrem jedného $A[0] = max(A[0], A[1])$) pošlú väčšiu hodnotu na pozíciu s nižším indexom (bližšie k začiatku) ako sa nachádzala predtým, tak môžme tvrdiť, že bude existovať ktorý posunie maximum bližšie k začiatku zoznamu (ak sa tam už nenachádza) 
+	\item FP by tento algoritmus mal dosiahnúť v čase O($log(n)$) ak sa nemýlim takže zoznam A bude vyzerať tak ako je popísaný vyššie
+\end{itemize}
+
+Majme program Maximum4:
+\begin{lstlisting}
+Program Maximum4
+assign $\langle \oblong$ j: 0 $\leq$ j < M:: A[j] = max(A[2j], A[2j+1])$\rangle$
+end{Maximum4}
+\end{lstlisting}
+
+Tento program nanešťastie nemusí vždy fungovať, keďže nemáme žiadnu kontrolu nad postupnosťou v ktorej sa jednotlivé príkazy vykonajú, kvôli tomu ak napríklad na pozícii $A[4]$ je maximum tak by ho príkaz $A[2] = max(A[4], A[5])$ by ho mal skopírovať do $A[2]$ (bližšie k začiatku) ak sa však príkaz $A[4] = max(A[8], A[9])$ vykoná skôr bude hodnota skutočného maxima prepísaná inou hodnotou a skutočná hodnota maxima sa už v zozname nebude nachádza z čoho vyplýva, že ju program už nikdy nenájde. 
+
+\section{Úloha 2}
+
+Majme program Reach ktorý zisťije, ktoré vrcholy sú dosiahnuteľné z počiatočného vrchola v orientovanom grafe:
+\begin{lstlisting}
+Program Reach
+declare r: array[V] of boolean
+initially $\langle \oblong$ v: v $\in$ V:: r[v] = (v = init)$\rangle$
+assign $\langle \oblong$ u, (u, v) $\in$ E:: r[v] := r[u] $\lor$ r[v]$\rangle$
+end{Reach}
+\end{lstlisting}
+
+\begin{itemize}
+	\item safety podmienka je v tomto prípade, že počet dosiahnuteľných vrcholov nikdy neklesne, čiže ak nejaký vrchol je už raz označený ako dosiahnuteľný už nebude označený inak (vychádza to z toho, že v príkaze je použité $\lor$ a hodnota meneného vrchola)
+	\item progress podmienka je, že kým, nie sú označené všetky dosiahnuteľné vrcholy tak sa existuje príkaz ktorý ich počet zvýši (vychádza to z toho, že ak existujú neoznačené dosiahnuteľné vrcholy musí byť aspoň jeden z nich dosiahnuteľný na jeden krok z už dosiahnuteľné vrcholu inak by žiaden z doteraz nedosiahnutých vrcholov nebol dosiahnuteľný preto existuje aspoň jedna hrana z dosiahnutého do ešte nedosiahnutého a keďže máme príkaz pre každú hranu existuje aj pre túto a bude niekedy vykonaný)
+	\item FP - progress podmienka hovorí, že sa počet dosiahnuteľných vrcholov bude zvyšovať ale máme iba konečný počet vrcholov, čiže niekedy musí nastať situácia, že sa počet dosiahnuteľných vrcholov prestane zvyšovať a keďže vďaka safety podmienke sa počet dosiahnutých vrcholov nezníži tak v takom bode nastane FP kde sa už informácia o dosiahnuteľnosti vrchola nezmení, zároveň, z progress podmienky vidíme, že sa bude zvyšovať pokým existuje neoznačený dosiahnuteľný vrchol, čiže svoje maximum (FP) nadobudne až vo chvíli keď sú všetky dosiahnuteľné vrcholy označené, čiže keď vypočíta to čo bola úloha a to určiť ktoré vrcholy sú dosiahnuteľné  
+\end{itemize}
+
+
+\end{document}
