@@ -92,22 +92,22 @@ Optimálne riešenie je v tomto prípade dať jednému byrokratovi úlohy dĺžk
 Vidíme, že na konci algoritmu má byrokrat 1 celkovú sumu 13 a byrokrat 2 má sumu 11. Maximum z týchto súm je 13, čo je hodnota nášho riešenia, táto hodnota je vyššia ako hodnota optimálneho riešenia 12, čiže toto riešenie je suboptimálne.
 \\
 
-Teraz sa pozrime, ako bude vyzerať riešenie nášho algoritmu pre vstup v zadaní:
-\begin{table}[!h]
-	\begin{tabular}{|p{0.08\textwidth}|p{0.095\textwidth}|p{0.095\textwidth}|p{0.095\textwidth}|p{0.125\textwidth}|p{0.095\textwidth}|p{0.095\textwidth}|p{0.095\textwidth}|}
-		\hline
-		dĺžka úlohy & byrokrat 1 pred & byrokrat 2 pred & byrokrat 3 pred & kto dostane úlohu & byrokrat 1 po & byrokrat 2 po & byrokrat 3 po \\ \hline
-		14          & 0               & 0               & 0               & byrokrat 1        & 14            & 0             & 0             \\ \hline
-		10          & 14              & 0               & 0               & byrokrat 2        & 14            & 10            & 0             \\ \hline
-		7           & 14              & 10              & 0               & byrokrat 3        & 14            & 10            & 7             \\ \hline
-		4           & 14              & 10              & 7               & byrokrat 3        & 14            & 10            & 11            \\ \hline
-		2           & 14              & 10              & 11              & byrokrat 2        & 14            & 12            & 11            \\ \hline
-		2           & 14              & 12              & 11              & byrokrat 3        & 14            & 12            & 13            \\ \hline
-		1           & 14              & 12              & 13              & byrokrat 2        & 14            & 13            & 13            \\ \hline
-	\end{tabular}
-\end{table}
+%Teraz sa pozrime, ako bude vyzerať riešenie nášho algoritmu pre vstup v zadaní:
+%\begin{table}[!h]
+	%\begin{tabular}{|p{0.08\textwidth}|p{0.095\textwidth}|p{0.095\textwidth}|p{0.095\textwidth}|p{0.125\textwidth}|p{0.095\textwidth}|p{0.095\textwidth}|p{0.095\textwidth}|}
+		%\hline
+		%dĺžka úlohy & byrokrat 1 pred & byrokrat 2 pred & byrokrat 3 pred & kto dostane úlohu & byrokrat 1 po & byrokrat 2 po & byrokrat 3 po \\ \hline
+		%14          & 0               & 0               & 0               & byrokrat 1        & 14            & 0             & 0             \\ \hline
+		%10          & 14              & 0               & 0               & byrokrat 2        & 14            & 10            & 0             \\ \hline
+		%7           & 14              & 10              & 0               & byrokrat 3        & 14            & 10            & 7             \\ \hline
+		%4           & 14              & 10              & 7               & byrokrat 3        & 14            & 10            & 11            \\ \hline
+		%2           & 14              & 10              & 11              & byrokrat 2        & 14            & 12            & 11            \\ \hline
+		%2           & 14              & 12              & 11              & byrokrat 3        & 14            & 12            & 13            \\ \hline
+		%1           & 14              & 12              & 13              & byrokrat 2        & 14            & 13            & 13            \\ \hline
+%	\end{tabular}
+%\end{table}
 
-Vidíme, že náš algoritmus dá riešenie 14 čo je optimálne riešenie. To že je to optimálne môžeme ukázať znovu použitím priemeru dĺžky úloh na byrokrata. V tomto prípade je súčet všetkých úloh 40, keďže máme troch byrokratov, priemer je $13.\bar{3}$ avšak keďže sú v tomto prípade všetky úlohy celočíselnej dĺžky aj optimum musí byť celočíselné preto optimum nemôže byť menšie ako 14, čo je výsledok nášho algoritmu. 
+%Vidíme, že náš algoritmus dá riešenie 14 čo je optimálne riešenie. To že je to optimálne môžeme ukázať znovu použitím priemeru dĺžky úloh na byrokrata. V tomto prípade je súčet všetkých úloh 40, keďže máme troch byrokratov, priemer je $13.\bar{3}$ avšak keďže sú v tomto prípade všetky úlohy celočíselnej dĺžky aj optimum musí byť celočíselné preto optimum nemôže byť menšie ako 14, čo je výsledok nášho algoritmu. 
 
 \subsection*{b)}
 
@@ -124,12 +124,22 @@ Uvažujme, že máme byrokrata $b$ ($b$ označuje celkovú dĺžku práce byrokr
 Teraz sa pozrime, čo spraví náš algoritmus. Bez ujmy na všeobecnosti si našich byrokratov nejak usporiadajme. Náš algoritmus najskôr postupne zľava doprava každému byrokratovi jednu najväčšiu zatiaľ nepridanú úlohy kým nemá každý práve jednu úlohy alebo nie sú pridané všetky úlohy(vieme to zaručiť lebo kým nepridá prvých $k$ úloh existuje byrokrat s celkovou sumou 0 čo je najnižšia možná). Ďalej uvažujme o prípade, že každý byrokrat má pridelenú jednu úlohu a ešte existujú nepridelené úlohy, keďže sme pridávali úlohy zľava doprava od najväčšej sme teraz v situácii, že sú byrokrati zoradený podľa celkových dĺžok ich úloh. Preto keď algoritmus začne prideľovať zvyšné úlohy, bude ich prideľovať z sprava doľava po jednej úlohy (vieme, že iba po jednej lebo po pridelení ďalšej úlohy bude mať byrokrat 2 úlohy čo sme dokázali, že za daných podmienok je maximum). 
 \\
 
-Teraz potrebujeme ukázať, že toto riešenie je optimálne. Môžu nastať dve možnosti:
+Teraz potrebujeme ukázať, že toto riešenie je optimálne. Na to si ukážeme niekoľko vlastností z ktorých optimalita riešenia vyplynie.
 
 \begin{itemize}
-	\item maximálnu celkovú dĺžku úloh má byrokrat s jednou úlohou - tento prípad je jednoduchý keďže v takomto prípade, vieme, že optimum nemôže byť menšie ako je najdlhšia úloha a preto toto riešenie musí byť optimálne
-	\item maximálnu celkovú dĺžku úloh má byrokrat s dvomi úlohami - na začiatok bez ujmy na všeobecnosti pridajme každému byrokratovi s iba jednou úlohou, druhú úlohy s nulovou dĺžkou, tým neovplyvníme naše ani optimálne riešenie a môžeme uvažovať, že každý byrokrat má 2 úlohy, zaveďme si teraz takéto označenie úloh $a_{i,j}$ kde $i$ je poradie byrokrata (na začiatku sme ich usporiadali) a $j$ je poradie v ktorom bola úloha byrokratovi pridelená. Teraz vieme tieto úlohy takto usporiadať $a_{1,1} \geq a_{2,1} \geq a_{k, 1} \geq a_{k, 2} \geq a_{k-1, 2} \geq a_{1,2}$ keďže prvé úlohy sú väčšie ako druhé a čím skôr je byrokrat v rade tým skôr svoju prvú úlohu dostal (keďže rozdávame úlohy od najväčšej) a podobne potom druhé úlohy sú menšie ako prvé a boli rozdávané byrokratom v obrátenom poradí (lebo byrokrati na konci mali najmenšie prvé úlohy, čiže najmenšiu celkovú dĺžku úloh). Teraz uvažujme, že maximum má byrokrat $i$, čiže $NASE(X) = a_{i, 1} + a_{i, 2}$ 
-\end{itemize} 
+	\item Každá úloha má menšiu nanajvýš rovnú hodnotu ako optimum ($\forall a_i, a_i \leq t^*$). Toto je triviálne keďže potrebujem prideliť všetky úlohy, ak by existovala úlohy s hodnotou väčšou ako optimum musela by byť pridelená, čo by však znamenalo, že celková hodnota úloh pre byrokrata prekračuje hodnotu optimálne riešenia čo vytvára spor.
+	
+	\item Algoritmus nikdy nepridelí byrokratovi druhú úlohu ak jeho prvá má hodnotu väčšiu, nanajvýš rovnú ako $\frac{2}{3}$ optimálneho riešenia ($a_i \geq \frac{2}{3}t^*$). Dokážeme to sporom. Uvažujme, že náš algoritmus pridelí takému byrokratovi druhú úlohu, to by znamenalo, že všetci byrokrati ktorých prvá úloha mala hodnotu menšiu ako $\frac{2}{3}t^*$ už svoju druhú úlohu dostali. Z toho ale vyplýva, že aj v optimálnom riešení musí byť byrokrat s dvomi úlohami kde jedna má hodnotu väčšiu, nanajvýš rovnú ako $\frac{2}{3}t^*$ (vyplýva to z Dirichletovho princípu, keďže po prvom pridelovaní úloh nám ostane viac úloh ako byrokratov s úlohou hodnoty menšej ako $\frac{2}{3}t^*$) to je však spor, keďže v takom prípade by v optimálnom riešení bol byrokrat ktorý má prvú úlohu $a_i \geq \frac{2}{3}t^*$ a druhú $a_j > \frac{1}{3}t^*$ čo je v súčte $a_i + a_j \geq \frac{2}{3}t^* + \frac{1}{3}t^* = t^*$ čo je v spore s tým, že $t^*$ je optimálne riešenie.
+	
+	\item Ak náš algoritmus pridelí 2 úlohy byrokratovi ich súčet bude menší nanajvýš rovný ako optimálne riešenie ($a_i + a_j \leq t^*$).
+	Už vieme, že každá obe úlohy sú menšie ako $\frac{2}{3}t^*$, z čoho vyplýva, že ich súčet je menší ako  $\frac{4}{3}t^*$. To, že v skutočnosti táto hodnota hodnotu optima neprekročí ukážeme sporom. Uvažujme, že v našom riešení existuje byrokrat ktorého súčet úloh prekračuje optimum. Uvažujme, že ide o byrokrata s maximálnou celkovou hodnotou úloh (čiže výsledok algoritmu). V takom prípade nastala situácia keď náš algoritmus mu prideľoval druhú úlohu v tej chvíli všetci naľavo od neho majú jednú úlohu s hodnotou väčšou ako je jeho prvá a všetci napravo majú dve úlohy, ak by sa práve prideľovaná úloha pridelila niekomu naľavo od tohto byrokrata bol by celkový súčet úloh pre daného byrokrata naľavo rovný alebo ešte väčší ak by bola úloha pridelená podľa algoritmu, čiže by sa nezmenšila hodnota riešenia, podobne ak by túto úlohu algoritmus chcel prideliť niektorému z byrokratov napravo musel by danému byrokratovi jednu z jemu už pridelených úloh odobrať (keďže sme ukázali, že žiaden byrokrat nesmie mať viac ako 2 úlohy), avšak všetky úlohy pridelené napravo sú väčšie nanajvýš rovné práve prideľovanej úlohe (keďže ich prideľujeme od najväčšej) z toho vyplýva, že ak by algoritmus chcel prideliť práve prideľovanú úlohu niekomu napravo musel by v ďalšom kroku prideľovať úlohu z väčšou hodnotou čo by znovu nemohlo zmenšiť hodnotu riešenia. Z toho vyplýva, že všetky riešenia majú byrokrata s súčtom väčším ako optimálne riešenie čo je ale v spore s tým, že optimálne riešenie túto hodnotu nadobúda.  
+\end{itemize}
+
+Z týchto čiastkových dôkazov nám vyplýva, že bez ohľadu na to či byrokrat dostane jednu alebo dve úlohy ich súčet nepresiahne optimálne riešenie, a keďže sa optimálne riešenie nedá podliezť tak ho náš algoritmus dosiahne.
+
+\subsection*{c)}
+
+I have no FUCKING idea
 
 
 \end{document}
