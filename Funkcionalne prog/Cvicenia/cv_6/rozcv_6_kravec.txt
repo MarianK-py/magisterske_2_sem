@@ -1,0 +1,70 @@
+Marian Kravec
+
+1.
+A. 
+Toto tvrdenie neplatí, keďže ak má výraz viac redexov taký výraz po jednej redukcii je závislý od toho ktorý redex bol redukovaný.
+Napríklad:
+(K I I) (K I I) je alfa ekvivalentný (K I I) (K I I)
+v oboch spravíme redukciu K I I -> I avšak v iných častiach aplikácie
+a dostaneme
+I (K I I) a (K I I) I ktoré nie sú alfa ekvivalentné
+
+B.
+Toto tvrdenie neplatí ako príklad môžme zobrať výraz veľká omega.
+O tomto výraze vieme, že redex má, avšak aj po aplikovaní redukcie vznikne nový redex totožný pôvodnému, čiže počet redexov neklesne
+
+C.
+Niečo mi hovorí, že by to nemuselo platiť keďže:
+Skúsme sa pozriež na takýto príklad:
+(\x.\y.((x y) (x y))) (\z.z) 
+Tento výraz by mal mať jednu beta redikciu
+Beta redukciou substituujeme [x:\z.z] a dostaneme:
+\y.(((\z.z) y) ((\z.z) y)) 
+Tento výraz by mal mať dve beta redukcie, čiže ich počet sa zvýšil
+
+D.
+Ak sú 2 výrazy alfa ekvivalentné, tak vieme previesť jeden druhý iba premenovaním premenných (pri zachovaní podmienky že premenná s novým názvom nesmie byť voľná v tele výrazu). 
+Také to premenovania nijek neovplyvňujú počet redexov, preto by obe alfa ekvivalentné výrazy mali mať rovnaký počet redexov.
+
+E.
+Ak výraz nie je normálnej forme znamená, že má nejaký redex (# redexov > 0) avšak ak sa dostane do normálnej formy tak, už žiaden redex vo výraze nie je (# redexov = 0) čiže beta redukcia zmení počet redexov z kladnej hodnoty na nulovú čo znamená, že klesne.
+
+2.
+Vytvorme si najvpr pravdivostnu tabulku pre XOR
+x  y  XOR
+1  1   0
+1  0   1
+0  1   1
+0  0   0
+Teraz túto tabuľku odignorujeme a budeme uvažovať o tom ako je XOR definovaný inak.
+XOR je pravdivý ak platí OR a zároveň neplatí AND, čo vieme zapísať takto:
+(x OR y) AND (NOT (x AND y))
+Keď to prepíšeme do lembda výrazu dostaneme:
+\x.\y.(AND (OR x y) (NOT (AND x y)))
+Môžeme skúsiť aj dosadiť fukncie AND, OR a NOT
+\x.\y.(AND (x TRUE y) (NOT (x y FALSE)))
+\x.\y.(AND (x TRUE y) (x y FALSE FALSE TRUE))
+\x.\y.((x TRUE y) (x y FALSE FALSE TRUE) FALSE)
+
+Nechce sa mi to písať ale keď som v hlave skúsil všetky možnosti tak pre všetky dali správnu odpoveď :P
+
+
+3.
+Najskôr s to prepíšeme do SKI formy:
+\x.((x x) x) -S-> S (\x.(x x)) (\x.x) -I-> S (\x.(x x)) I -S-> S (S (\x.x) (\x.x)) I -I^2-> S (S I I) I
+Teraz si napíšme v tomto tvare (omega^3 omega^3)
+(S (S I I) I) (S (S I I) I) 
+Teraz to ideme redukovat
+(S (S I I) I) (S (S I I) I) -S-> ((S I I) (S (S I I) I)) (I (S (S I I) I)) -I->  ((S I I) (S (S I I) I)) (S (S I I) I) -S->
+(((I (S (S I I) I))  (I (S (S I I) I))) (S (S I I) I) -I^2-> (((S (S I I) I)  (S (S I I) I)) (S (S I I) I) 
+Teraz sme dostali medzivýsledok ((omega^3 omega^3) omega^3) čo máš náš pôvodný výraz ako podvýraz, takže by sme mohli opakovať tie isté kroky a výraz by iba puchol.
+
+
+
+
+
+
+
+
+
+
