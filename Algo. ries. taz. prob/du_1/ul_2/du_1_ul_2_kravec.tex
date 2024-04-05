@@ -71,7 +71,7 @@ Autor: Marián Kravec
 Na začiatok predpoklad: žiadna úloha nemá zápornú dĺžku ($\forall a_i: a_i\geq 0$)
 
 \subsection*{a)}
-
+\label{dolnOhr}
 Najskôr si zadefinujme ľahko vypočítateľné dolné ohraničenie optimálneho riešenia. Máme $k$ byrokratov a $n$ úloh dĺžok $a_1, ..., a_n$, čiže celkový súčet úloh je $A = \sum_{i=1}^{n} a_i$. Bez ohľadu na to ako tieto úlohy rozdelíme tak v priemere bude mať byrokrat celkovú dĺžku úloh $\frac{A}{k}$. Keďže ide o priemer vieme, že maximum nemôže byť menšie ako tento priemer, takže pre každé riešenie platí, že musí existovať byrokrat ktorého celková dĺžka úloh bude aspoň priemerná dĺžka, z čoho dostávame dolné ohraničenie $OPT(X) \geq \frac{A}{k}$.
 
 Teraz si ukážeme príklad kedy daný algoritmus nevráti optimálne rozdelenie úloh medzi byrokratov. Majme dvoch byrokratov a 6 úloh dĺžok 7, 5, 3, 3, 3, 3.
@@ -135,11 +135,38 @@ Teraz potrebujeme ukázať, že toto riešenie je optimálne. Na to si ukážeme
 	Už vieme, že každá obe úlohy sú menšie ako $\frac{2}{3}t^*$, z čoho vyplýva, že ich súčet je menší ako  $\frac{4}{3}t^*$. To, že v skutočnosti táto hodnota hodnotu optima neprekročí ukážeme sporom. Uvažujme, že v našom riešení existuje byrokrat ktorého súčet úloh prekračuje optimum. Uvažujme, že ide o byrokrata s maximálnou celkovou hodnotou úloh (čiže výsledok algoritmu). V takom prípade nastala situácia keď náš algoritmus mu prideľoval druhú úlohu v tej chvíli všetci naľavo od neho majú jednú úlohu s hodnotou väčšou ako je jeho prvá a všetci napravo majú dve úlohy, ak by sa práve prideľovaná úloha pridelila niekomu naľavo od tohto byrokrata bol by celkový súčet úloh pre daného byrokrata naľavo rovný alebo ešte väčší ak by bola úloha pridelená podľa algoritmu, čiže by sa nezmenšila hodnota riešenia, podobne ak by túto úlohu algoritmus chcel prideliť niektorému z byrokratov napravo musel by danému byrokratovi jednu z jemu už pridelených úloh odobrať (keďže sme ukázali, že žiaden byrokrat nesmie mať viac ako 2 úlohy), avšak všetky úlohy pridelené napravo sú väčšie nanajvýš rovné práve prideľovanej úlohe (keďže ich prideľujeme od najväčšej) z toho vyplýva, že ak by algoritmus chcel prideliť práve prideľovanú úlohu niekomu napravo musel by v ďalšom kroku prideľovať úlohu z väčšou hodnotou čo by znovu nemohlo zmenšiť hodnotu riešenia. Z toho vyplýva, že všetky riešenia majú byrokrata s súčtom väčším ako optimálne riešenie čo je ale v spore s tým, že optimálne riešenie túto hodnotu nadobúda.  
 \end{itemize}
 
-Z týchto čiastkových dôkazov nám vyplýva, že bez ohľadu na to či byrokrat dostane jednu alebo dve úlohy ich súčet nepresiahne optimálne riešenie, a keďže sa optimálne riešenie nedá podliezť tak ho náš algoritmus dosiahne.
+Z týchto čiastkových dôkazov nám vyplýva, že bez ohľadu na to či byrokrat dostane jednu alebo dve úlohy ich súčet nepresiahne optimálne riešenie, a keďže sa optimálne riešenie nedá podliezť tak ho náš algoritmus dosiahne. $\oblong$
 
 \subsection*{c)}
 
-%I have no FUCKING idea
+Pozrime na chod nášho programu ak dostane aj úlohy ktoré sú menšie alebo rovné tretine optimálneho riešenia, čiže $a_i \leq \frac{t^*}{3}$. Najskôr algoritmus rozdelí úlohy väčšie ako tretina optimálneho riešenia, o tých vieme, že ak by na vstupe mal iba takéto úlohy vrátil by optimálne riešenie, keďže odobraním úloh môžeme iba znížiť hodnotu optimálneho riešenia vieme že musí platiť $NASE(X') = OPT(X') \leq OPT(X) = t^*$ kde $X'$ je zadanie obsahujúce úlohy pre ktoré platí $a_i > \frac{t^*}{3}$ (keďže optimálne riešenie je menšie tak sú tieto úlohy väčšie aj ako tretina $OPT(X')$, čiže stále platí, že riešenie nášho algoritmu je optimálne). Čiže vieme, že po pridaní najväčších úloh je súčet byrokrata menší nanajvýš rovný optimálnemu riešeniu.
+\\
+
+Teraz si dokážeme takéto tvrdenie: Ak počas pridávania úloh s menšou hodnotou ako tretina $t^*$ dostane byrokrat úlohu ktorá zvýši jeho celkovú sumu nad hranicu optima už nedostane žiadnu ďalšiu úlohu.
+\\
+
+Toto tvrdenie dokážeme sporom. Uvažujme, že náš algoritmus chce pridať úlohu byrokratovi ktoré súčet hodnôt úloh už prekročila optimum. Keďže náš algoritmu pridáva úlohu vždy byrokratovi s minimálnym celkovým súčtom, znamená to, že byrokrat ktorému ide úlohu pridať na minimálny súčet, keďže tento súčet byrokrata už prekročil optimum, tak súčet všetkých byrokratov už prekročil optimum. Z toho by vyplývalo, že priemerný súčet hodnôt úloh jedného byrokrata je väčší ako optimum, čo je však spor keďže vieme, že priemerný súčet hodnôt úloh jedného byrokrata je dolné ohraničenie optima (viz. \ref{dolnOhr}), čiže optimum nemôže byť menšie ako priemer.
+\\
+
+Označme si priebežný súčet hodnôt úloh pre i-teho byrokrata $b_i$ a jeho finálny súčet $b^*_i$. Po pridaní veľkých úloh (s hodnotou $a_i > \frac{t^*}{3}$) sme zistili, že každý byrokrat bude mať celkový súčet nanajvýš optimum, čiže $\forall b_i, b_i \leq t^*$. Zároveň sme dokázali, že ak počas pridávaní menších úloh (s hodnotou $a_i \leq \frac{t^*}{3}$) dostane byrokrat úlohu kvôli ktorej prekročí optimum, už nedostane ďalšiu úlohu. Z toho vieme, odvodiť, že hodnota každého byrokrata vieme zapísať takto $b^*_i = b_i + a_i$ kde hodnota $b_i$ je hodnota pred získaním poslednej úlohy a vieme o nej povedať $b_i \leq t^*$ keďže iba posledná úloha môže posunúť súčet nad túto hranicu (toto tvrdenie je ekvivalentné tvrdenie, že po prekročení hranicu optimu nestone ďalšiu úlohu keďže ak by neplatilo, znamenalo by to, že byrokrat nad hranicou optima dostal úlohu čo je v spore s dokázaným tvrdením) a $a_i$ je posledná získaná úloha, pre $a_i$, môžu nastať 2 prípady:
+
+\begin{itemize}
+	\item $a_i > \frac{t^*}{3}$ - v takomto prípade, byrokrat dostal poslednú úlohu ešte počas získavania veľkých úloh, a keďže vieme, že na konci tohto procesu platí $\forall b_i, b_i \leq t^*$ tak $b^*_i \leq t^*$ (keďže všetky úlohy dostal počas tohto procesu)
+	\item $a_i \leq \frac{t^*}{3}$ - v takomto prípade, byrokrat dostal poslednú úlohu už počas získavania malých úloh, v tomto prípade platia tieto tri rovnice/nerovnice  $b^*_i = b_i + a_i$, $b_i \leq t^*$,  $a_i \leq \frac{t^*}{3}$, z tohto vyplýva: $b^*_i = b_i + a_i \leq t^* + a_i \leq t^* + \frac{t^*}{3} =  \frac{4}{3} t^*$ 
+\end{itemize}
+
+Ukázali sme, že pre finálnu sumu, každého byrokrata platí: $\forall b^*_i, (b^*_i \leq t^*) \lor (b^*_i \leq  \frac{4}{3} t^*) $ čo vieme zovšeobecniť na $\forall b^*_i, b^*_i \leq  \frac{4}{3} t^*$, z toho vyplýva $max(b^*_i)  \leq  \frac{4}{3} t^*$. 
+\\
+
+Vieme, že $NASE(X) = max(b^*_i)$, $OPT(X) = t^*$ a $NASE(X) \geq OPT(X)$. 
+
+Z tohto dostávame:  $\frac{4}{3} t^* \geq max(b^*_i) = NASE(X) \geq OPT(X)$
+
+Po substitúcii dostaneme: $\frac{4}{3} OPT(X) \geq NASE(X) \geq OPT(X)$
+\\
+
+Z toho vidíme, že naše riešenie bude v najhoršom prípade $\frac{4}{3}$ násobok optimálneho riešenie. Čiže náš algoritmus je $\frac{4}{3}$-aproximačný. $\oblong$  
+
 
 
 \end{document}
