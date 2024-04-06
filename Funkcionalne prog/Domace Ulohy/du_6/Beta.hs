@@ -169,7 +169,8 @@ oneStepBetaReduce (APP (APP (APP (CON "IF") (CON v)) y) n) | v == "TRUE" = y
 oneStepBetaReduce (ID x) = (ID x)
 oneStepBetaReduce (LAMBDA x b) = (LAMBDA x (oneStepBetaReduce b))
 oneStepBetaReduce (APP (LAMBDA x b) n) = substitute x n b
-oneStepBetaReduce (APP m n) | hasReduction m = (APP (oneStepBetaReduce m) n)
+oneStepBetaReduce (APP m n) | (hasReduction m) && (hasReduction n) = (APP (oneStepBetaReduce m) (oneStepBetaReduce n))
+                            | hasReduction m = (APP (oneStepBetaReduce m) n)
                             | hasReduction n = (APP m (oneStepBetaReduce n))
                             | otherwise = (APP m n)
 
