@@ -1,0 +1,61 @@
+Marián Kravec
+
+Uloha 2:
+
+Na definovanie funkcie diff použijeme funkciu predecessor, konkrétne bude táto funkcia vyzerať takto:
+
+diff = \m.\n.(n pred m)
+
+Inými slovami, na m aplikujeme n-krát funkciu predecessor, čím od m odčítame n-krát jednotku, 
+čiže m - n*1 = m - n, keďže funkcia predecesor nám pre hodnotu 0 vráti 0 tak aj funkcia diff
+keď m po m aplikáciach funkcie pred nadobudne hodnotu 0 tak už na tejto hodnote ostane
+vďaka čomu spĺni vlastnosť, že diff m n je 0 pokiaľ je n väčšie (nanajvýš rovné) ako m.
+
+
+Teraz keď už máme funkciu diff, vieme funkciu lte vytvoriť ľahko:
+
+lte = \m.\n.(ifthenelse (iszero (diff (succ m) n)) true false)
+
+Vieme, že funkcia diff dá 0 iba ak je m <= n, ak pre m+1 (succ m) a n dá nulu tak musí platiť
+m+1 <= n z toho ale vyplýva, že m < n čo je presne to čo zisťujeme
+
+
+Uloha 3:
+
+Funkciu div si definujeme takto:
+
+divR = \m.\n.(ifthenelse (lte m n) 0 (succ (divR (diff m n) n)))
+
+čiže ak m je menšie ako n tak vráť 0, keďže celočíselné delenie menšie čísla väčším je 0,
+inak odčítaj od m n, čím sa zníži veľkosť m a keďže sme odčítali práve n tak vieme, že toto nové číslo
+dá po celočíselnom delení n práve o jedno menšiu hodnotu ako pôvodné preto namiesto priamo tejto
+hodnoty vráti hodnotu o jedna väčšiu, čiže successor
+
+táto definícia je však rekurzívna preto je musíme mierne prerobiť tak aby sme mohli použiť operátor pevného bodu
+
+div2R = (\div.\m.\n.(ifthenelse (lte m n) 0 (succ (div (diff m n) n))) div2R)
+
+DIV = (Y \div.\m.\n.(ifthenelse (lte m n) 0 (succ (div (diff m n) n))))
+
+teraz už máme funkciu divide správnu v lambda kalkule
+
+Funkciu mod si definujeme veľmi podobne:
+
+modR = \m.\n.(ifthenelse (lte m n) m (modR (diff m n) n))
+
+čiže ak m je menšie ako n tak vráť m, keďže zvyšok čísla po delení väčším číslom je to prvé číslo,
+inak odčítaj od m n, čím sa zníži veľkosť m ale nezmení sa zvyšok po delení keďže sme odčítali deliteľa,
+a z tohto rozdielu vypočítaj zvyšok po delení n 
+
+avšak znovu je táto definícia rekurzívna preto musíme je prerobiť na funkciu v ktorej vieme použiť 
+operátor pevého bodu 
+
+mod2R = (\mod.\m.\n.(ifthenelse (lte m n) m (mod (diff m n) n)) mod2R)
+
+MOD = (Y \mod.\m.\n.(ifthenelse (lte m n) m (mod (diff m n) n)))
+
+teraz už máme funkciu modulo správnu v lambda kalkule
+
+
+
+
