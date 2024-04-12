@@ -1,0 +1,51 @@
+Marian Kravec
+
+1. Ω = (ω ω) = (S I I)(S I I)
+
+KIΩ -> (K I) ((S I I) (S I I)) -K> I
+
+KIΩ -> (K I) ((S I I) (S I I)) -S> 
+(K I) ((I (S I I)) (I (S I I))) -I> 
+(K I) ((S I I) (I (S I I))) -I>
+(K I) ((S I I) (S I I)) (sme tam kde sme zacali)
+
+
+2. X = λx.((x S) K)
+
+X (X (X X)) -> 
+λx.((x S) K) (X (X X)) ->
+(((X (X X)) S) K) -> 
+((((λx.((x S) K)) (X X)) S) K) -> 
+((((((X X) S) K)) S) K) ->
+((((((λx.((x S) K) X) S) K)) S) K) ->
+(((((((X S) K) S) K)) S) K) ->
+(((((((λx.((x S) K) S) K) S) K)) S) K) ->
+((((((((S S) K) K) S) K)) S) K) ->
+(((((((S K) (K K)) S) K)) S) K) ->
+((((((K S) (K K S)) K)) S) K) ->
+(((((K S) K) K) S) K) ->
+(((S K) S) K) ->
+((K K) (S K)) -> 
+K
+(QED)
+
+X (X (X (X X))) -> 
+λx.((x S) K) (X (X (X X))) ->
+(((X (X (X X))) S) K) -> 
+((((λx.((x S) K)) (X (X X))) S) K) -> 
+((((((X (X X)) S) K)) S) K) ->
+(((((λx.((x S) K) (X X)) S) K) S) K) ->
+(((((((X X) S) K) S) K) S) K) ->
+(((((((λx.((x S) K) X) S) K) S) K) S) K) ->
+((((((((X S) K) S) K) S) K) S) K) ->
+((((((((λx.((x S) K) S) K) S) K) S) K) S) K) ->
+(((((((((S S) K) K) S) K) S) K) S) K) ->
+((((((((S K) (K K)) S) K) S) K) S) K) ->
+((((((((K S) (K K S)) K) S) K)) S) K) ->
+((((((K S) K) K) S) K) S) K) ->
+(((((S K) S) K) S) K) ->
+((((K K) (S K)) S) K) ->
+((K S) K) ->
+S
+(QED)
+

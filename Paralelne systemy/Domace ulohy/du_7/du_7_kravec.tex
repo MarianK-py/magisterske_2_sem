@@ -1,0 +1,160 @@
+% !TeX spellcheck = sk_SK-Slovak
+\documentclass[a4paper]{article}
+\usepackage[slovak]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{a4wide}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage[small,bf]{caption}
+\usepackage{subcaption}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{hyperref}
+\usepackage{fancyvrb}
+\usepackage{listings}
+%\usepackage{lstautogobble}
+\usepackage{stmaryrd}
+
+\lstset{basicstyle=\ttfamily,
+	mathescape=true,
+	escapeinside=||%,
+	%autogobble
+}
+
+
+\fvset{tabsize=4}
+
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+\newenvironment{modenumerate}
+{\enumerate\setupmodenumerate}
+{\endenumerate}
+
+\newif\ifmoditem
+\newcommand{\setupmodenumerate}{%
+	\global\moditemfalse
+	\let\origmakelabel\makelabel
+	\def\moditem##1{\global\moditemtrue\def\mesymbol{##1}\item}%
+	\def\makelabel##1{%
+		\origmakelabel{##1\ifmoditem\rlap{\mesymbol}\fi\enspace}%
+		\global\moditemfalse}%
+}
+
+\makeatletter
+\def\@seccntformat#1{%
+	\expandafter\ifx\csname c@#1\endcsname\c@section\else
+	\csname the#1\endcsname\quad
+	\fi}
+\makeatother
+
+\begin{document} 
+	
+\pagenumbering{arabic}
+\pagestyle{plain}
+
+\begin{center}
+	\sc\large
+	Programovanie paralélnych a distribuovaných systémov\\
+	Domáca úloha 7
+\end{center}
+
+Autor: Marián Kravec
+
+\section{Úloha 1}
+
+Upravený program bude vyzerať následovne:
+\begin{lstlisting}
+Program
+declare sum, v : integer, seq : sequence of integer
+always sum = $\langle$ + i : i $\in$ seq :: A [i] $\rangle$ + A [v]
+initially seq, v = null, 0
+assign
+seq, v := seq;v, v+1 if sum $\leq$ M1
+	~ pop(seq), top(seq) +1 if sum $\geq$ M2
+end
+\end{lstlisting}
+
+Uvažujme, že M1 a M2 sú tak=, že riešenie môže existovať, čiže existuje M0 pre ktoré platí M1<M0<M2. Ak toto platí a my pracujeme s celými číslami tak M2-1 je najvyššia správna hodnota, preto túto pridáme na koniec zoznamu aby sme mali istotu, že algoritmus dá riešenie.
+\\
+
+Safety -> ak tam existuje riešenie (neobsahujúce posledný prvok) tak ho nájde -> algoritmus prechádza podmnožiny v lexikografickom poradí, vďaka tomu množina obsahujúca iba posledný prvok bude skontrolovaná až ako posledná, čiže kým ju dosiahne prejde všetky ostatné podmnožiny, ak by medzi nimi bola podmnožina spĺňajúcu podmienku tak ani jeden príkaz by nebol aplikovateľný a tým pádom by dosiahol program pevný bod
+\\
+
+Progress -> algoritmus vždy dosiahne pevný bod -> toto zabezpečujeme pridaním M2-1 na koniec zoznamu, keďže tento algoritmus vyskúša všetky podmnožiny určite raz vyskúša aj iba tento prvok 
+
+\section{Úloha 2}
+
+Program upravíme takto:
+
+\begin{lstlisting}
+Program
+assign
+$\langle ||$ i : 1 $\leq$ i $\leq$ N :: g[i,i] = 0 $\rangle$
+$||$
+$\langle ||$ i,j : 1 $\leq$ i < j $\leq$ N :: g[i,j] =
+	$\langle$min k : i $\leq$ k < j :: g[i,k] + g[k+1,j] + r[i-1] x r[k] x r[j] $\rangle$
+$\rangle$
+end
+\end{lstlisting}
+
+Keďže chceme aby vykonal všetky úpravy naraz, máme istotu, že ak pôvodný program dával správny výsledok tak ho dá aj tento.
+
+\section{Úloha 3}
+
+Safety -> žiadnu cestu nepreskočí -> algoritmus postupne prehľadávaním do hĺbky prechádza všetky cesty, keďže kontroluje aby či už vrchol videl nedostane sa do cyklov, vďaka tomu vieme, že všetky cesty budú konečné ale zároveň ich určite skontroluje 
+
+Progress -> ak cesta existuje tak ju nájde a bude to pevný bod -> keďže prejde všetky cesty tak ak existuje cesta do destinácie tak v nejakom bode programu bude platiť $u=dest$ v tejto chvíli algoritmus nevie aplikovať žiaden príkaz vďaka čomu ide o pevný bod
+
+\section{Úloha 4}
+
+Ak platí $x = n+1$, tak sa raz vykoná príkaz $kr := x$ z čoho vyplýva, že bude platiť $kr = n+1$ 
+
+\section{Úloha 6}
+(na prednáške sme podľa mňa na tabuli použili príkaz duplicita aj v prípadoch kde sa úplne nemal použiť keďže on by nemal vedieť pridávať na ľavú stranu nový prvok iba posledný prvok pridať na koniec pravej strany)
+
+null loss null
+
+a loss null (strata)
+
+a loss a (duplicita)
+
+a loss aa (duplicita)
+
+a loss aaa (duplicita)
+
+ab loss aaa (strata)
+
+abc loss aaa (strata)
+
+abc loss aaac (duplicita)
+
+abc loss aaacc (duplicita)
+
+\section{Úloha 5}
+
+Po prepísaní vyzerá takto, proste pridáme modulo 2:
+
+\begin{lstlisting}
+Program P3
+declare ks, kr: integer
+initially
+ks, kr = 1, 0
+$\oblong$ cs, cr, acks, ackr = null, null, null, null
+$\oblong$ mr = null
+assign
+	ackr := ackr;kr
+$\oblong$ ks := (ks + 1) mod 2 if acks $\neq$ null $\land$ ks = head(acks)
+	$||$ acks := tail(acks) if acks $\neq$ null
+$\oblong$ cs := cs;(ks, ms[ks])
+$\oblong$ kr, mr := (kr + 1) mod 2, mr;head(cr).val if cr $\neq$ null $\land$ kr $\neq$ head(cr).dex
+	$||$ cr := tail(cr)
+end
+\end{lstlisting}
+
+\end{document}
