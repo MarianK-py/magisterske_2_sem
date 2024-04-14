@@ -1,0 +1,93 @@
+% !TeX spellcheck = sk_SK-Slovak
+\documentclass[a4paper]{article}
+\usepackage[slovak]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{a4wide}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage[small,bf]{caption}
+\usepackage{subcaption}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{hyperref}
+\usepackage{fancyvrb}
+\usepackage{listings}
+%\usepackage{lstautogobble}
+\usepackage{stmaryrd}
+
+\lstset{basicstyle=\ttfamily,
+	mathescape=true,
+	escapeinside=||%,
+	%autogobble
+}
+
+
+\fvset{tabsize=4}
+
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+\newenvironment{modenumerate}
+{\enumerate\setupmodenumerate}
+{\endenumerate}
+
+\newif\ifmoditem
+\newcommand{\setupmodenumerate}{%
+	\global\moditemfalse
+	\let\origmakelabel\makelabel
+	\def\moditem##1{\global\moditemtrue\def\mesymbol{##1}\item}%
+	\def\makelabel##1{%
+		\origmakelabel{##1\ifmoditem\rlap{\mesymbol}\fi\enspace}%
+		\global\moditemfalse}%
+}
+
+\makeatletter
+\def\@seccntformat#1{%
+	\expandafter\ifx\csname c@#1\endcsname\c@section\else
+	\csname the#1\endcsname\quad
+	\fi}
+\makeatother
+
+\begin{document} 
+	
+\pagenumbering{arabic}
+\pagestyle{plain}
+
+\begin{center}
+	\sc\large
+	Algoritmické riešenia ťažkých problémov\\
+	Domáca úloha 2
+\end{center}
+
+Autor: Marián Kravec
+
+\section{Úloha 2 - Vertex cover, independent set, and clique}
+
+\subsection*{a)}
+
+Ako prvé si ukážme, že vieme v polynomiálnom čase vytvoriť komplementárny graf. Keďže komplementárny graf má rovnakú množinu vrcholov ako pôvodný graf stačí nám pre každú dvojicu vrcholov skontrolovať či medzi nimi existuje hrana ak v novom grafe vytvoriť opak, aj keby sme kontrolovali existenciu hrany triviálne prejdením všetkých hrán zložitosť by bola O($m n^2$) ($m$ ako počet hrán a $n^2$ ako počet dvojíc vrcholov) čiže to vieme zhora ohraničiť na O($n^4$) (keďže kompletný graf má nanajvýš $\frac{n(n-1)}{2}$ hrán čiže približne O($n^2$)). 
+\\
+
+Čiže vidíme, že polynomiálna transformácia grafu je možná, takže vieme v polynomiálnom čase nájsť najväčšiu nezávislú množinu komplementu grafu, teraz potrebujeme dokázať, že najväčšia nezávislá množina na komplemente grafu je najväčší clique v pôvodnom grafe. Keďže vieme, že každá nezávislá množina v komplemente je clique v pôvodnom grafe (tvrdenie zo zadania úlohy) stačí nám dokázať, že tento clique je najväčší. Toto dokážeme sporom.
+\\
+
+Uvažujme, že náš algoritmus nám vrátil nezávislú množinu v komplemente o veľkosti $k$, z toho vyplýva, že v pôvodnom grafe je to clique o veľkosti $k$, keďže tvrdíme, že tento clique nie je najväčší tak tvrdíme, že v grafe existuje clique o veľkosti $l$ pričom $l > k$. Keďže každý clique je kompletný graf tak clique veľkosti $l$ obsahuje aj clique všetkých veľkostí od 1 po $l$, preto bez ujmy na všeobecnosti môžeme tvrdiť, že v grafe existuje clique veľkosti $k+1$. Týchto $k+1$ vrcholov tvorí kompletný podgraf (keďže clique musí byť plne prepojený) preto v komplementárnom grafe medzi tými vrcholmi nemôže existovať žiadna hrana (ak by existovala nemohla by existovať v pôvodnom grafe a podgraf by nemohol byť kompletný). Keďže v komplementárnom grafe neexistuje žiadne hrana medzi týmito vrcholmi tvoria nezávislú množiny, keďže ich je $k+1$ tak aj veľkosť tejto množiny je $k+1$ čo je však SPOR s tým, že najväčšia nezávislá množina v komplemente je $k$ keďže $k+1>k$. 
+
+Z toho vyplýva, že najväčšia nezávislá množina komplementu je najväčší clique v pôvodnom grafe. $\oblong$
+\\
+
+Takže vieme, že ak algoritmus hľadajúci najväčšiu nezávislú množinu spustíme, na komplemente grafu dostaneme najväčší clique v pôvodnom grafe. $\oblong$
+
+\subsection*{b)}
+
+Túto úlohu budeme riešiť podobne ako predchádzajúcu. Znovu vieme, že ak množina $U$ je nezávislá množina tak množina $V-U$ je vrcholové pokrytie (tvrdenie zo zadania). Takže zase potrebujeme dokázať iba to, že ak $U$ ($|U|=k$) je najväčšia nezávislá množina tak $V-U$ ($|V-U|=n-k$) je najmenšie vrcholové pokrytie, a znova to dokážeme sporom.
+\\
+
+Takže tvrdíme, ak $U$ je najväčšia nezávislá množina veľkosti $|U|=k$ tak existuje vrcholové pokrytie $W$ ktorého veľkosť je $|W|<n-k$ menšia ako počet vrcholov ktoré nepatria do $U$.
+
+\end{document}
