@@ -1,0 +1,35 @@
+Marian Kravec
+
+a)
+Prvý klzavý priemer, použijeme okno dĺžky 3
+y_2' = (y_1 + y_2 + y_3)/3 = 14.45/3 = 4.82
+y_3' = (y_2 + y_3 + y_4)/3 = 6.38
+y_4' = 10.62
+y_5' = 14.54
+Druhý kĺzavý priemer, použijeme okno dĺžky 3
+y_3'' = (y_2' + y_3' + y_4')/3 = 7.27
+y_4'' = 10.51
+
+Teraz toto odhadneme priamkou y_t = a*t + b
+
+y_3'' = a*3 + b 
+7.27  = a*3 + b
+
+y_4'' = a*4 + b 
+10.51 = a*4 +b
+
+a = 3.24
+b = -2.45
+
+b)
+teraz zistíme ktoré body mohli byť vygenerované:
+
+y_7 = 23.97 -> a*7 + b = 20.23 -> odchylka: abs(23.97-20.23)/20.23 = 18.5% -> mohol byť vygenerovaný
+
+y_8 = 27.54 -> a*8 + b = 23.47 -> odchylka: abs(27.54-23.47)/23.47 = 17.3% -> mohol byť vygenerovaný
+
+y_15 = 72.19 -> a*15 + b = 46.15 -> odchylka: abs(72.19-46.15)/46.15 = 56.4% -> nemohol byť vygenerovaný
+
+y_25 = 79.01 -> a*25 + b = 78.55 -> odchylka: abs(79.01-78.55)/78.55 = 0.6% -> mohol byť vygenerovaný
+
+y_100 = 251.57 -> a*100 + b = 321.55 -> odchylka: abs(251.57-321.55)/321.55 = 21.7% -> nemohol byť vygenerovaný

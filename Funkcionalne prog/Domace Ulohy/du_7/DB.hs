@@ -5,22 +5,41 @@ import TermsDB
 --- some useful stuff
 import Data.List 
 import Data.Char
-import Data.Map (Map, insert, lookup, empty)
+import Data.Map (Map, insert, lookup, empty, elems)
 import Data.Maybe -- and maybe not
+
+maxDepth :: LExp -> Int
+maxDepth (ID _) = 0
+maxDepth (APP e1 e2) = max (maxDepth e1) (maxDepth e2)
+maxDepth (LAMBDA _ exp) = 1+(maxDepth exp)
+
+maxDepthDB :: LExpDB -> Int
+maxDepthDB (IDDB _) = 0
+maxDepthDB (APPDB e1 e2) = max (maxDepthDB e1) (maxDepthDB e2)
+maxDepthDB (LAMBDADB exp) = 1+(maxDepthDB exp)
 
 type Indexes = Map String Int
 
-toDB :: LExp -> LExpDB
-toDB term = toDB' 0 term empty
+maxIndex :: [Int] -> Int
+maxIndex [x] = x
+maxIndex (x:xs) =  max x (maxIndex xs)
 
-toDB' :: Int -> LExp -> Indexes -> LExpDB
-toDB' depth (ID v) m = let vi = Data.Map.lookup v m
-                       in if isJust vi then -- viazana premenna
-                             IDDB (depth - fromJust vi -1)
-                          else -- nenasiel, volna premenna, DU...
-                            undefined
-toDB' depth (LAMBDA v lexp) m = LAMBDADB (toDB' (depth+1) lexp (Data.Map.insert v depth m))
-toDB' depth (APP e1 e2) m =  APPDB (toDB' depth e1 m) (toDB' depth e2 m)
+toDB :: LExp -> LExpDB
+toDB term = fst $ toDB' (0, maxDepth term) term empty
+
+toDB' :: (Int, Int) -> LExp -> Indexes -> (LExpDB, Indexes)
+toDB' (depth, maxdepth) (ID v) m = let vi = Data.Map.lookup v m
+                                   in if isJust vi then -- viazana premenna
+                                      (IDDB (depth - fromJust vi -1), m)
+                                      else -- nenasiel, volna premenna, DU...
+                                        let mi = maxIndex $ Data.Map.elems m
+                                            vii = max (mi+1) maxdepth
+                                        in (IDDB (vii), (Data.Map.insert v (vii) m))
+toDB' (depth, maxdepth) (LAMBDA v lexp) m = let db = (toDB' ((depth+1), maxdepth) lexp (Data.Map.insert v depth m))
+                                            in ((LAMBDADB (fst db)), (snd db))
+toDB' (depth, maxdepth) (APP e1 e2) m =  let db1 = (toDB' (depth, maxdepth) e1 m)
+                                             db2 = (toDB' (depth, maxdepth) e2 (snd db1))
+                                         in (APPDB (fst db1) (fst db2), (snd db2))
 
 fromDB :: LExpDB -> LExp
 fromDB term = fromDB' term []
@@ -31,12 +50,27 @@ fromDB' (IDDB index) m = if (index < length m) then
                                ID (m!!index)
                          else
                             ID [['a'..'z']!!index]
-fromDB' (LAMBDADB exp) m = LAMBDA var (fromDB' exp ([['a'..'z']!!(length m)]:m))
+fromDB' (LAMBDADB exp) m = LAMBDA [['a'..'z']!!(length m)] (fromDB' exp ([['a'..'z']!!(length m)]:m))
+
+
 subst :: LExpDB -> SubstDB -> LExpDB
-subst term subst = undefined
+subst (IDDB index) sub = sub !! index
+subst (APPDB e1 e2) sub = APPDB (subst e1 sub) (subst e2 sub)
+subst (LAMBDADB exp) sub = LAMBDADB $ subst exp sub' where sub' = (IDDB 0):map incr sub
+
+incr :: LExpDB -> LExpDB
+incr (IDDB i) = (IDDB (i+1))
+incr lexp = incr' lexp (maxDepthDB lexp)
+
+incr' :: LExpDB -> Int -> LExpDB
+incr' (IDDB i) k | i >= k = (IDDB (i+1))
+                 | otherwise = (IDDB i)
+incr' (APPDB m n) i = (APPDB (incr' m i) (incr' n i))
+incr' (LAMBDADB x) i = (LAMBDADB (incr' x i))
+
 
 beta :: LExpDB -> LExpDB -> LExpDB
-beta dBterm1 dBterm2 = undefined
+beta (LAMBDADB m) n = subst m (n:(map (\i -> IDDB i) [0..]))
 
 -- velkonocny bonus
 oneStep :: LExpDB -> LExpDB
