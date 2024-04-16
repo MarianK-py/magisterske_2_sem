@@ -1,0 +1,45 @@
+Marian Kravec
+
+1.
+Vieme, že typ funkcie zipWith je:
+zipWith :: (a -> b -> c) -> [a] -> [b] -> [c]
+keďže funcie su sprava asociativne, vieme tento typ tapisat aj ako:
+zipWith :: (a -> b -> c) -> [a] -> ([b] -> [c])
+Uvažujme, že máme zipWith' ktorá má takýto typ:
+zipWith' :: (a' -> b' -> c') -> [a'] -> [b'] -> [c']
+
+Teraz skúsme otipovať (zipWith' zipWith)
+prvý parameter zipWith' má mať tvar (a' -> b' -> c') ak za neho dosadíme typ zipWith 
+dostaneme takéto tri rovnice:
+a' = (a -> b -> c)
+b' = [a]
+c' = ([b] -> [c])
+Výsledný typ zipWith' po doplnení prvého parametra by mal byť [a'] -> [b'] -> [c']
+ak do tohto substituujeme naše rovnice dostaneme:
+[(a -> b -> c)] -> [[a]] -> [([b] -> [c])]
+čo je výsledný typ funkcie (zipWith' zipWith)
+(zipWith zipWith) :: [(a -> b -> c)] -> [[a]] -> [([b] -> [c])]
+(ukážka v priloženom obrázku)
+
+2.
+Ďalším príkladom môže byť funkcia uncurry, ktorej typ je:
+uncurry :: (a -> b -> c) -> (a, b) -> c
+podobne si môžeme definocať funkciu uncurry'
+uncurry' :: (a' -> b' -> c') -> (a', b') -> c'
+Znova dostaneme tri rovnice:
+a' = (a -> b -> c)
+b' = (a, b)
+c' = c
+Takže ako typ (uncurry uncurry) dostaneme:
+(uncurry uncurry) :: ((a -> b -> c), (a, b)) -> c
+(ukážka v priloženom obrázku)
+
+3.
+f(x,g(a)) = f(g(a),y) -> x=g(a), y=g(a) *
+f(x,x) = f(g(a),g(y)) -> x=g(a), y=a
+f(x,x) = f(g(y),y) -> neexistuje
+h(x,y,y) = h(z,z,u) -> x=z, y=z, y=u *
+h(x,y,y) = h(z,g(a),u) -> x=z, y=g(a), u=g(a)
+x→y = z, z = Int→Int -> x=Int, y=Int
+x→(y→z) = (Int→u)→Int -> neexistuje
+x→(y→z) = (Int→u) -> x=Int, u=y→z 
