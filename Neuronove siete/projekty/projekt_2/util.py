@@ -127,14 +127,31 @@ def cartesian_product(*arrays):
     return arr.reshape(-1, la)
 
 def plot_heatmap(errors, x_ticks, y_ticks, x_lab, y_lab, title, save=False, name=""):
-    n = errors.shape[2]
-    cols = round(n/2+0.1)
-    fig, ax = plt.subplots(2, cols)
-    for i in range(n):
-        sns.heatmap(errors[:,:,i], ax=ax[i//cols, i%cols], xticklabels=x_ticks, yticklabels=y_ticks, cmap="turbo")
-        ax[i//cols, i%cols].set_xlabel(x_lab)
-        ax[i//cols, i%cols].set_ylabel(y_lab)
-        ax[i//cols, i%cols].set_title(str(i+1)+"th "+title)
+    if len(errors.shape) > 2:
+        n = errors.shape[2]
+    else:
+        n = 1
+    if n>2:
+        cols = round(n/2+0.1)
+        fig, ax = plt.subplots(2, cols,figsize=(6*cols,10))
+        for i in range(n):
+            sns.heatmap(errors[:,:,i], ax=ax[i//cols, i%cols], xticklabels=x_ticks, yticklabels=y_ticks, cmap="turbo")
+            ax[i//cols, i%cols].set_xlabel(x_lab)
+            ax[i//cols, i%cols].set_ylabel(y_lab)
+            ax[i//cols, i%cols].set_title(str(i+1)+"th "+title)
+    elif n == 2:
+        fig, ax = plt.subplots(1, 2)
+        for i in range(n):
+            sns.heatmap(errors[:,:,i], ax=ax[0, i], xticklabels=x_ticks, yticklabels=y_ticks, cmap="turbo")
+            ax[0, i].set_xlabel(x_lab)
+            ax[0, i].set_ylabel(y_lab)
+            ax[0, i].set_title(str(i+1)+"th "+title)
+    else:
+        fig, ax = plt.subplots()
+        sns.heatmap(errors, ax=ax, xticklabels=x_ticks, yticklabels=y_ticks, cmap="turbo")
+        ax.set_xlabel(x_lab)
+        ax.set_ylabel(y_lab)
+        ax.set_title(title)
     #plt.tight_layout()
     if save:
         plt.savefig(name)

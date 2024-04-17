@@ -1,0 +1,92 @@
+% !TeX spellcheck = sk_SK-Slovak
+\documentclass[a4paper]{article}
+\usepackage[slovak]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{a4wide}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage[small,bf]{caption}
+\usepackage{subcaption}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{hyperref}
+\usepackage{fancyvrb}
+\usepackage{listings}
+%\usepackage{lstautogobble}
+\usepackage{stmaryrd}
+
+\lstset{basicstyle=\ttfamily,
+	mathescape=true,
+	escapeinside=||%,
+	%autogobble
+}
+
+
+\fvset{tabsize=4}
+
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+\newenvironment{modenumerate}
+{\enumerate\setupmodenumerate}
+{\endenumerate}
+
+\newif\ifmoditem
+\newcommand{\setupmodenumerate}{%
+	\global\moditemfalse
+	\let\origmakelabel\makelabel
+	\def\moditem##1{\global\moditemtrue\def\mesymbol{##1}\item}%
+	\def\makelabel##1{%
+		\origmakelabel{##1\ifmoditem\rlap{\mesymbol}\fi\enspace}%
+		\global\moditemfalse}%
+}
+
+\makeatletter
+\def\@seccntformat#1{%
+	\expandafter\ifx\csname c@#1\endcsname\c@section\else
+	\csname the#1\endcsname\quad
+	\fi}
+\makeatother
+
+\begin{document} 
+	
+\pagenumbering{arabic}
+\pagestyle{plain}
+
+\begin{center}
+	\sc\large
+	Programovanie paralélnych a distribuovaných systémov\\
+	Domáca úloha 8
+\end{center}
+
+Autor: Marián Kravec
+
+\section{Úloha 1}
+
+Tento program bude fungovať. Dokážeme si to tým, že dokážeme správnosť dvoch prípadov:
+
+\begin{itemize}
+	\item generál je spoľahlivý -> v takomto prípade, obe spoľahlivé procesy (bez generála a jedného nespoľahlivého) dostanú jednu pravdivú informáciu od generála a druhú totožnú od druhého spoľahlivého, preto bez ohľadu akú informáciu dostane od posledného (nespoľahlivého) procesu tá už nezmení nič na tom, že dostal dve správne informácie ktoré tvoria väčšinu
+	\item generál je nespoľahlivý -> tento prípad si rozdelíme na dve podprípady (keďže len tie existujú):
+	\begin{itemize}
+		\item generál povedal všetkým to isté -> keďže všetky ostatné procesy sú spoľahlivé navzájom si informáciu od generála pravdivo vďaka čomu budú mať všetky spoľahlivé procesy tri-krát tú istú informáciu takže sa rozhodnú rovnako (keďže generál je nespoľahlivý konkrétna hodnota nás netrápi)
+		\item generál dvom povie A a tretiemu B -> obaja čo dostanú A dostanú ešte jednu informáciu A od druhého preto sa rozhodnú pre A, tretí čo dostane B zistí, že obaja zvyšný dostali A preto si vyberie majoritu čiže A, čiže sa všetci traja spoľahlivý zhodnú
+	\end{itemize}
+\end{itemize}
+
+Ukázali sme, že vo všetkých prípadoch sa všetci spoľahlivý zhodnú na rovnakej odpovedi, čo znamená, že algoritmu funguje správne.
+\\
+
+Naneštastie tento algoritmus nefunguje pre všeobecné $n$. Ukážeme si to už na jednoduchom prípade $n=5$ s jedným nespoľahlivým.
+
+Uvažujme, že nespoľahlivý je generál a dvom povie A a dvom B, v takomto prípade všetci spoľahlivý zistia informáciu dva-krát A a dva-krát B, z toho vyplýva, že sa nevedia rozhodnúť na základe väčšinového princípu. 
+\\
+
+Ak algoritmus modifikujeme tak, že ak sa nevie proces rozhodnúť vráti 0 mal by algoritmus fungovať pre všeobecné $n$ z toho jeden nespoľahlivý. Keďže ak by bol generál spoľahlivý tak $n-2$ spoľahlivých procesov prebije jeden nespoľahlivý a ak je generál nespoľahlivý tak bud dá väčšine rovnakú informáciu a keďže ju všetky spoľahlivo pošlú ostatným alebo dá rôznu informáciu práve polovici a vtedy sa zhodnú na 0.
+
+\end{document}

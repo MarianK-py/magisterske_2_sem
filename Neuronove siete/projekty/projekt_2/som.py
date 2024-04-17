@@ -19,7 +19,6 @@ class SOM:
             # Note: SOM will train even without it, but it helps.
             mini = np.min(inputs, axis=1)
             size = np.max(inputs, axis=1)-mini
-            print(mini, size)
             self.weights *= size
             self.weights += mini
 
@@ -172,9 +171,10 @@ class SOM:
 
                 self.weights += dweights
             quant_err /= count
-
-            print('Ep {:3d}/{:3d}:  alpha_t = {:.3f}, lambda_t = {:.3f}, quantization_error = {:.3f}, avg_adj_of_neurons = {:.3f}'
-                  .format(ep+1, eps, alpha_t, lambda_t, quant_err, adj_of_neur))
+            
+            if ((ep+1) % live_plot_interval == 0):
+                print('Ep {:3d}/{:3d}:  alpha_t = {:.3f}, lambda_t = {:.3f}, quantization_error = {:.3f}, avg_adj_of_neurons = {:.3f}'
+                     .format(ep+1, eps, alpha_t, lambda_t, quant_err, adj_of_neur))
 
             quant_errs.append(quant_err)
             adj_of_neurs.append(adj_of_neur)
@@ -186,6 +186,7 @@ class SOM:
         if live_plot:
             interactive_off()
         else:
-            (plot_grid_3d if plot_in3d else plot_grid_2d)(inputs, self.weights, block=True)
+            pass
+            #(plot_grid_3d if plot_in3d else plot_grid_2d)(inputs, self.weights, block=True)
 
         return np.array(quant_errs), np.array(adj_of_neurs)

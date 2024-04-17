@@ -1,0 +1,99 @@
+% !TeX spellcheck = sk_SK-Slovak
+\documentclass[a4paper]{article}
+\usepackage[slovak]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{a4wide}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage[small,bf]{caption}
+\usepackage{subcaption}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{hyperref}
+\usepackage{fancyvrb}
+\usepackage{listings}
+%\usepackage{lstautogobble}
+\usepackage{stmaryrd}
+
+\lstset{basicstyle=\ttfamily,
+	mathescape=true,
+	escapeinside=||%,
+	%autogobble
+}
+
+
+\fvset{tabsize=4}
+
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+\newenvironment{modenumerate}
+{\enumerate\setupmodenumerate}
+{\endenumerate}
+
+\newif\ifmoditem
+\newcommand{\setupmodenumerate}{%
+	\global\moditemfalse
+	\let\origmakelabel\makelabel
+	\def\moditem##1{\global\moditemtrue\def\mesymbol{##1}\item}%
+	\def\makelabel##1{%
+		\origmakelabel{##1\ifmoditem\rlap{\mesymbol}\fi\enspace}%
+		\global\moditemfalse}%
+}
+
+\makeatletter
+\def\@seccntformat#1{%
+	\expandafter\ifx\csname c@#1\endcsname\c@section\else
+	\csname the#1\endcsname\quad
+	\fi}
+\makeatother
+
+\begin{document} 
+	
+	\pagenumbering{arabic}
+	\pagestyle{plain}
+	
+	\begin{center}
+		\sc\large
+		Neurónové siete\\
+		Projekt 2\\
+		Self-organizing map
+	\end{center}
+	
+	Autor: Marián Kravec
+	\\
+	
+	\section{Úvod}
+	
+	V tejto úlohe sa snažíme natrénovať dvojrozmernú štvoruholníkovú SOM na vizualizáciu 8 rozmerných dát (z toho jedna kategória). Ide o dataset seeds z UCI Machine Learning Repository.
+	
+	\section{Dáta}
+	
+	Máme dataset tvorený 210 dátovými bodmi ktoré majú 8 rozmerov, 7 rozmerov sú parametre bodu a ôsmi je kategória. Tento dataset rozdelíme v pomere 5:2 na trénovacie a testovacie dáta. Takto získame 150 bodov na trénovanie a 60 bodov na testovanie.
+	
+	\section{Architektúra a hyperparametre}
+	
+	Pri výbere modelu sme skúšali tri rôzne normy pre vzdialenosti na sieti, konkrétne sme skúsili normy $L_1$, $L_2$, $L_{max}$. Zároveň sme skúsili trénovať s diskrétnou aj spojitou funkciou susednosti. V neposlednej rade sme skúšali aj viac štartovacích hodnôt parametra $\alpha$, konkrétne sme skúsili hodnoty: $\{0.5, 0.7, 1, 2, 5, 10\}$ (finálna hodnota $\alpha$ bola pre všetky modely $0.01$)
+	\\
+	
+	Všetky modely boli trénované na 500 epoch. Veľkosti všetkých trénovaných sietí boli $10x10$. Parameter $\lambda$ začína na hodnote priemeru rozmerov siete ($\frac{\#rows + \#columns}{2}$) aby sa na začiatku zmena propagovala po celej sieti a končí na hodnote 1 aby ku koncu bola zmena iba lokálna. 
+	\\
+	
+	Nakoniec sa ako najlepší model ukázal model využívajúci normu $L_1$, diskrétnu funkciu susednosti a počiatočný parameter $\alpha=1$.
+	
+	\section{Výsledky modelu}
+	
+	Výsledný model sme trénovali na 1000 epoch s parametrami najlepšieho modelu z predchádzajúcej časti.
+
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=\textwidth]{../errors.png}
+		\caption{Quantizačnej chyby a priemernej zmeny pozície neurónu počas trénovania modelu }
+	\end{figure}
+	
+\end{document}
