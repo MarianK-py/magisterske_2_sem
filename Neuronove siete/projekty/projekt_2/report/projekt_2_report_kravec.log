@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2023.1.22)  17 APR 2024 20:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2023.1.22)  17 APR 2024 21:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -499,33 +499,37 @@ Underfull \hbox (badness 10000) in paragraph at lines 84--86
 
  []
 
-<../errors.png, id=19, 578.16pt x 867.24pt>
-File: ../errors.png Graphic file (type png)
-<use ../errors.png>
-Package pdftex.def Info: ../errors.png  used on input line 95.
-(pdftex.def)             Requested size: 424.58624pt x 636.87782pt.
 
-LaTeX Warning: Float too large for page by 11.87782pt on input line 97.
+Underfull \hbox (badness 10000) in paragraph at lines 91--93
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+ []
 
 [1
 
-{C:/Users/majko/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] [2 <../error
-s.png>] (projekt_2_report_kravec.aux)
+{C:/Users/majko/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
+<../errors.png, id=32, 578.16pt x 867.24pt>
+File: ../errors.png Graphic file (type png)
+<use ../errors.png>
+Package pdftex.def Info: ../errors.png  used on input line 99.
+(pdftex.def)             Requested size: 403.35562pt x 605.026pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 103--105
+
+ []
+
+[2 <../errors.png>] [3] (projekt_2_report_kravec.aux)
 Package rerunfilecheck Info: File `projekt_2_report_kravec.out' has not changed
 .
 (rerunfilecheck)             Checksum: 59C00A8598B19C9BCC41C2E3DE33AE9C;453.
  ) 
 Here is how much of TeX's memory you used:
- 14726 strings out of 476404
- 235888 string characters out of 2789524
- 1859324 words of memory out of 3000000
+ 14727 strings out of 476404
+ 235894 string characters out of 2789524
+ 1860324 words of memory out of 3000000
  34884 multiletter control sequences out of 15000+600000
  520288 words of font info for 53 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,6n,76p,532b,450s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ 75i,6n,76p,532b,448s stack positions out of 10000i,1000n,20000p,200000b,80000s
 {C:/Users/majko/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cm-super/cm-sup
 er-t1.enc}<C:/Users/majko/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
 onts/cm/cmmi10.pfb><C:/Users/majko/AppData/Local/Programs/MiKTeX/fonts/type1/pu
@@ -539,9 +543,9 @@ jko/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfcc1200.pfb><C:/
 Users/majko/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfrm0900.
 pfb><C:/Users/majko/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/s
 frm1000.pfb>
-Output written on projekt_2_report_kravec.pdf (2 pages, 212734 bytes).
+Output written on projekt_2_report_kravec.pdf (3 pages, 198326 bytes).
 PDF statistics:
- 89 PDF objects out of 1000 (max. 8388607)
- 8 named destinations out of 1000 (max. 500000)
+ 93 PDF objects out of 1000 (max. 8388607)
+ 9 named destinations out of 1000 (max. 500000)
  38 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -165,3 +165,29 @@ for t in range(test_inputs.shape[1]):
     pred_labs[t] = win_lab[winner_r, winner_c]
 
 print("Clustering accuracy:",sum(test_labels==pred_labs)/test_labels.shape[0])
+
+
+u_matrix = np.zeros((rows, cols))
+
+for x in range(rows):
+    for y in range(cols):
+        neighbour_list = list()
+        #Finding the Neighbor indexs for (x, y) and making a list of them.
+        for u in range(x-1, x+2):
+            if (u < 0 or u > (rows-1)):
+                continue
+            for v in range(y-1, y+2):
+                if(v < 0 or v > (cols-1)):
+                    continue
+                if (u == x and v == y):
+                    continue
+                neighbour_list.append(np.array([u,v]))
+
+        sum=0
+        for idx in neighbour_list:
+            sum += np.linalg.norm(model.weights[x,y,:]- model.weights[idx[0],idx[1],:])
+
+        avg = sum/len(neighbour_list)
+        u_matrix[x-1,y-1] = avg
+
+plot_heatmap(u_matrix, row_ind, col_ind, "Row", "Col", "U-Matrix", save=True, name="u_matrix")

@@ -89,11 +89,20 @@
 	\section{Výsledky modelu}
 	
 	Výsledný model sme trénovali na 1000 epoch s parametrami najlepšieho modelu z predchádzajúcej časti.
+	\\
+	
+	Ak si vykreslíme quantizačnú chybu a priemernú zmenu pozície neurónov počas trénovanie dostaneme takéto grafy:
+	\newpage
 
 	\begin{figure}[!h]
 		\centering
-		\includegraphics[width=\textwidth]{../errors.png}
+		\includegraphics[width=0.95\textwidth]{../errors.png}
 		\caption{Quantizačnej chyby a priemernej zmeny pozície neurónu počas trénovania modelu }
 	\end{figure}
 	
+	Vidíme, že quantizačná chyba klesá pomerne skokovo keď určitý počet epoch sa chyba mení minimálne a náhle v jednej epoche klesne výraznejšie. Finálna chyba je približne $0.375$. V prípade priemernej zmeny pozície neutrónov vidíme, že postupne klesá a po približne 600 epochách je iba minimálna.
+	\\
+	
+	
+	  
 \end{document}
