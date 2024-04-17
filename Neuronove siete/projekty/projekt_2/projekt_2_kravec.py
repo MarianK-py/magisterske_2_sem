@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-
+import matplotlib.pyplot as plt
 # Neural Networks (2-AIN-132/15), FMFI UK BA
 # (c) Tomas Kuzma, Juraj Holas, Peter Gergel, Endre Hamerlik, Štefan Pócoš, Iveta Bečková 2017-2024
 
@@ -13,9 +13,6 @@ from util import *
 # A metric takes two coordinates (vectors) and computes the distance
 
 
-def L_max(i, j, axis=0):
-    return np.max(np.abs(i - j), axis=axis)
-
 # Other possibilities of a metric:
 # def L_1(i, j):
 #     return 0
@@ -27,24 +24,15 @@ def L_max(i, j, axis=0):
 # # Choose data - try all of them!
 
 # 1) Skewed square
-inputs = np.random.rand(2, 250)
-inputs[1, :] += 0.5 * inputs[0, :]
+#inputs = np.random.rand(2, 250)
+#inputs[1, :] += 0.5 * inputs[0, :]
 
 # # 2) Circle
-# inputs = 2*np.random.rand(2, 250) - 1
-# inputs = inputs[:,np.abs(np.linalg.norm(inputs, axis=0)) < 1]
+#inputs = 2*np.random.rand(2, 250) - 1
+#inputs = inputs[:,np.abs(np.linalg.norm(inputs, axis=0)) < 1]
 
-# # 3) Truncated ellipse
-# inputs = np.loadtxt('ellipse.dat').T[:2]
+inputs = np.loadtxt('seeds.txt').T[:7]
 
-# # 4a) first two features of iris
-# inputs = np.loadtxt('iris.dat').T[:2]
-
-# # 4b) first three features of iris
-# inputs = np.loadtxt('iris.dat').T[:3]
-
-# # 4c) all features of iris
-# inputs = np.loadtxt('iris.dat').T
 
 (dim_in, count) = inputs.shape
 
@@ -53,23 +41,39 @@ inputs[1, :] += 0.5 * inputs[0, :]
 # # Train model
 
 # Choose size of grid
-rows = 13
-cols = 17
+rows = 10
+cols = 10
+
+row_ind = np.array(list(range(rows)))
+col_ind = np.array(list(range(cols)))
 
 # Choose grid distance metric - L_1 / L_2 / L_max
-grid_metric = L_max
+#grid_metric = "L_1"
+#grid_metric = "L_2"
+grid_metric = "L_max"
+
 
 # Some heuristics for choosing initial lambda
-top_left = np.array((0, 0))
-bottom_right = np.array((rows-1, cols-1))
-lambda_s = grid_metric(top_left, bottom_right) * 0.5
+lambda_s = (rows-1 + cols-1) * 0.5
 
 # Build and train model
 model = SOM(dim_in, rows, cols, inputs)
-model.train(inputs,
-            eps=100,
-            alpha_s=0.2, alpha_f=0.005, lambda_s=lambda_s, lambda_f=1,
+quant_errs, adj_of_neurs = model.trainVectorized(inputs,
+            eps=300,
+            alpha_s=1, alpha_f=0.05, lambda_s=lambda_s-3, lambda_f=1,
             discrete_neighborhood=True,  # Use discrete or continuous (gaussian) neighborhood function
             grid_metric=grid_metric,
             live_plot=True, live_plot_interval=2  # Increase live_plot_interval for faster training
             )
+
+plot_heatmap(model.weights, row_ind, col_ind, "Row", "Col", "parameter", save=False, name="heatmap_errors")
+
+fig, ax = plt.subplots(2,1)
+
+ax[0].plot(quant_errs)
+ax[0].set_title("Quantization error during training")
+
+ax[1].plot(adj_of_neurs)
+ax[1].set_title("Average adjustment of neuron positions changes during training")
+
+plt.show()

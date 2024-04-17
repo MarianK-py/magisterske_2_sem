@@ -9,6 +9,7 @@ import numpy as np
 import atexit
 import os
 import time
+import seaborn as sns
 
 
 def clear():
@@ -116,3 +117,25 @@ def plot_grid_3d(inputs, weights, i_x=0, i_y=1, i_z=2, s=60, block=True):
 
 
 plot_grid_3d.ax = None
+
+def cartesian_product(*arrays):
+    la = len(arrays)
+    dtype = np.result_type(*arrays)
+    arr = np.empty([len(a) for a in arrays] + [la], dtype=dtype)
+    for i, a in enumerate(np.ix_(*arrays)):
+        arr[...,i] = a
+    return arr.reshape(-1, la)
+
+def plot_heatmap(errors, x_ticks, y_ticks, x_lab, y_lab, title, save=False, name=""):
+    n = errors.shape[2]
+    cols = round(n/2+0.1)
+    fig, ax = plt.subplots(2, cols)
+    for i in range(n):
+        sns.heatmap(errors[:,:,i], ax=ax[i//cols, i%cols], xticklabels=x_ticks, yticklabels=y_ticks, cmap="turbo")
+        ax[i//cols, i%cols].set_xlabel(x_lab)
+        ax[i//cols, i%cols].set_ylabel(y_lab)
+        ax[i//cols, i%cols].set_title(str(i+1)+"th "+title)
+    #plt.tight_layout()
+    if save:
+        plt.savefig(name)
+    plt.show()
