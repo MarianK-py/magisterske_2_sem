@@ -10,6 +10,7 @@ import atexit
 import os
 import time
 import seaborn as sns
+import codecs
 
 
 def clear():
@@ -133,12 +134,12 @@ def plot_heatmap(errors, x_ticks, y_ticks, x_lab, y_lab, title, save=False, name
         n = 1
     if n>2:
         cols = round(n/2+0.1)
-        fig, ax = plt.subplots(2, cols,figsize=(6*cols,10))
+        fig, ax = plt.subplots(cols,2, figsize=(10,5*cols))
         for i in range(n):
-            sns.heatmap(errors[:,:,i], ax=ax[i//cols, i%cols], xticklabels=x_ticks, yticklabels=y_ticks, cmap="turbo")
-            ax[i//cols, i%cols].set_xlabel(x_lab)
-            ax[i//cols, i%cols].set_ylabel(y_lab)
-            ax[i//cols, i%cols].set_title(str(i+1)+"th "+title)
+            sns.heatmap(errors[:,:,i], ax=ax[i//2, i%2], xticklabels=x_ticks, yticklabels=y_ticks, cmap="turbo")
+            ax[i//2, i%2].set_xlabel(x_lab)
+            ax[i//2, i%2].set_ylabel(y_lab)
+            ax[i//2, i%2].set_title(str(i+1)+"th "+title)
     elif n == 2:
         fig, ax = plt.subplots(1, 2)
         for i in range(n):
@@ -156,3 +157,38 @@ def plot_heatmap(errors, x_ticks, y_ticks, x_lab, y_lab, title, save=False, name
     if save:
         plt.savefig(name)
     plt.show()
+
+def confusion_table(predicts, targets, lab_vals, create_tex=False,tex_name=""):
+    print("\\begin{table}[!h]")
+    print("\\begin{tabular}{|p{0.2\\textwidth}|"+(len(lab_vals)+1)*"p{0.08\\textwidth}|"+"}")
+    print("\\hline")
+    print("očakávanie/realita ",end=" ")
+    for l in lab_vals+[0]:
+        print("& ",int(l),end=" ")
+    print("\\\\ \\hline")
+    for l1 in lab_vals:
+        print(int(l1), end=" ")
+        for l2 in lab_vals+[0]:
+            print("& ", round(100*np.sum((targets == l1) & (predicts == l2))/np.sum((targets == l1)), 2), end="\\% ")
+            #print(l1,l2,np.sum((targets == l1) & (outputs_lab == l2)))
+        print("\\\\ \\hline")
+    print("\\end{tabular}")
+    print("\\end{table}")
+
+    if create_tex:
+        with codecs.open(tex_name+".tex", "w", "utf-8") as f:
+            f.write("\\begin{table}[!h]\n")
+            f.write("\\begin{tabular}{|p{0.2\\textwidth}|"+(len(lab_vals)+1)*"p{0.08\\textwidth}|"+"}\n")
+            f.write("\\hline\n")
+            f.write("očakávanie/realita")
+            for l in lab_vals+[0]:
+                f.write("& "+str(int(l)))
+            f.write("\\\\ \\hline\n")
+            for l1 in lab_vals:
+                f.write(str(int(l1))+" ")
+                for l2 in lab_vals+[0]:
+                    f.write("& "+str(round(100*np.sum((targets == l1) & (predicts == l2))/np.sum((targets == l1)), 2))+"\\% ")
+                    #print(l1,l2,np.sum((targets == l1) & (outputs_lab == l2)))
+                f.write("\\\\ \\hline\n")
+            f.write("\\end{tabular}\n")
+            f.write("\\end{table}\n")

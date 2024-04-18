@@ -117,7 +117,7 @@ print("Best alpha s:", best_alpha_s)
 print("Best grid_metric:", best_grid_metric)
 print("Best is discrete:", best_is_disc)
 
-plot_heatmap(model.weights, row_ind, col_ind, "Row", "Col", "parameter", save=True, name="param_heatmaps")
+plot_heatmap(model.weights, row_ind, col_ind, "Row", "Col", "parameter", save=False, name="param_heatmaps")
 
 fig, ax = plt.subplots(2,1,figsize=(8,12))
 
@@ -127,9 +127,7 @@ ax[0].set_title("Quantization error during training")
 ax[1].plot(adj_of_neurs)
 ax[1].set_title("Average adjustment of neuron positions changes during training")
 
-plt.savefig("errors")
-plt.show()
-
+#plt.savefig("errors")
 plt.show()
 
 mapa = np.empty([rows, cols], dtype=object)
@@ -155,8 +153,7 @@ for row in range(rows):
             label = max(label_list, key=label_list.count)
         win_lab[row][col] = label
 
-plot_heatmap(win_lab, row_ind, col_ind, "Row", "Col", "Classes of neurons", save=True, name="class_neur")
-#plot_heatmap(sizes, row_ind, col_ind, "Row", "Col", "parameter", save=False, name="heatmap_errors")
+plot_heatmap(win_lab, row_ind, col_ind, "Row", "Col", "Classes of neurons", save=False, name="class_neur")
 
 pred_labs = np.zeros(test_labels.shape[0])
 
@@ -190,4 +187,13 @@ for x in range(rows):
         avg = sum/len(neighbour_list)
         u_matrix[x-1,y-1] = avg
 
-plot_heatmap(u_matrix, row_ind, col_ind, "Row", "Col", "U-Matrix", save=True, name="u_matrix")
+plot_heatmap(u_matrix, row_ind, col_ind, "Row", "Col", "U-Matrix", save=False, name="u_matrix")
+
+a,b = np.unique(train_labels, return_counts=True)
+print("train split:", dict(zip(a,b)))
+a,b = np.unique(test_labels, return_counts=True)
+print("test split:", dict(zip(a,b)))
+a,b = np.unique(test_labels[test_labels==pred_labs], return_counts=True)
+print("results split:", dict(zip(a,b)))
+
+confusion_table(pred_labs, test_labels, list(set(test_labels)), create_tex=False, tex_name="conf_mat")
