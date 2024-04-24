@@ -1,0 +1,131 @@
+% !TeX spellcheck = sk_SK-Slovak
+\documentclass[a4paper]{article}
+\usepackage[slovak]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{a4wide}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage[small,bf]{caption}
+\usepackage{subcaption}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{hyperref}
+\usepackage{fancyvrb}
+\usepackage{listings}
+%\usepackage{lstautogobble}
+\usepackage{stmaryrd}
+
+\lstset{basicstyle=\ttfamily,
+	mathescape=true,
+	escapeinside=||%,
+	%autogobble
+}
+
+
+\fvset{tabsize=4}
+
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+\newenvironment{modenumerate}
+{\enumerate\setupmodenumerate}
+{\endenumerate}
+
+\newif\ifmoditem
+\newcommand{\setupmodenumerate}{%
+	\global\moditemfalse
+	\let\origmakelabel\makelabel
+	\def\moditem##1{\global\moditemtrue\def\mesymbol{##1}\item}%
+	\def\makelabel##1{%
+		\origmakelabel{##1\ifmoditem\rlap{\mesymbol}\fi\enspace}%
+		\global\moditemfalse}%
+}
+
+\makeatletter
+\def\@seccntformat#1{%
+	\expandafter\ifx\csname c@#1\endcsname\c@section\else
+	\csname the#1\endcsname\quad
+	\fi}
+\makeatother
+
+\begin{document} 
+	
+\pagenumbering{arabic}
+\pagestyle{plain}
+
+\begin{center}
+	\sc\large
+	Algoritmické riešenia ťažkých problémov\\
+	Domáca úloha 3
+\end{center}
+
+Autor: Marián Kravec
+
+\section{Úloha 2 - A random walk on a tree}
+
+Chceme dokázať, že pre náš algoritmus platí $E(ALG(n)) \leq log_2(n+1)$.
+\\
+
+Budeme to dokazovať pomocou matematickej indukcie.
+
+Začnime bázovým príkladom, máme $n=3$ vrcholy (jeden vnútorný a jeho dva listy).
+Pre tento strom platí, že do každého listu sa dostane na jeden krok z koreňu takže $E(ALG(3)) = 1 \le 2 = log_2(3+1)$. (triviálny prípad by mohol byť aj strom s jedným vrcholom kde by platilo, že algoritmus spraví 0 krokov čiže takisto spĺňa $E(ALG(1)) = 0 = log_2(0+1)$, pre $n=2$ neexistuje strom ktorý by spĺňal, že všetky vnútorné vrcholy majú dvoch potomkov preto túto hodnotu neriešime)
+
+Ako indukčný predpoklad uvažujme, že toto tvrdenie platí, pre všetky $k$ menšie ako $n$.
+
+Teraz chceme ukázať indukčný krok čiže, že to platí aj pre $n$. Keďže začíname v koreni čo je vnútorný vrchol, existujú z neho cesty do dvoch podstromov. Pričom prvý krok algoritmu prejde do jedného z týchto podstromov. Uvažujme, že ľavý podstrom má $n_1$ vrcholov a pravý má $n_2$ vrcholov, z toho vieme vyvodiť rovnice $n=n_1+n_2+1$ (celkový počet vrcholov je súčet vrcholov podstromov plus koreň), $n_1<n$, $n_2<n$ (podstromy musia mať manej vrcholov ako celý strom keďže minimálne neobsahujú koreň). Keďže vieme, že pravdepodobnosť kroku do každého z podstromov je rovnaká a zvyšný počet krokov je závislý od veľkosti podstromu platí takáto rovnica:
+
+$E(ALG(n)) = \frac{1}{2}E(ALG(n_1)) + \frac{1}{2}E(ALG(n_2)) + 1$ (čiže pravdepodobnosť, že pôjdem do daného podstromu vynásobená očakávyným počtom krokov v danom podstrome plus nakoniec ten jeden krok do podstromu)
+
+Keďže platí $n_1<n$, $n_2<n$ a vieme, že naše tvrdenie platí pre všetky $k$ menšie ako $n$ tak platí $E(ALG(n_1)) \leq log_2(n_1+1)$, $E(ALG(n_2)) \leq log_2(n_2+1)$.
+
+Ak toto dosadíme do predchádzajúcej rovnice dostaneme:
+
+$E(ALG(n)) = \frac{1}{2}E(ALG(n_1)) + \frac{1}{2}E(ALG(n_2)) + 1 \leq \frac{1}{2}log_2(n_1+1) + \frac{1}{2}log_2(n_2+1) + 1$
+
+$E(ALG(n)) \leq \frac{1}{2}(log_2(n_1+1) + log_2(n_2+1)) + 1$
+
+Vieme, že súčet logaritmov je logaritmus súčinu:
+
+$E(ALG(n)) \leq \frac{1}{2}log_2((n_1+1)(n_2+1)) + 1$
+
+Takisto vieme, že platí $n*log(x)=log(x^n)$:
+
+$E(ALG(n)) \leq log_2(((n_1+1)(n_2+1))^{\frac{1}{2}}) + 1$
+
+Ďalej vieme, že $x^{\frac{1}{2}} = \sqrt{x}$:
+
+$E(ALG(n)) \leq log_2(\sqrt{(n_1+1)(n_2+1)}) + 1$
+
+Teraz využijeme vlastnosť, že logaritmus je monotónne rastúca funkcia (čiže platí, že $a\leq b$ tak $log(a) \leq log(b)$) a platí AG nerovnosť $\sqrt[n]{x_1*x_2*...*x_n} \leq \frac{x_1+x_2+...+x_n}{n}$. Ak toto substituujeme v našej rovnici dostaneme:
+
+$E(ALG(n)) \leq log_2(\sqrt{(n_1+1)(n_2+1)}) + 1 \leq log_2(\frac{(n_1+1)+(n_2+1)}{2}) + 1$ 
+
+Teraz si rozpíšme sumu v menovateli:
+
+$E(ALG(n)) \leq log_2(\frac{(n_1+n_2+1+1)}{2}) + 1$ 
+
+Vieme, že platí $n=n_1+n_2+1$:
+
+$E(ALG(n)) \leq log_2(\frac{(n+1)}{2}) + 1$ 
+
+Ďalej vieme, že logaritmus podielu je rozdiel logaritmov:
+
+$E(ALG(n)) \leq log_2(n+1) - log_2(2) + 1$ 
+
+Vieme, že $log_2(2) = 1$
+
+$E(ALG(n)) \leq log_2(n+1) - 1 + 1 = log_2(n+1)$ 
+
+Takže sme dostali výsledok:
+
+$E(ALG(n)) \leq  log_2(n+1)$ 
+
+Čo je to čo sme chceli dokázať. $\oblong$
+
+\end{document}
