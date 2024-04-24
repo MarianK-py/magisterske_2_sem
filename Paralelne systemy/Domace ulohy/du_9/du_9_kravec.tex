@@ -1,0 +1,170 @@
+% !TeX spellcheck = sk_SK-Slovak
+\documentclass[a4paper]{article}
+\usepackage[slovak]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{a4wide}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage[small,bf]{caption}
+\usepackage{subcaption}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{hyperref}
+\usepackage{fancyvrb}
+\usepackage{listings}
+%\usepackage{lstautogobble}
+\usepackage{stmaryrd}
+
+\newsavebox\MBox
+\newcommand\Cline[2][red]{{\sbox\MBox{$#2$}%
+		\rlap{\usebox\MBox}\color{#1}\rule[-1.2\dp\MBox]{\wd\MBox}{0.5pt}}}
+
+\lstset{basicstyle=\ttfamily,
+	mathescape=true,
+	escapeinside=||%,
+	%autogobble
+}
+
+
+\fvset{tabsize=4}
+
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+\newenvironment{modenumerate}
+{\enumerate\setupmodenumerate}
+{\endenumerate}
+
+\newif\ifmoditem
+\newcommand{\setupmodenumerate}{%
+	\global\moditemfalse
+	\let\origmakelabel\makelabel
+	\def\moditem##1{\global\moditemtrue\def\mesymbol{##1}\item}%
+	\def\makelabel##1{%
+		\origmakelabel{##1\ifmoditem\rlap{\mesymbol}\fi\enspace}%
+		\global\moditemfalse}%
+}
+
+\makeatletter
+\def\@seccntformat#1{%
+	\expandafter\ifx\csname c@#1\endcsname\c@section\else
+	\csname the#1\endcsname\quad
+	\fi}
+\makeatother
+
+\begin{document} 
+	
+\pagenumbering{arabic}
+\pagestyle{plain}
+
+\begin{center}
+	\sc\large
+	Programovanie paralélnych a distribuovaných systémov\\
+	Domáca úloha 9
+\end{center}
+
+Autor: Marián Kravec
+
+\section{Úloha 1}
+
+Algoritmus ktorý napĺňa zoznam $z$ prvkami zo zoznamu $x$ je následovný:
+
+\begin{enumerate}
+	\item pridaj na koniec pomocou príkazu $z[N-1] := u$ a zároveň vymeň všetky takéto dvojice $z[N-1-2*k], z[N-2*k] := z[N-2*k], z[N-1-2*k], \lfloor \frac{N}{2} \rfloor +1 \leq k>0$ (v podstate ide o to, že chceme vymeniť predposledný s predpredposledným, potom dvojicu pred nimi a tak ďalej)
+	\item teraz vymeň dvojice $z[N-2*k], z[N+1-2*k] := z[N-2*], z[N-1-2*k], \lfloor \frac{N}{2} \rfloor +1 \leq k > 0$ (tu vlastne vymieňame dvojice ktoré sme nevymenili v predchádzajúcom kroku, čiže posledný s predposledným, dvojice pred nimi a tak ďalej) 
+\end{enumerate} 
+
+(v oboch prípadoch som definovával vymieňané dvojice od konca zoznamu keďže na koniec pridávame a záleží na tom, či, posledný prvok smieme vymieňať alebo nie (keďže v prvom kroku ho vymieňať nemôžeme keďže tá hodnota je už použitá v inom príkaze))
+
+Ukážme si to na príklade zoznamu dĺžky 5:
+
+Na začiatku majme zoznam $z$ vyzerajúci takto:
+
+$\_ \quad \_ \quad \_ \quad \_ \quad \_$
+
+A chceme tam dostať zoznam $x$ vyzerajúci takto:
+
+$a \quad b \quad c \quad d \quad e $
+
+Dvojice ktoré sme vymenili označíme červeným podčiarknutím a do zátvoriek si zapíšeme ktorý z dvoch krokov vykonávame a koľký krok celkovo to je.
+
+Teraz poďme na algoritmus:
+
+$\Cline[red]{\_ \quad \_} \quad \Cline[red]{\_ \quad \_} \quad a$ (1, 1)
+
+$\_ \quad \Cline[red]{\_ \quad \_} \quad \Cline[red]{a \quad \_}$ (2, 2)
+
+$\Cline[red]{\_ \quad \_} \quad \Cline[red]{a \quad \_} \quad b$ (1, 3)
+
+$\_ \quad \Cline[red]{a \quad \_} \quad \Cline[red]{b \quad \_}$ (2, 4)
+
+$\Cline[red]{a \quad \_} \quad \Cline[red]{b \quad \_} \quad c$ (1, 5)
+
+$a \quad \Cline[red]{b \quad \_} \quad \Cline[red]{c \quad \_}$ (2, 6)
+
+$\Cline[red]{b \quad a} \quad \Cline[red]{c \quad \_} \quad d$ (1, 7)
+
+$b \quad \Cline[red]{c \quad a} \quad \Cline[red]{d \quad \_}$ (2, 8)
+
+$\Cline[red]{c \quad b} \quad \Cline[red]{d \quad a} \quad e$ (1, 9)
+
+$c \quad \Cline[red]{d \quad b} \quad \Cline[red]{e \quad a}$ (2, 10)
+
+Takže po 10 krokoch (čo je presne 2N operácii) máme v zozname $z$ zoznam $x$ (len trochu poprehadzovaný) (v podstate nám stačí 9 ale pre všeobecné N to vyjde 2N-1 čo je zanedbateľné):
+
+$c \quad d \quad b \quad e \quad a$
+\\
+
+Tento algoritmus funguje vďaka tomu, že efektívne posúva prvky z konca zoznamu na začiatok a naopak vďaka čomu sa na koniec dostávajú postupne všetky prvky z pôvodného zoznamu a môže byť nahradené.
+\newpage
+
+\section{Úloha 2}
+
+V prípade, že môžeme pridávať prvky aj na začiatok, môžeme využiť modifikáciu algoritmu z úlohy 1 a využiť, že tento algoritmus nie len efektívne presúval prvky z konca na začiatok ale aj naopak.
+\\
+
+Akurát musíme dávať pozor, v ktorom kroku nášho algoritmu môžeme pridať príkaz na pridávanie na začiatok zoznamu keďže nechceme aby ten istý prvok bol v dvoch príkazoch. 
+
+Ak máme párny počet prvkov tak pridáme pridávanie na začiatok zoznamu do 2. kroku algoritmu (v 1. kroku sa prvý prvok vymieňa s druhým), ak je počet prvkov nepárny tak pridávame na začiatok v 1. kroku algoritmus (zase v 2. sa mení prvý s druhým).
+\\
+
+Poďme si to ukázať na dvoch príkladoch a to dĺžky 5 a 6 (keďže parita počtu je dôležitá):
+
+Najskôr dĺžky 5 (zoznamy sú totožné z úlohy 1):
+
+$\Cline[red]{\_ \quad \_} \quad \Cline[red]{\_ \quad \_} \quad a$ (1, 1)
+
+$b \quad \Cline[red]{\_ \quad \_} \quad \Cline[red]{a \quad \_}$ (2, 2)
+
+$\Cline[red]{\_ \quad b} \quad \Cline[red]{a \quad \_} \quad c$ (1, 3)
+
+$d \quad \Cline[red]{a \quad b} \quad \Cline[red]{c \quad \_}$ (2, 4)
+
+$\Cline[red]{a \quad d} \quad \Cline[red]{c \quad b} \quad e$ (1, 5)
+\\
+
+Teraz pre dĺžku 6 (iba na koniec $x$ pridáme f):
+
+$b \quad \Cline[red]{\_ \quad \_} \quad \Cline[red]{\_ \quad \_} \quad a$ (1, 1)
+
+$\Cline[red]{\_ \quad b} \quad \Cline[red]{\_ \quad \_} \quad \Cline[red]{a \quad \_}$ (2, 2)
+
+$d \quad \Cline[red]{\_ \quad b} \quad \Cline[red]{a \quad \_} \quad c$ (1, 3)
+
+$\Cline[red]{\_ \quad d} \quad \Cline[red]{a \quad b} \quad \Cline[red]{c \quad \_}$ (2, 4)
+
+$f \quad \Cline[red]{a \quad d} \quad \Cline[red]{c \quad b} \quad e$ (1, 5)
+ 
+$\Cline[red]{a \quad f} \quad \Cline[red]{a \quad d} \quad \Cline[red]{e \quad b}$ (2, 6)
+\\
+
+Vidíme, že keďže pri nepárnom počte prvkov pridávame prvok v každom kroku tak nám stačí N operácii. Podobne v prípade párneho počtu pridávame 2 prvky za 2 kroky takže nám takisto stačí N operácii.
+\\
+
+Takže tento modifikovaný algoritmu dokáže prekopírovať $x$ do $z$ na N operácii.
+\end{document}
