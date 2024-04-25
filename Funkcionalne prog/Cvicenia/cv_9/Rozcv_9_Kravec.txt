@@ -1,0 +1,38 @@
+Marian Kravec
+
+1)
+instance Functor BVS where
+  fmap f Nil = Nil
+  fmap f (Node l a r) = Node (fmap f l) (f a) (fmap f r)
+
+Identita:
+fmap id Nil = Nil = id Nil
+fmap id (Node l a r) = Node (fmap id l) (id a) (fmap id r) = ... = id (Node l a r) 
+
+Kompozicia:
+LS: fmap (p.q) Nil = Nil
+RS: (fmap p).(fmap q) Nil = fmap p (fmap q Nil) = fmap p Nil = Nil
+LS = RS
+LS: fmap (p.q) (Node l a r) = Node (fmap (p.q) l) ((p.q) a) (fmap (p.q) r)
+RS: (fmap p).(fmap q) (Node l a r) = fmap p (fmap q (Node l a r))
+				   = fmap p (Node (fmap q l) (q a) (fmap q r))
+				   = (Node (fmap p (fmap q l)) (p (q a)) (fmap p (fmap q r)))
+				   = ...
+				   = Node (fmap (p.q) l) ((p.q) a) (fmap (p.q) r)
+LS = RS
+
+
+2)
+Ani jedno pravidlo neplati kedze tato definicia fmap otoci zoznam
+Kontrapríklady:
+Identita:
+fmap id [1,2,3] = fmap id [2,3] ++ [id 1] = 
+		= fmap id [3] ++ [id 2] ++ [id 1] = 
+		= [id 3] ++ [id 2] ++ [id 1] = 
+		= [3,2,1] =/= [1,2,3]
+Kompozicia:
+fmap (id.id) [1,2,3] = fmap id [1,2,3] = [3,2,1]
+(fmap id).(fmap id) [1,2,3] = fmap id (fmap id [1,2,3])
+               		    = fmap id [3,2,1]
+			    = [1,2,3]
+[3,2,1] =/= [1,2,3]
