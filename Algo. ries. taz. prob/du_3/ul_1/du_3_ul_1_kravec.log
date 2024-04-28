@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2023.1.22)  24 APR 2024 17:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2023.1.22)  28 APR 2024 15:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -464,32 +464,49 @@ Package hyperref Info: Link coloring OFF on input line 56.
 \openout4 = `du_3_ul_1_kravec.out'.
 
 \c@lstlisting=\count307
-LaTeX Font Info:    Trying to load font information for U+msa on input line 73.
 
+Underfull \hbox (badness 10000) in paragraph at lines 73--75
+
+ []
+
+LaTeX Font Info:    Trying to load font information for U+msa on input line 78.
 
 (C:\Users\majko\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 73.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 78.
 
 
 (C:\Users\majko\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 73
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 78
 .
 
 (C:\Users\majko\AppData\Local\Programs\MiKTeX\tex/latex/jknappen\ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
 LaTeX Font Info:    Trying to load font information for U+stmry on input line 7
-3.
+8.
 
 (C:\Users\majko\AppData\Local\Programs\MiKTeX\tex/latex/stmaryrd\ustmry.fd)
-Overfull \hbox (35.91318pt too wide) in paragraph at lines 73--74
-\T1/cmr/m/n/10 Za£nime tým, ºe na konci pro-cesu ge-ne-ro-va-nia ná-hod-nej per
--mu-tá-cie máme zo-znam $\OML/cmm/m/it/10 S \OT1/cmr/m/n/10 = [\OML/cmm/m/it/10
- a[]; a[]; :::; a[]; a[]\OT1/cmr/m/n/10 ]$\T1/cmr/m/n/10 .
+Underfull \hbox (badness 10000) in paragraph at lines 78--80
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 81--83
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 84--86
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 89--91
+
  []
 
 [1
@@ -502,26 +519,28 @@ Package rerunfilecheck Info: File `du_3_ul_1_kravec.out' has not changed.
 Here is how much of TeX's memory you used:
  14704 strings out of 476404
  235396 string characters out of 2789524
- 1854324 words of memory out of 3000000
+ 1866324 words of memory out of 3000000
  34869 multiletter control sequences out of 15000+600000
  520287 words of font info for 53 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,5n,76p,631b,449s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ 75i,5n,76p,843b,447s stack positions out of 10000i,1000n,20000p,200000b,80000s
 {C:/Users/majko/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cm-super/cm-sup
 er-t1.enc}<C:/Users/majko/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
 onts/cm/cmmi10.pfb><C:/Users/majko/AppData/Local/Programs/MiKTeX/fonts/type1/pu
 blic/amsfonts/cm/cmmi7.pfb><C:/Users/majko/AppData/Local/Programs/MiKTeX/fonts/
 type1/public/amsfonts/cm/cmr10.pfb><C:/Users/majko/AppData/Local/Programs/MiKTe
 X/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/majko/AppData/Local/Program
-s/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/majko/AppData/Local
-/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx1200.pfb><C:/Users/majko/AppDa
-ta/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx1440.pfb><C:/Users/maj
-ko/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfcc1200.pfb><C:/U
-sers/majko/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfrm1000.p
-fb>
-Output written on du_3_ul_1_kravec.pdf (1 page, 102469 bytes).
+s/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/majko/AppData/Loca
+l/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/majko/AppD
+ata/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx1200.pfb><C:/Users/ma
+jko/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx1440.pfb><C:/
+Users/majko/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfcc1200.
+pfb><C:/Users/majko/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/s
+frm1000.pfb><C:/Users/majko/AppData/Local/Programs/MiKTeX/fonts/type1/public/ho
+ekwater/stmary10.pfb>
+Output written on du_3_ul_1_kravec.pdf (1 page, 123981 bytes).
 PDF statistics:
- 63 PDF objects out of 1000 (max. 8388607)
+ 73 PDF objects out of 1000 (max. 8388607)
  4 named destinations out of 1000 (max. 500000)
  9 words of extra memory for PDF output out of 10000 (max. 10000000)
 

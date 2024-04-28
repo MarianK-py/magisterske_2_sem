@@ -70,7 +70,28 @@ Autor: Marián Kravec
 
 \subsection*{a)}
 
-Začnime tým, že na konci procesu generovania náhodnej permutácie máme zoznam $S=[a_1,a_2,...,a_{n-1}, a_n]$. Teraz sa pozrime na posledný krok pri jej generovaní, hodnotu $S[n]$ sme vymenili z hodnotou $S[rand(1, n)]$, keďže vieme, že na $n$-tej pozícii bolo nakoniec $a_n$ tak musí platiť $rand(1, n)=u$ pričom platilo, že pred týmto krokom $S[u]=a_n$, keďže vieme, že každá hodnota je v zozname práve raz tak platí $P(rand(1, n)=u) = \frac{1}{n}$ (keďže funkcia $rand$ vráti hodnoty rovnomerne). 
+Ukážeme to induktívne.
+\\
+
+Najprv ako bázu indukcie budeme mať zoznam dĺžky 1. Pre takýto zoznam existuje iba jedna permutácia čo je samotný pôvodný zoznam a keďže náš algoritmus začína prehadzovať od druhej pozície na tomto zozname nikdy nič nezmení, takže spĺňa, že vytvorí všetky permutácie (jednu) s rovnakou pravdepodobnosťou (keďže obe pozície s ktorými vymenil ).
+
+Pre istotu ešte ako bázu použime zoznam dĺžky 2. V tomto zozname spraví náš algoritmus iba jednu zmenu a to, že druhý člen zoznamu vymení s buď sám sebou alebo prvým (obe s rovnakou pravdepodobnosťou) čím vytvorí $2$ permutácie čo je $2!$ čím spĺňa, že vytvorí všetky permutácie s rovnakou pravdepodobnosťou.
+\\
+
+Teraz uvažujme, že náš vlastnosti nášho algoritmu platia pre všetky zoznamy dĺžky $k<n$.
+\\
+
+Chceme ukázať, že platia aj pre zoznam dĺžka $n$. Vieme, že po $n-1$ krokoch náš algoritmus vytvorí jednu z $(n-1)!$ permutácii s rovnakou pravdepodobnosťou (indukčný predpoklad) ktorú označíme $p_{n-1}=\frac{1}{(n-1)!}$. V poslednom kroku vymení posledný člen s niektorým z $n$ členov (všetky výmeny majú rovnakú pravdepodobnosťou). Čiže nakoniec dostaneme jeden z $n!$ zoznamov kde každý vznikol s pravdepodobnosťou  $p_{n-1}\frac{1}{n}=\frac{1}{(n-1)!}\frac{1}{n}=\frac{1}{n!}$ (keďže doterajšie pravdepodobnosti boli všetky rovnaké a pravdepodobnosť poslednej výmeny je rovnomerná). Teraz už iba potrebujeme ukázať, že tento posledný krok nemôže vytvoriť dva rovnaké zoznamy. To dokážeme sporom.
+\\
+
+Uvažujem, že po poslednom kroku máme 2 zoznamy $A=[a_1,...a_n]$ a $B=[b_1,...b_n]$ ktoré sú rovnaké, čiže platí $\forall 1\leq i \leq n, a_i = b_i$, ale pred týmto krokom to boli dve rôzne permutácie $(n-1)$ prvkov. 
+
+Bez ujmy na všeobecnosti uvažujme, že v poslednom kroku vymenil algoritmus $a_i$ s $a_n$ a $b_j$ s $b_n$, keďže na konci bola na n-tej pozícii tá istá hodnota muselo pred výmenou platiť $a_i = b_j$ a keďže na konci bola hodnota $n$ na rovnakej pozícii (vždy je inicializovaná na n-tej pozícii a predchádzajúce kroky ju nevedia posunúť) tak musí platiť $i=j$, takže pred poslednou výmenou platilo $a_i = b_i$ a keďže okrem tejto pozície posledný krok nezmenil žiadnu inú a na konci platilo  $\forall 1\leq k \leq n, a_k = b_k$. Tak pred týmto krokom muselo platiť  $\forall 1\leq k \leq n-1, k \neq i, a_k = b_k$ a keďže platí aj $a_i = b_i$ tak pred posledným krokom boli zoznamy $A$ a $B$ rovnaké čo je v spore s predpokladom, že ide o dve rôzne permutácie.
+\\
+
+Čiže sme ukázali, že po poslednom kroku budeme mať jednu z $n!$ rôznych permutácii každú s rovnakou pravdepodobnosťou, čo je to čo sme chceli ukázať. $\oblong$
+
+
   
  
 \end{document}
