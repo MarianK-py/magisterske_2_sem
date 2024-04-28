@@ -90,8 +90,82 @@ Bez ujmy na všeobecnosti uvažujme, že v poslednom kroku vymenil algoritmus $a
 \\
 
 Čiže sme ukázali, že po poslednom kroku budeme mať jednu z $n!$ rôznych permutácii každú s rovnakou pravdepodobnosťou, čo je to čo sme chceli ukázať. $\oblong$
+\newpage
 
+\subsection*{b)}
 
-  
+Keďže vieme generovať iba po jednom bite, vygenerujeme naše číslo binárne. Algoritmus na začiatok vypočíta rozdiel $b-a$ aby zistil koľko čísel existuje medzi dvomi vstupnými číslami. Následne vygeneruje $\lceil log(b-a) \rceil$ bitov, čím s rovnakou pravdepodobnosťou vygeneruje číslo z intervalu $[0,..2^{\lceil log(b-a) \rceil}]$ (keďže každé číslo má unikátny binárny zápis a každý postupnosť bitov má rovnakú pravdepodobnosť vygeneruje všetky s rovnakou pravdepodobnosťou). A výsledné číslo pripočíta k $a$. Nakoniec skontroluje či je vygenerované číslo menšie nanajvýš rovné $b$, ak nie tak proces generovania zopakuje inak výsledné číslo vráti. 
+\\
+
+Generovanie jedného čísla je generovanie $\lceil log(b-a+1) \rceil$ bitov, to vieme zhora ohraničiť pomocou $log(n)$ ($n$ je najvyšší rozdiel ktorý dostaneme) bitov. Čiže zložitosť generovanie jedného čísla je $O(log(n))$. Avšak vždy môže nastať, že číslo je väčšie ako $b$ a generovanie musíme zopakovať. Preto celková zložitosť môže byť až $O(k*log(n))$ kde $k$ je počet opakovaní generovania čísla, čo môže byť teoreticky nekonečno.
+\\
+
+Teraz odhadnúť strednú hodnotu tejto zložitosti. 
+
+Najprv zistíme, aká je pravdepodobnosť, že číslo bude väčšie ako $b$, keďže vieme, že vygeneruje rovnomerne celé číslo medzi $0$ a $2^{\lceil log(b-a) \rceil}$ stačí nám zistiť aký zlomok z týchto čísel je väčších ako $b-a$, pričom $b-a$ vieme zapísať aj ako $b-a=2^{log(b-a)}$. 
+\\
+
+Keďže generujeme prirodzené čísla od nuly tak pravdepodobnosť, že vygenerované číslo je väčšie ako $x$ je $1-\frac{x}{\text{maximálne vygenerované číslo}}$. Čiže v našom prípade:
+
+\begin{align*}
+	P(g>2^{log(b-a)}) &= 1-\frac{2^{log(b-a)}}{2^{\lceil log(b-a) \rceil}-1} < \\
+	&<1-\frac{2^{log(b-a)}}{2^{\lceil log(b-a) \rceil}} =\\
+	&=1- 2^{log(b-a) - \lceil log(b-a+1) \rceil} \leq \\
+	&\leq 1- 2^{log(b-a) - (log(b-a) + 1)} = \\
+	&=1- 2^{log(b-a) - log(b-a) - 1} = \\
+	&=1- 2^{-1} \\
+	&= \frac{1}{2}
+\end{align*}
+\newpage
+
+Takže vidíme, že pravdepodobnosť, že budeme musieť generovať číslo znovu je menšia ako $\frac{1}{2}$, teraz môžeme počítať strednú hodnotu časovej zložitosti:
+
+\begin{align*}
+	E(ALG(n)) &= \sum_{k=1}^{\inf} log(n)\frac{k}{2^k}\\
+	&\text{($log(n)$-čas generovania,} \\
+	&\text{$k$-počet opakovaní,}\\
+	&\text{$\frac{1}{2^k}$-pravdepodobnosť $k$ opakovaní)}\\
+	&= log(n)\sum_{k=1}^{\inf} \frac{k}{2^k}\\
+	&\text{(sumu si prepíšeme, \href{https://math.stackexchange.com/questions/3453281/find-the-sum-of-k-2k-k-1-to-n}{ZDROJ})} \\
+	&= log(n)\lim_{k->\inf} \frac{2^{k+1}-n-2}{2^k}\\
+	&= 2log(n)\\
+\end{align*}
+
+Čiže vidíme, že v strednej hodnote algoritmus potrebuje $2log(n)$ krokov, čiže logaritmický čas. Avšak úplne najhoršom prípade algoritmus nikdy neskončí.
+\\
+
+Algoritmus by mohol vyzerať asi takto:
+
+\begin{lstlisting}
+# vypocet poctu generovanych bitov
+n = b-a
+k = ceil(log(n))
+
+# inicialny vystup abi zacal cyklus
+# (da sa to riesit aj pouzitim "do while" namiesto takejto inicializacie)
+vystup = b+1
+
+# opakovanie kym vystupne cislo nesplna, ze patri do pozadovaneho intervalu
+while vystup >= b:
+	# anulovanie generovaneho cisla
+	generovane = 0
+	
+	#generovanie cisla
+	for i in range(k):
+	
+		# vygenerovanie nahodneho bitu
+		bit = gen_bit()
+		
+		#pridanie bitu na koniec cisla
+		generovane = generovane*2+bit 
+	
+	# vypocet vystupneho cisla
+	vystup = a + generovane
+
+# vratenie vystupu
+return vystup
+
+\end{lstlisting} 
+
  
 \end{document}
