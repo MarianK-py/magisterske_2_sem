@@ -1,0 +1,101 @@
+% !TeX spellcheck = sk_SK-Slovak
+\documentclass[a4paper]{article}
+\usepackage[slovak]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{a4wide}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage[small,bf]{caption}
+\usepackage{subcaption}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{hyperref}
+
+
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+\newenvironment{modenumerate}
+{\enumerate\setupmodenumerate}
+{\endenumerate}
+
+\newif\ifmoditem
+\newcommand{\setupmodenumerate}{%
+	\global\moditemfalse
+	\let\origmakelabel\makelabel
+	\def\moditem##1{\global\moditemtrue\def\mesymbol{##1}\item}%
+	\def\makelabel##1{%
+		\origmakelabel{##1\ifmoditem\rlap{\mesymbol}\fi\enspace}%
+		\global\moditemfalse}%
+}
+
+\makeatletter
+\def\@seccntformat#1{%
+	\expandafter\ifx\csname c@#1\endcsname\c@section\else
+	\csname the#1\endcsname\quad
+	\fi}
+\makeatother
+
+\begin{document} 
+	
+\pagenumbering{arabic}
+\pagestyle{plain}
+
+\begin{center}
+	\sc\large
+	Umelá inteligencia - cvičenia 10
+\end{center}
+
+Autor: Marián Kravec
+
+\section{Úloha 2}
+
+Budeme modelovať čudný semafor, pričom to čo pozorujeme, je či autá prechádzajú cez križovatku.
+\\
+
+Náš model bude mať 3 skryté stavy: červená (č), oranžová (o) a zelená (z).
+
+Našou pozorovaná premenná bude mať iba 2 hodnoty: autá idú (ai), autá stoja (as).
+\\
+
+Inicialne začne vždy kvôli bezpečnosti cestnej premávky v stave červená.
+\\ 
+
+Tranzičná matica bude nasledovná:
+
+\begin{table}[h!]
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		$s_i$ \char`\\ $s_{i+1}$ & č   & o   & z   \\ \hline
+		č                    & 0.7 & 0.3 & 0   \\ \hline
+		o                    & 0.3 & 0.4 & 0.3 \\ \hline
+		z                    & 0   & 0.2 & 0.8 \\ \hline
+	\end{tabular}
+\end{table}
+
+Čiže s červenej nikdy neprejde hneď na zelenú (a naopak). Ale z oranžovej sa môže vrátiť aj späť do stavu z ktoré ho sa do oranžovej dostal (zvláštnosť tohto semaforu).
+\\
+
+Emisná matica je nasledovná:
+
+\begin{table}[h!]
+	\begin{tabular}{|l|l|l|}
+		\hline
+		$s_i$ \char`\\ $v_i$ & as   & ai     \\ \hline
+		č                    & 0.95 & 0.05  \\ \hline
+		o                    & 0.3  & 0.7  \\ \hline
+		z                    & 0.01 & 0.99  \\ \hline
+	\end{tabular}
+\end{table}
+
+Na červenú ide len pár odvážlivcov, na oranžovú už viac ako polovica a na zelenú takmer všetci.
+\\
+
+Po vygenerovaní 10000 krokov modelu, sme získali pozorovania ktoré majú skóre: $-5189.26$
+
+\end{document}

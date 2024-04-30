@@ -1,0 +1,48 @@
+Marian Kravec
+
+T -> typ cokolady
+F -> farba cokolady
+
+model:
+
+T_0 -> T_1 -> ... -> T_i -> T_(i+1) -> ...
+        |             |      |
+        V             V      V
+       F_1    ...    F_i    F_(i+1)
+
+
+b -> obycajna
+r -> orieskova
+
+s -> svetla
+t -> tmava
+ 
+        0.3
+ 0.7+-+ -> +-+0.7
+   >|b| 0.3|r|<
+    +-+ <- +-+
+     |\0.8 /|
+     | \  / |0.3
+     |  \/  |
+  0.2|  /\  |
+     | /  \ |
+     |/0.7 \|
+     s      t
+                         b    r  
+pravdepodobnosti T_0 = <0.5, 0.5>
+
+transičná matica: (Tr)
+T_i\T_(i+1) |  b  |  r
+------------+-----+-----
+      b     | 0.7 | 0.3
+      r     | 0.3 | 0.7
+
+Emisná matica: (Em)
+T_i\F_i |  s  |  t
+--------+-----+-----
+   b    | 0.2 | 0.8
+   r    | 0.7 | 0.3
+
+pravdepodobnost, že továreň vyrobí  obyčajnú, obyčajnú, orieškovú, obyčajnú a orieškovú čokoládu
+
+P(T_0=b, T_1=b, T_2=r, T_3=b, T_4=r) = P(T_0=b)*Tr(b,b)*Tr(b,r)*Tr(r,b)*Tr(b,r) = 0.5*0.7*0.3*0.3*0.3 = 0.00945 = 0.945%
