@@ -1,5 +1,6 @@
 from hmmlearn import hmm
 import numpy as np
+import matplotlib.pyplot as plt
 
 gen_model = hmm.CategoricalHMM(n_components=3, random_state=42)
 
@@ -35,7 +36,7 @@ gen_score = gen_model.score(X_validate)
 
 best_score = best_model = None
 n_fits = 50
-np.random.seed(420)
+np.random.seed(120)
 for idx in range(n_fits):
     model = hmm.CategoricalHMM(
         n_components=3, random_state=idx,
@@ -68,3 +69,13 @@ print(f'Emision Matrix Generated:\n{gen_model.emissionprob_.round(3)}\n\n'
 
 print(f"Absolutne skore Generated:{total_score}")
 print(f"Absolutne skore Recovered:{assumed_score}")
+
+fig, ax = plt.subplots()
+ax.plot(gen_states[:500], label='generated')
+ax.plot(states[:500] + 1.5, label='recovered')
+ax.set_yticks([])
+ax.set_title('States compared to generated')
+ax.set_xlabel('Time (# rolls)')
+ax.set_xlabel('State')
+ax.legend()
+plt.show()
