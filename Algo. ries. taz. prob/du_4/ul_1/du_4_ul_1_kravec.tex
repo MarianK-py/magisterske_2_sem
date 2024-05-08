@@ -1,0 +1,129 @@
+% !TeX spellcheck = sk_SK-Slovak
+\documentclass[a4paper]{article}
+\usepackage[slovak]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{a4wide}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage[small,bf]{caption}
+\usepackage{subcaption}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{hyperref}
+\usepackage{fancyvrb}
+\usepackage{listings}
+%\usepackage{lstautogobble}
+\usepackage{stmaryrd}
+
+\lstset{basicstyle=\ttfamily,
+	mathescape=true,
+	escapeinside=||%,
+	%autogobble
+}
+
+
+\fvset{tabsize=4}
+
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+\newenvironment{modenumerate}
+{\enumerate\setupmodenumerate}
+{\endenumerate}
+
+\newif\ifmoditem
+\newcommand{\setupmodenumerate}{%
+	\global\moditemfalse
+	\let\origmakelabel\makelabel
+	\def\moditem##1{\global\moditemtrue\def\mesymbol{##1}\item}%
+	\def\makelabel##1{%
+		\origmakelabel{##1\ifmoditem\rlap{\mesymbol}\fi\enspace}%
+		\global\moditemfalse}%
+}
+
+\makeatletter
+\def\@seccntformat#1{%
+	\expandafter\ifx\csname c@#1\endcsname\c@section\else
+	\csname the#1\endcsname\quad
+	\fi}
+\makeatother
+
+\begin{document} 
+	
+\pagenumbering{arabic}
+\pagestyle{plain}
+
+\begin{center}
+	\sc\large
+	Algoritmické riešenia ťažkých problémov\\
+	Domáca úloha 3
+\end{center}
+
+Autor: Marián Kravec
+
+\section{Úloha 1 -  Random permutations}
+
+\subsection*{a)}
+
+Taktiku použijeme bude nasledovná, ak $a_k \geq 2^k$ tak do množiny $S$ dáme $2^{k-1}$ zamestnancov, ďalších $2^{k-1}$ do tejto množiny nedáme, a zvyšných náhodne buď do množiny dáme alebo nie. Takto vo výsledku dobe platiť $|S| \geq 2^{k-1}$ a mimo množiny ostane $a_k - |S| \geq 2^{k-1}$. ($2^{k-1} + 2^{k-1} = 2^k$)
+\\
+
+Teraz induktívne ukážeme, že pre hocijaké $k$ táto taktika je vyhrávajúca:
+\\
+
+Báza indukcie: ak $k=1$ tak $a_1 \geq 2^1 = 2$, čiže pre naše $S$ platí $|S| \geq 2^0 = 1$ a mimo $S$ ostalo $a_k - |S| \geq 2^0 = 1$, čiže bez ohľadu na to či povýšenie ostane množina $S$ alebo ostatný, aspoň jeden zamestnanec bude povýšený do predstavenstva firmy, čím vyhrávame hru.
+\\
+
+Indukčný predpoklad: hru vyhráme pre každé $n<k$
+\\
+
+Indukčný krok: chceme ukázať, že to platí aj pre $k$. Vieme, že platí $a_k \geq 2^k$ a podľa našej taktiky bude pre našu $S$ platiť $|S| \geq 2^{k-1}$, a pre zvyšok platí $a_k - |S| \geq 2^{k-1}$, čiže bez ohľadu, či bude povýšená množina $S$ alebo zvyšok povýšených bude aspoň $2^{k-1}$ zamestnancov do kariérnej tried $k-1$, čiže bude platiť $a_{k-1} \geq 2^{k-1}$ o čom ale podľa indukčného predpokladu vieme, že v takto stavu hru vyhráme, čiže hru vyhráme aj pre $k$. $\oblong$
+\\
+
+Ukázali sme, že táto taktika je víťazná pre všetky hodnoty $k$.
+
+\subsection*{b)}
+
+Keďže pravdepodobnosti, že predstavenstvo firmy vyberie množinu $S$ alebo ostatných je rovnaká, je irelevantné to či daný zamestnanec patrí do množiny $S$ alebo nie, vždy bude pravdepodobnosť povýšenia $\frac{1}{2}$ a pravdepodobnosť výpovede $\frac{1}{2}$. 
+\\
+
+Na to aby zamestnanec v triede $k$ sa v takomto systéme dostal do predstavenstva muselo by nastať $k$-krát, že bude povýšený (hocijaká iná postupnosť rozhodnutí by obsahovala aspoň jednu výpoveď čo by znamenalo koniec).
+\\
+
+Keďže pravdepodobnosť povýšenia je $\frac{1}{2}$ a jednotlivé rozhodnutia predstavenstva sú náhodné a nezávislé tak pravdepodobnosť, že povýšenie nastane $k$-krát je $\left(\frac{1}{2}\right)^k$. Čiže pravdepodobnosť, že zamestnanec v triede $k$ sa dostane do predstavenstva je $P(LEVEL=k)=\left(\frac{1}{2}\right)^k=\frac{1}{2^k}$.
+
+\subsection*{c)}
+
+Vytvorme si náhodnú premennú $X$ ktorá hovorí koľko zamestnancov sa dostane do predstavenstva. 
+\\
+
+Teraz vytvorme náhodné premenné $Y_k$ ktoré hovoria koľko zamestnancov $k$-tej triedy sa dostalo do predstavenstva. Keďže $X$ je počet cez všetky triedy a $Y_k$ pre jednotlivé triedy, vieme vzťah týchto premenných zapísať ako $X = \sum_{k=1}^{\inf} Y_k$. 
+\\
+
+Teraz si vytvorme náhodné premenné $Z_{ki}$ ktoré hovoria či $i$-ty zamestnanec $k$-tej triedy bol povýšený do predstavenstva, čiže ide o binárnu premennú kde vieme, že hodnotu $1$ (povýšený do predstavenstva) nadobudne s pravdepodobnosťou $P(LEVEL=k)=\left(\frac{1}{2}\right)^k$ (keďže je v triede $k$). Keďže $Y_k$ hovorí o počte zamestnancov v triede $k$ ktorý boli povýšený a $Z_{ki}$ o jednotlivých zamestnancoch v $k$-tej triede, vieme vzťah týchto premenných zapísať ako $Y_k = \sum_{i=1}^{a_k} Z_{ki}$.
+\\
+
+Keďže $Z_{ki}$ je binárna premenná so známou pravdepodobnosťou vieme vypočítať jej strednú hodnotu: 
+
+$E(Z_{ki})=1*P(LEVEL=k) + 0*(1-P(LEVEL=k))=P(LEVEL=k)=\frac{1}{2^k}$.
+\\
+
+Teraz môžeme využiť linearitu strednej hodnoty a fakt, že stredná hodnota $Z_{ki}$ nezávisí od $i$ a vypočítať strednú hodnotu $Y_k$:
+
+$E(Y_k) = E(\sum_{i=1}^{a_k} Z_{ki}) = \sum_{i=1}^{a_k} E(Z_{ki}) = \sum_{i=1}^{a_k} \frac{1}{2^k} = \frac{a_k}{2^k} $
+\\
+
+Podobne môžeme teraz využiť využiť linearitu strednej hodnoty aby sme vypočítali strednú hodnotu náhodnej premennej $X$:
+
+$E(X) = E(\sum_{k=1}^{\inf} Y_k) = \sum_{k=1}^{\inf} E(Y_k) = \sum_{k=1}^{\inf} \frac{a_k}{2^k}$
+\\
+
+Čiže stredná (očakávaná) hodnota počtu zamestnancov povýšených do predstavenstva je:
+
+$E(X) = \sum_{k=1}^{\inf} \frac{a_k}{2^k}$ $\oblong$
+\end{document}

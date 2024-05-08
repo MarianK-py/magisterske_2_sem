@@ -1,0 +1,103 @@
+% !TeX spellcheck = sk_SK-Slovak
+\documentclass[a4paper]{article}
+\usepackage[slovak]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{a4wide}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage[small,bf]{caption}
+\usepackage{subcaption}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{hyperref}
+\usepackage{fancyvrb}
+\usepackage{listings}
+%\usepackage{lstautogobble}
+\usepackage{stmaryrd}
+
+\lstset{basicstyle=\ttfamily,
+	mathescape=true,
+	escapeinside=||%,
+	%autogobble
+}
+
+
+\fvset{tabsize=4}
+
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+\newenvironment{modenumerate}
+{\enumerate\setupmodenumerate}
+{\endenumerate}
+
+\newif\ifmoditem
+\newcommand{\setupmodenumerate}{%
+	\global\moditemfalse
+	\let\origmakelabel\makelabel
+	\def\moditem##1{\global\moditemtrue\def\mesymbol{##1}\item}%
+	\def\makelabel##1{%
+		\origmakelabel{##1\ifmoditem\rlap{\mesymbol}\fi\enspace}%
+		\global\moditemfalse}%
+}
+
+\makeatletter
+\def\@seccntformat#1{%
+	\expandafter\ifx\csname c@#1\endcsname\c@section\else
+	\csname the#1\endcsname\quad
+	\fi}
+\makeatother
+
+\begin{document} 
+	
+\pagenumbering{arabic}
+\pagestyle{plain}
+
+\begin{center}
+	\sc\large
+	Algoritmické riešenia ťažkých problémov\\
+	Domáca úloha 3
+\end{center}
+
+Autor: Marián Kravec
+
+\section{Úloha 2 - From Monte Carlo to Las Vegas}
+
+Začnime tým, že si definujeme nový algoritmus ktorý bude fungovať tak, že vykoná obojstranný Monte Carlo algoritmus, následne skontroluje správnosť výsledku a ak tento výsledok je správny tak ho vráti inak zopakuje celý postup odznovu.
+\\
+
+Jeden krok tohto algoritmu má časovú zložitosť $T''_{\text{one step}}(n) = T(n) + T'(n)$ (keďže jediné čo spraví je, že iba spustí 2 algoritmu zo známou zložitosťou).
+\\
+
+Teraz potrebujeme zistiť aký je očakávaný počet krokov (opakovaní) nášho algoritmu. Počet krokov algoritmu označme $STEP$. Poďme postupne, pravdepodobnosť, že algoritmus skončí hneď v prvom kroku je $P(STEP=1)=1-p$ keďže to je pravdepodobnosť, že Monte Carlo algoritmus vráti správny výsledok, pravdepodobnosť, že skončí po dvoch krokoch je $P(STEP=1)=p(1-p)$ čiže v prvom kroku Monte Carlo algoritmus vráti nesprávny výsledok ($p$) a v druhom kroku správny ($1-p$). Takto by sme mohli pokračovať ďalej, vo všeobecnosti vieme povedať, že na to aby algoritmus skončil po práve $n$ krokoch musí najprv $n-1$-krát vygenerovať nesprávne riešenie a nakoniec správne čo má pravdepodobnosť $P(STEP=n)=p^{n-1}(p-1)$.
+\\
+
+Teraz chceme vypočítať stredný počet krokov:
+
+\begin{align*}
+	E(STEP) &= \sum_{i=1}^{\inf} iP(STEP=i) =\\
+	&= \sum_{i=1}^{\inf} ip^{i-1}(p-1) =\\
+	&= (1-p)\sum_{i=1}^{\inf} ip^{i-1} =\\
+	&\text{Teraz si pomôžeme trochu internetom: \href{https://math.stackexchange.com/questions/1000866/the-summation-of-sequences-n-alphan#1000872}{ZDROJ}}\\
+	&= (1-p)\frac{1}{(1-p)^2} =\\
+	&= \frac{1}{1-p}
+\end{align*}
+
+Vieme, že očakávaný čas algoritmu bude očakávaný počet krokov algoritmu vynásobený časovou zložitosťou jedného kroku čiže:
+
+\begin{align*}
+	E(T''(n)) &= E(STEP)T''_{\text{one step}}(n) =\\
+	 &= \frac{1}{1-p}(T(n) + T'(n)) =\\
+	 &= \frac{T(n) + T'(n)}{1-p} 
+\end{align*}
+
+Čiže očakávaná čas tohto algoritmu je $\frac{T(n) + T'(n)}{1-p}$. Keďže tento algoritmu vždy vráti správnu hodnotu a jeho čas zaleží od náhodných čísel (použitých v Monte Carlo podalgoritme) ide o Las Vegas s požadovaným očakávaným časom. $\oblong$ 
+
+
+
+\end{document}
