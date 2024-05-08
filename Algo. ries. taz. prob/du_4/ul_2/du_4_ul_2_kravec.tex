@@ -61,7 +61,7 @@
 \begin{center}
 	\sc\large
 	Algoritmické riešenia ťažkých problémov\\
-	Domáca úloha 3
+	Domáca úloha 4
 \end{center}
 
 Autor: Marián Kravec
@@ -83,7 +83,7 @@ Teraz chceme vypočítať stredný počet krokov:
 	E(STEP) &= \sum_{i=1}^{\inf} iP(STEP=i) =\\
 	&= \sum_{i=1}^{\inf} ip^{i-1}(p-1) =\\
 	&= (1-p)\sum_{i=1}^{\inf} ip^{i-1} =\\
-	&\text{Teraz si pomôžeme trochu internetom: \href{https://math.stackexchange.com/questions/1000866/the-summation-of-sequences-n-alphan#1000872}{ZDROJ}}\\
+	&\text{Teraz si pomôžeme trochu internetom: \href{https://math.stackexchange.com/questions/1000866/the-summation-of-sequences-n-alphan}{ZDROJ}}\\
 	&= (1-p)\frac{1}{(1-p)^2} =\\
 	&= \frac{1}{1-p}
 \end{align*}
@@ -96,7 +96,7 @@ Vieme, že očakávaný čas algoritmu bude očakávaný počet krokov algoritmu
 	 &= \frac{T(n) + T'(n)}{1-p} 
 \end{align*}
 
-Čiže očakávaná čas tohto algoritmu je $\frac{T(n) + T'(n)}{1-p}$. Keďže tento algoritmu vždy vráti správnu hodnotu a jeho čas zaleží od náhodných čísel (použitých v Monte Carlo podalgoritme) ide o Las Vegas s požadovaným očakávaným časom. $\oblong$ 
+Čiže očakávaný čas tohto algoritmu je $\frac{T(n) + T'(n)}{1-p}$. Keďže tento algoritmu vždy vráti správnu hodnotu a jeho čas zaleží od náhodných čísel (použitých v Monte Carlo podalgoritme) ide o Las Vegas algoritmus s požadovaným očakávaným časom. $\oblong$ 
 
 
 

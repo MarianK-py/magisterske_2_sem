@@ -61,22 +61,22 @@
 \begin{center}
 	\sc\large
 	Algoritmické riešenia ťažkých problémov\\
-	Domáca úloha 3
+	Domáca úloha 4
 \end{center}
 
 Autor: Marián Kravec
 
-\section{Úloha 1 -  Random permutations}
+\section{Úloha 1 - Career advancement}
 
 \subsection*{a)}
 
-Taktiku použijeme bude nasledovná, ak $a_k \geq 2^k$ tak do množiny $S$ dáme $2^{k-1}$ zamestnancov, ďalších $2^{k-1}$ do tejto množiny nedáme, a zvyšných náhodne buď do množiny dáme alebo nie. Takto vo výsledku dobe platiť $|S| \geq 2^{k-1}$ a mimo množiny ostane $a_k - |S| \geq 2^{k-1}$. ($2^{k-1} + 2^{k-1} = 2^k$)
+Taktika ktorú použijeme bude nasledovná, ak $a_k \geq 2^k$ tak do množiny $S$ dáme $2^{k-1}$ zamestnancov, ďalších $2^{k-1}$ do tejto množiny nedáme, a zvyšných náhodne buď do množiny dáme alebo nie. Takto vo výsledku dobe platiť $|S| \geq 2^{k-1}$ a mimo množiny ostane $a_k - |S| \geq 2^{k-1}$. ($2^{k-1} + 2^{k-1} = 2^k$)
 \\
 
 Teraz induktívne ukážeme, že pre hocijaké $k$ táto taktika je vyhrávajúca:
 \\
 
-Báza indukcie: ak $k=1$ tak $a_1 \geq 2^1 = 2$, čiže pre naše $S$ platí $|S| \geq 2^0 = 1$ a mimo $S$ ostalo $a_k - |S| \geq 2^0 = 1$, čiže bez ohľadu na to či povýšenie ostane množina $S$ alebo ostatný, aspoň jeden zamestnanec bude povýšený do predstavenstva firmy, čím vyhrávame hru.
+Báza indukcie: ak $k=1$ tak $a_1 \geq 2^1 = 2$, čiže pre naše $S$ platí $|S| \geq 2^0 = 1$ a mimo $S$ ostalo $a_k - |S| \geq 2^0 = 1$, čiže bez ohľadu na to či povýšenie dostane množina $S$ alebo ostatný, aspoň jeden zamestnanec bude povýšený do predstavenstva firmy, čím vyhrávame hru.
 \\
 
 Indukčný predpoklad: hru vyhráme pre každé $n<k$
