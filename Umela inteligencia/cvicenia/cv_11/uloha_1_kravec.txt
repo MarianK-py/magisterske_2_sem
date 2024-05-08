@@ -1,0 +1,123 @@
+Marian Kravec
+
+Najskor si definujme nase matice modelu
+
+b - obycajna
+r - orieskova
+k - karamelova
+rk - orieskovo karamelova
+
+s - svetla
+t - tmava
+
+Inicialne stavy
+
+(kazda kombinacia pacok je rovnako pravdepodobna a vytvori inu cokoladu)
+
+T_1 |  
+----+-----
+ b  | 0.25 
+ r  | 0.25
+ k  | 0.25 
+ rk | 0.25
+
+Tranzicna matica T:
+
+
+
+(nezmenisa nic 0.7^2=0.49, zmeni sa jedna prisada 0.7*0.3=0.21, zmenia sa obe 0.3^2=0.09)
+
+T_i\T_(i+1) |  b   |  r   |  k   |  rk
+------------+------+------+------+------
+      b     | 0.49 | 0.21 | 0.21 | 0.09
+      r     | 0.21 | 0.49 | 0.09 | 0.21
+      k     | 0.21 | 0.09 | 0.49 | 0.21
+      rk    | 0.09 | 0.21 | 0.21 | 0.49
+
+emisna matica: 
+
+T_i\F_i |  t  |  s
+--------+-----+-----
+   b    | 0.8 | 0.2
+   r    | 0.3 | 0.7
+   k    | 0.2 | 0.8
+   rk   | 0.6 | 0.4
+
+
+Chceme pravdepodobnosti P(T_1 | F_1=t, F_2=s) a P(T_2 | F_1=t, F_2=s)
+
+Teraz si vypočítajme maticu O_i pre jednotlive možné stavy:
+
+Ak O_i == t
+O_t = 
++-----+-----+-----+-----+
+| 0.8 | 0   | 0   | 0   |
+| 0   | 0.3 | 0   | 0   |
+| 0   | 0   | 0.2 | 0   |
+| 0   | 0   | 0   | 0.6 |
++-----+-----+-----+-----+
+
+Ak O_i == s
+O_s = 
++-----+-----+-----+-----+
+| 0.2 | 0   | 0   | 0   |
+| 0   | 0.7 | 0   | 0   |
+| 0   | 0   | 0.8 | 0   |
+| 0   | 0   | 0   | 0.4 |
++-----+-----+-----+-----+
+
+teraz začnime forward časť keďže poznáme inicialne stavy tak:
+
+f_0:0 = (0.25, 0.25, 0.25, 0.25)
+
+dalsi krok:
+
+f_0:1 = f_0:0 * T * O_t
+
+po vynasobeni tychto matic dostaneme:
+
+f_0:1 = (0.2, 0.075, 0.05, 0.15)
+
+dalsi krok:
+
+f_0:2 = f_0:1 * T * O_s
+
+po vynasobeni tychto matic dostaneme:
+
+f_0:2 = (0.02755, 0.080325, 0.0838, 0.0471)
+
+Teraz prejdime na backward časť kde začína s vektorom jednotiek:
+
+b_2:2 = (1,1,1,1)
+
+ďalej vypočítamepredchádzajúci krok:
+
+b_1:2 = T * O_s * b_2:2
+
+po vynasobeni dostaneme:
+
+b_1:2 = (0.449, 0.541, 0.581, 0.529)
+
+a este jeden krok:
+
+b_0:2 = T * O_t * b_1:2
+
+po vynasobeni dostaneme:
+
+b_0:2 = (0.263059, 0.232071, 0.213631, 0.246339)
+
+Teraz na základe tohto vieme vypočítať hľadané pravedpodobnosti ako:
+
+P(T_1 | F_1=t, F_2=s) = alpha*f_0:1*b_1:2 (pozložkové násobenie vektorov)
+
+Z čoho nakoniec dostaneme vektor:
+
+P(T_1 | F_1=t, F_2=s) = (0.376086, 0.169930, 0.121663, 0.332321)
+
+Podobne pre pravdepodobnosti duhého stavu:
+
+P(T_2 | F_1=t, F_2=s) = alpha*f_0:1*b_1:2 (pozložkové násobenie vektorov)
+
+Z čoho nakoniec dostaneme vektor:
+
+P(T_2 | F_1=t, F_2=s) = (0.11538059, 0.33640456, 0.35095801, 0.19725683)

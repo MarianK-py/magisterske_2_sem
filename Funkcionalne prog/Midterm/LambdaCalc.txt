@@ -1,0 +1,66 @@
+Marian Kravec
+
+Typovanie:
+
+1.
+λf. λx.(f (f x))
+f:A
+x:B
+(f x):C
+A=B->C
+(f (f x):D
+A=C->D
+
+hmm stratil som sa :/
+je tam dvakrát A= ... neotypovatelny??
+
+()->()->D
+
+2.
+λf. λx.((f f) x) -> f sa aplikuje na f -> neotypovatelny
+
+3.
+λn.λf.λx.(f ((n f) x)) -> hmmm...
+n:A
+f:B
+x:C
+(n f):D
+A=B->D
+((n f) x):E
+D=C->E
+(f ((n f) x)):F
+B=E->F
+
+((E->F)->(C->E))->(E->F)->(C)->F
+
+4.
+λm.λn.λf.λx. ((m f) ((n f) x)) 
+m:A
+n:B
+f:C
+x:D
+(n f):E
+B=C->E
+(m f):F
+A=C->F
+((n f) x):G
+E=D->G
+((m f) ((n f) x)):H
+F=G->H
+
+(C->(G->H))->(C->(D->G))->(C)->(D)->H
+
+β-normálna forma:
+
+1.
+((λx.x) (λx.x)) -> (λx.x)
+
+2.
+((λx.(x x)) (λy.(y y))) -> omega omega -> ... -> neexistuje
+
+3.
+λf.λx.((f f) x) -> už v normalnej forme
+
+4.
+((λn.λf.λx.(f ((n f) x))) (λf. λx.(f (f x)))) -> (λn.λf.λx.(f (((λf. λx.(f (f x))) f) x)))
+-> (λn.λf.λx.(f (λx.(f (f x)) x))) -> hmmm strateny...

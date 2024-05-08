@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2023.1.22)  30 APR 2024 12:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2023.1.22)  5 MAY 2024 16:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -424,61 +424,95 @@ Package hyperref Info: Link coloring OFF on input line 44.
 \openout3 = `ul_2_kravec.out'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 58--60
+Underfull \hbox (badness 10000) in paragraph at lines 60--62
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 63--65
+Underfull \hbox (badness 10000) in paragraph at lines 65--67
 
  []
 
+<HMM.png, id=7, 1656.68938pt x 801.99625pt>
+File: HMM.png Graphic file (type png)
+<use HMM.png>
+Package pdftex.def Info: HMM.png  used on input line 70.
+(pdftex.def)             Requested size: 424.58624pt x 205.54039pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 66--68
+Underfull \hbox (badness 10000) in paragraph at lines 72--74
 
  []
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 72.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 78.
 
 (C:\Users\majko\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 72.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 78.
 
 
 (C:\Users\majko\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 72
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 78
 .
 
 (C:\Users\majko\AppData\Local\Programs\MiKTeX\tex/latex/jknappen\ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-Underfull \hbox (badness 10000) in paragraph at lines 81--83
+Underfull \hbox (badness 10000) in paragraph at lines 87--89
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 96--98
+Underfull \hbox (badness 10000) in paragraph at lines 102--104
 
  []
 
 [1
 
-{C:/Users/majko/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
-(ul_2_kravec.aux)
+{C:/Users/majko/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./HMM.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 111--113
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 114--116
+
+ []
+
+<model_viky.png, id=27, 805.0075pt x 602.25pt>
+File: model_viky.png Graphic file (type png)
+<use model_viky.png>
+Package pdftex.def Info: model_viky.png  used on input line 117.
+(pdftex.def)             Requested size: 424.58624pt x 317.64713pt.
+[2 <./model_viky.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 149--151
+
+ []
+
+<odhad_stavov.jpg, id=34, 462.528pt x 346.896pt>
+File: odhad_stavov.jpg Graphic file (type jpg)
+<use odhad_stavov.jpg>
+Package pdftex.def Info: odhad_stavov.jpg  used on input line 154.
+(pdftex.def)             Requested size: 339.67029pt x 254.767pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 156--158
+
+ []
+
+[3 <./odhad_stavov.jpg>] (ul_2_kravec.aux)
 Package rerunfilecheck Info: File `ul_2_kravec.out' has not changed.
 (rerunfilecheck)             Checksum: B0B46E767B11568BEC4C1E80AA4E3963;84.
  ) 
 Here is how much of TeX's memory you used:
- 12694 strings out of 476404
- 205845 string characters out of 2789524
- 1862324 words of memory out of 3000000
- 32886 multiletter control sequences out of 15000+600000
- 518135 words of font info for 48 fonts, out of 8000000 for 9000
+ 12728 strings out of 476404
+ 206320 string characters out of 2789524
+ 1863324 words of memory out of 3000000
+ 32906 multiletter control sequences out of 15000+600000
+ 519675 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,10n,76p,249b,447s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ 75i,10n,76p,924b,448s stack positions out of 10000i,1000n,20000p,200000b,80000s
 {C:/Users/majko/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cm-super/cm-sup
 er-t1.enc}<C:/Users/majko/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
 onts/cm/cmmi10.pfb><C:/Users/majko/AppData/Local/Programs/MiKTeX/fonts/type1/pu
@@ -486,12 +520,14 @@ blic/amsfonts/cm/cmmi7.pfb><C:/Users/majko/AppData/Local/Programs/MiKTeX/fonts/
 type1/public/amsfonts/cm/cmr10.pfb><C:/Users/majko/AppData/Local/Programs/MiKTe
 X/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/majko/AppData/Local/Program
 s/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/majko/AppData/Loca
-l/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx1440.pfb><C:/Users/majko/AppD
-ata/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfcc1200.pfb><C:/Users/ma
-jko/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on ul_2_kravec.pdf (1 page, 96362 bytes).
+l/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx1200.pfb><C:/Users/majko/AppD
+ata/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx1440.pfb><C:/Users/ma
+jko/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfcc1200.pfb><C:/
+Users/majko/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfrm1000.
+pfb>
+Output written on ul_2_kravec.pdf (3 pages, 300807 bytes).
 PDF statistics:
- 59 PDF objects out of 1000 (max. 8388607)
- 5 named destinations out of 1000 (max. 500000)
- 9 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 85 PDF objects out of 1000 (max. 8388607)
+ 12 named destinations out of 1000 (max. 500000)
+ 24 words of extra memory for PDF output out of 10000 (max. 10000000)
 

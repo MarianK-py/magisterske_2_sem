@@ -25,9 +25,11 @@ pozorovania, gen_states = gen_model.sample(10000)
 
 total_score = gen_model.score(pozorovania)
 
-np.savetxt('pozorovania.txt', pozorovania)
+#np.savetxt('pozorovania.txt', pozorovania)
+#np.savetxt('orig_stavy.txt', gen_states)
 
-pozorovania = np.array([[xi] for xi in np.loadtxt('pozorovania.txt',dtype=np.int32)])
+pozorovania = np.array([[xi] for xi in np.loadtxt('pozorovania_viky.txt',dtype=np.int32)])
+gen_states = np.array([[xi] for xi in np.loadtxt('orig_stavy_viky.txt',dtype=np.int32)])
 
 X_train = pozorovania[:9*(pozorovania.shape[0] // 10)]
 X_validate = pozorovania[9*(pozorovania.shape[0] // 10):]
@@ -36,14 +38,14 @@ gen_score = gen_model.score(X_validate)
 
 best_score = best_model = None
 n_fits = 50
-np.random.seed(120)
+np.random.seed(54)
 for idx in range(n_fits):
     model = hmm.CategoricalHMM(
         n_components=3, random_state=idx,
         init_params='se')
-    model.transmat_ = np.array([np.random.dirichlet([0.7, 0.29, 0.01]),
-                                np.random.dirichlet([0.333, 0.334, 0.333]),
-                                np.random.dirichlet([0.01, 0.19, 0.8])])
+    model.transmat_ = np.array([np.random.dirichlet([0.4, 0.35, 0.25]),
+                                np.random.dirichlet([0.3, 0.4, 0.3]),
+                                np.random.dirichlet([0.25, 0.35, 0.4])])
     model.fit(X_train)
     score = model.score(X_validate)
     print(f'Model #{idx}\tScore: {score}')
@@ -71,11 +73,13 @@ print(f"Absolutne skore Generated:{total_score}")
 print(f"Absolutne skore Recovered:{assumed_score}")
 
 fig, ax = plt.subplots()
-ax.plot(gen_states[:500], label='generated')
-ax.plot(states[:500] + 1.5, label='recovered')
+ax.plot(states[:100] + 2.5, label='recovered')
+ax.plot(gen_states[:100], label='generated')
 ax.set_yticks([])
 ax.set_title('States compared to generated')
 ax.set_xlabel('Time (# rolls)')
 ax.set_xlabel('State')
-ax.legend()
+ax.legend(loc="center left")
+plt.savefig("tex/odhad_stavov.jpg")
 plt.show()
+
