@@ -107,8 +107,11 @@ ax1.scatter(np.ndarray.flatten(all_TMC_mat[0, :, :]), np.ndarray.flatten(all_TMC
 #plt.savefig("L_"+str(L))
 
 
-fig2, ax2 = plt.subplots(1,1)
+fig2, ax2 = plt.subplots(1,1, figsize=(10,3))
 ax2.boxplot(all_TMC_best)
+
+plt.savefig("box_L_"+str(L))
+
 plt.show()
 
 # b) repeated one-step generation

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2023.1.22)  12 MAY 2024 21:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2023.1.22)  12 MAY 2024 21:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -532,16 +532,26 @@ File: ../L_40.png Graphic file (type png)
 <use ../L_40.png>
 Package pdftex.def Info: ../L_40.png  used on input line 157.
 (pdftex.def)             Requested size: 254.75433pt x 191.06862pt.
-[4] (projekt_3_report_kravec.aux)
+
+Underfull \hbox (badness 10000) in paragraph at lines 161--163
+
+ []
+
+<../box_L_40.png, id=61, 722.7pt x 216.81pt>
+File: ../box_L_40.png Graphic file (type png)
+<use ../box_L_40.png>
+Package pdftex.def Info: ../box_L_40.png  used on input line 168.
+(pdftex.def)             Requested size: 382.12502pt x 114.63747pt.
+[4 <../box_L_40.png>] (projekt_3_report_kravec.aux)
 Package rerunfilecheck Info: File `projekt_3_report_kravec.out' has not changed
 .
 (rerunfilecheck)             Checksum: 59C00A8598B19C9BCC41C2E3DE33AE9C;453.
  ) 
 Here is how much of TeX's memory you used:
- 14820 strings out of 476404
- 236992 string characters out of 2789524
+ 14828 strings out of 476404
+ 237142 string characters out of 2789524
  1864324 words of memory out of 3000000
- 34946 multiletter control sequences out of 15000+600000
+ 34952 multiletter control sequences out of 15000+600000
  529493 words of font info for 87 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,10n,76p,1085b,449s stack positions out of 10000i,1000n,20000p,200000b,80000s
@@ -561,10 +571,11 @@ fbx0900.pfb><C:/Users/majko/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm
 -super/sfbx1200.pfb><C:/Users/majko/AppData/Local/Programs/MiKTeX/fonts/type1/p
 ublic/cm-super/sfbx1440.pfb><C:/Users/majko/AppData/Local/Programs/MiKTeX/fonts
 /type1/public/cm-super/sfcc1200.pfb><C:/Users/majko/AppData/Local/Programs/MiKT
-eX/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on projekt_3_report_kravec.pdf (4 pages, 312460 bytes).
+eX/fonts/type1/public/cm-super/sfrm0900.pfb><C:/Users/majko/AppData/Local/Progr
+ams/MiKTeX/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on projekt_3_report_kravec.pdf (4 pages, 343669 bytes).
 PDF statistics:
- 134 PDF objects out of 1000 (max. 8388607)
- 19 named destinations out of 1000 (max. 500000)
- 53 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 142 PDF objects out of 1000 (max. 8388607)
+ 20 named destinations out of 1000 (max. 500000)
+ 58 words of extra memory for PDF output out of 10000 (max. 10000000)
 
