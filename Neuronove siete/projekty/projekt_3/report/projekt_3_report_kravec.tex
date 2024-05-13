@@ -70,7 +70,7 @@
 	
 	\section{Úvod}
 	
-	V tejto úlohe sa snažíme natrénovať echo state network ktorá produkuje $L$ predchádzajúcich meraní, našou snahou bude určiť akú pamäťovú kapacitu má táto sieť pre rôzne hodnoty spektrálneho priemeru a riedkosti siete, a ako sa táto kapacita vyvíja so produkovania meraní viac v minulosti.
+	V tejto úlohe sa snažíme natrénovať echo state network ktorá produkuje $L$ predchádzajúcich meraní, našou snahou bude určiť celkovú pamäťovú kapacitu tejto siete pre rôzne hodnoty spektrálneho priemeru a riedkosti siete, a ako sa táto kapacita vyvíja so produkovania meraní viac v minulosti.
 	
 	\section{Dáta}
 	
@@ -80,11 +80,11 @@
 	
 	\subsection*{Všeobecná architektúra}
 	
-	Náš model dostane na vstupe jedno číslo, rezervoár má veľkosť 100 a na výstupe vráti $L$ čísel (skúmaný hyperparameter). Vstupná matica veľkosti $(100\times1)$ (z jedného vstupu na veľkosť rezervoáru) je generovaná náhodne z rozdelenia $Uni_{(100\times1)}(-0.01, +0.01)$. Matica rezervoáru veľkosti $(100\times100)$ je taktisto náhodná a generovaná z rozdelenia $N_{(100\times100)}(0,1)$, pričom následne je každá s hodnotou prepísaná na $0$ s pravdepodobnosťou $p$ (skúmaný hyperparameter) a výsledné hodnoty matice sú ešte prenásobená číslom ($\frac{\rho}{max(iegenval)}$) tak aby spektrálny polomer bol $\rho$ (skúmaný hyperparameter). Výstupná matica veľkosti $(100\times L)$ je počítaná počas trénovania analyticky pomocou výpočtu pseudoinverznej matice tvorenej priebežnými rezervoármi pre jednotlivé vstupné dátové body. Ako aktivačná funkcia na rezervoárovej vrstve je použitý hyperbolický tangens, a aktivačná funkcia na výstupnej vrstve je lineárna.
+	Náš model dostane na vstupe jedno číslo, rezervoár má veľkosť 100 a na výstupe vráti $L$ čísel (skúmaný hyperparameter). Vstupná matica veľkosti $(100\times1)$ (z jedného vstupu na veľkosť rezervoáru) je generovaná náhodne z rozdelenia $Uni_{(100\times1)}(-0.01, +0.01)$. Matica rezervoáru veľkosti $(100\times100)$ je taktisto náhodná a generovaná z rozdelenia $N_{(100\times100)}(0,1)$, pričom následne je každá s hodnotou prepísaná na $0$ s pravdepodobnosťou $\tau$ (skúmaný hyperparameter) a výsledné hodnoty matice sú ešte prenásobená číslom ($\frac{\rho}{max(iegenval)}$) tak aby spektrálny polomer bol $\rho$ (skúmaný hyperparameter). Výstupná matica veľkosti $(100\times L)$ je počítaná počas trénovania analyticky pomocou výpočtu pseudoinverznej matice tvorenej priebežnými rezervoármi pre jednotlivé vstupné dátové body. Ako aktivačná funkcia na rezervoárovej vrstve je použitý hyperbolický tangens, a aktivačná funkcia na výstupnej vrstve je lineárna.
 	
 	\subsection*{Hyperparametre}
 	
-	V tomto prípade budeme najskôr určovať vhodnú hodnotu $L$, následne určíme spektrálny polomer s najväčšou pamäťovou kapacitou a na záver sa pozrieme na vplyv riedkosti (pravdepodobnosti vynulovania hodnoty v matici rezervoáru) na pamäťovú kapacitu. 
+	V tomto prípade budeme najskôr určovať vhodnú hodnotu $L$, následne určíme spektrálny polomer s najväčšou pamäťovou kapacitou a na záver sa pozrieme na vplyv riedkosti $\tau$ (pravdepodobnosti vynulovania hodnoty v matici rezervoáru) na pamäťovú kapacitu. 
 	
 	\section{Výsledky modelu}
 	
@@ -102,6 +102,7 @@
 	\end{figure}
 	
 	Vidíme, že pamäťová kapacita je pomerne stabilne okolo $TMC=5$ pre všetky hodnoty spektrálneho polomeru menšieho ako $1$, pre hodnoty väčšie ako jedna pamäťová kapacita rapídne klesá. 
+	\\
 	
 	Teraz skúsme o niečo vyššiu hodnotu $L=20$, dostaneme takýto graf:
 	
@@ -169,5 +170,29 @@
 		\caption{Boxplot pre $L=40$ a $\rho=0.97$}
 	\end{figure}
 	
-
+	Môžeme vidieť, že so zväčšujúcim sa oneskorením sa znižuje pamäťová kapacita a zároveň sa zväčšuje rozptyl. Pamäťová kapacita prvých 30 oneskorení je pomerne stabilná s hodnotou $MC_l>0.9$ a následne začína hodnota $MC_l$ výraznejšie klesať a pre oneskorenie 40 je len $MC_{40}\approx 0.4$.
+	\\
+	
+	Tento pokles pamäťovej kapacity pre väčšie oneskorenia by mohol vysvetliť prečo pre $L>50$ vidíme stagnáciu celkovej pamäťovej kapacity, preto si na podobnom grafe zobrazme ako vyzerá pamäťová kapacita pre $L=100$ (najlepší spektrálny polomer bol v tomto prípade podobne ako v predchádzajúcom prípade $\rho=0.97$):
+	
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=\textwidth]{../box_L_100.png}
+		\caption{Boxplot pre $L=100$ a $\rho=0.97$}
+	\end{figure}
+	
+	Z grafu vidíme, že medzi oneskoreniami 30 a 60 klesá v tvare podobnom sigmoide a od oneskorenia 60 je už takmer nulová, čo vysvetľuje zanedbateľný nárast celkovej pamäťovej kapacity pre $L>50$.
+	
+	\subsection*{Vplyv riedkosti}
+	
+	Na záver sa pozrieme na to aký vplyv má riedkosť $\tau$, čiže pravdepodobnosť vynulovania hodnoty v matici rezervoáru na pamäťovú kapacitu. Na tento účel použijeme model s parametrom $L=40$ a spektrálnym polomerom $\rho=0.97$. Vizualizujeme si pamäťovú kapacitu pre riedkosť od $0$ (bez vynulovávanie) po $0.99$ (takmer nulová matica) s krokom $0.01$, pričom podobne ako predtým, pre každú hodnotu natrénujeme 10 modelov a vypočítame priemer ich celkových pamäťových kapacít. Z toho dostaneme takýto graf:
+	
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.6\textwidth]{../spars_L_100.png}
+		\caption{$L=40$ a $\rho=0.97$}
+	\end{figure}
+	
+	Vidíme, že riedkosť v intervale $\tau \in (0, 0.8)$ nemá veľký vplyv na pamäťovú kapacitu modelu, nanajvýš sa môže zdať, že zo zvyšujúcou sa riedkosťou sa mierne kapacita zmenšuje ale je to nevýrazné. Avšak pre riedkosť $\tau > 0.8$ vidíme, že nastáva výrazný pokles pamäťovej kapacity a pre $\tau = 0.99$ sa už blíži k nule. Toto dáva zmysel, keďže vysoké hodnoty riedkosti znamená že matica rezervoáru ná iba malý počet nenulových hodnôt čiže neuróny sú veľmi málo prepojené. 
+	
 \end{document}
