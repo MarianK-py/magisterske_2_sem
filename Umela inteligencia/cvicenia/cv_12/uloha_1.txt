@@ -1,0 +1,15 @@
+Marian Kravec
+
+1. Strategicka matica
+
+sup\ja| vyh |nevyh
+------+-----+-----
+vyh   |  5  |  10
+------+-----+-----
+nevyh |  0  | -10
+
+2. nemalo by asi... keďže... hmm som strateny, nie je mi úplne jasné ako vyzerá matica súpera
+
+3. vždy spraviť opak toho čo súper
+
+4. asi nie 
