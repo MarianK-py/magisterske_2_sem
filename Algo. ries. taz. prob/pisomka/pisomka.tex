@@ -1,0 +1,134 @@
+% !TeX spellcheck = sk_SK-Slovak
+\documentclass[a4paper]{article}
+\usepackage[slovak]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{a4wide}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage[small,bf]{caption}
+\usepackage{subcaption}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{hyperref}
+\usepackage{fancyvrb}
+\usepackage{listings}
+%\usepackage{lstautogobble}
+\usepackage{stmaryrd}
+
+\lstset{basicstyle=\ttfamily,
+	mathescape=true,
+	escapeinside=||%,
+	%autogobble
+}
+
+
+\fvset{tabsize=4}
+
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+\newenvironment{modenumerate}
+{\enumerate\setupmodenumerate}
+{\endenumerate}
+
+\newif\ifmoditem
+\newcommand{\setupmodenumerate}{%
+	\global\moditemfalse
+	\let\origmakelabel\makelabel
+	\def\moditem##1{\global\moditemtrue\def\mesymbol{##1}\item}%
+	\def\makelabel##1{%
+		\origmakelabel{##1\ifmoditem\rlap{\mesymbol}\fi\enspace}%
+		\global\moditemfalse}%
+}
+
+\makeatletter
+\def\@seccntformat#1{%
+	\expandafter\ifx\csname c@#1\endcsname\c@section\else
+	\csname the#1\endcsname\quad
+	\fi}
+\makeatother
+
+\begin{document} 
+	
+\pagenumbering{arabic}
+\pagestyle{plain}
+
+\begin{center}
+	\sc\large
+	Algoritmické riešenia ťažkých problémov\\
+	Skúška
+\end{center}
+
+\subsection*{Úloha 1 - Výber správnej odpovede}
+
+a) Určite správnu odpoveď o pravdivosti tvrdení:
+
+-> Las Vegas algoritmus nikdy nebude trvať nekonečne dlho.
+
+-> Pravdepodobnosť, že Las Vegas algoritmus bude trvať nekonečne dlho je nulová
+
+Výber: prvé platí, druhé platí, ani jedno neplatí
+\\
+
+b)
+\\
+
+c) Máme štandardný random walk, chceme sa dostač na pozíciu 100, začíname na pozícii 36, aký je očakávaný počet krokov? (zdôvodnite)
+
+Výber: 0, 128, 8844, iná hodnota
+\\
+
+d) 
+
+\subsection*{Úloha 2 - Z LV do MC}
+
+Máme Las Vegas algoritmus s očakávaným časom $E(LV)=n$. Chceme vytvoriť Monte Carlo algoritmus pomocou tohto algoritmu.
+\\
+
+a) Aká je pravdepodobnosť, že Las Vegas algoritmus skončí za menej ako $10n$ krokov?
+\\
+
+b) Napíšte pseudokód Monte Carlo algoritmu využívajúceho Las Vegas algorimus.
+\\
+
+c) Čo musíme spraviť aby chyba Monte Carlo algoritmu bola manšia ako $1\%$?
+
+\subsection*{Úloha 3 - Mediánové slovo}
+
+Máme množinu m slov dĺžky n, slovo je postupnosť znakov z množiny $\{a,b\}$ (príklad: $\{abba, baba, bbbb\}$). Vzdialenosť dvoch slov definujeme ako počet pozícii na ktorých sa slová nezhodujú (príklady: $d(aba, aaa) = 1$, $d(aba, bab) = 3$). Hľadáme medianové slovo, čiže slovo s najmenšou vzdialenosťou od najvzdialenejšieho slova $x_{med} = \min_y(\max(\forall x_i, d(y, x_i)))$. Profesor Premúdretý tvrdí, že medianové slovo musí patriť do množiny slov, takže stačí skontrolovať vzájomné vzdialenosti všetkých slov z množiny a nájsť najlepšie.
+\\
+
+a) Ukážte, že algoritmus prof. Premúdretého nedá vždy optimálne riešenie.
+\\
+
+b) Dokážte, že platí trojuholníkové pravidlo $d(x,z) \leq d(x,y) + d(y,z)$.
+\\
+
+c) Dokážte, že algoritmus prof. Premúdretého je 2-APX (môžte využiť pravidlo z b) aj keď ste ho nedokázali).
+
+\subsection*{Úloha 4 - Parametrizovaný IS}
+
+Chceme riešiť problém nezávislej množiny, pričom poznáme $k$ čo je veľkosť nezávislej množiny a $\Delta$ čo je maximálny stupeň vrchola. 
+\\
+
+a) Dokážte, že platí tvrdenie: $\forall v \in V, v \in IS \lor \exists neig(v) \in IS $, pre každý vrchol v grafe platí, že buď vrchol patrí do nezávislej množiny alebo aspoň jeden jeho sused tam patrí.
+\\
+
+b) Vymyslite polynomialny algoritmus parametrizovaný $k$ a $\Delta$ ktorý rieši problém nezávislej množina (môžte využiť tvrdenie z a) aj keď ste ho nedokázali).
+\\
+
+c) Aká je časová zložitosť tohto algoritmu?
+\\
+
+d) Ak máme určené iba $k$ (nemáme vopred dané $\Delta$) bude tento algoritmus stále polynomialny? (svoje tvrdenie dokážte)
+
+\subsection*{Úloha 5 - BONUS - Fibonacci random walk}
+
+Máme random walk kde  pozície $i$ sa posunieme s pravdepodobnosťou s rovnakou na pozíciu $i-1$ a $i+2$ (okrem pozícii $n$ a $n-1$ kde vieme ísť iba na pozície $i-1$), chceme sa dostať na pozíciu 0, vypočítajte očakávaný počet krokov (a ukážte, že rastie exponenciálne).
+
+\end{document}
