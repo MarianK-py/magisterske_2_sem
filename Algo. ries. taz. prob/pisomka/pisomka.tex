@@ -75,15 +75,20 @@ a) Určite správnu odpoveď o pravdivosti tvrdení:
 Výber: prvé platí, druhé platí, ani jedno neplatí
 \\
 
-b)
+b) Máme minimalizačný problém v podobe ILP ktorý má optimálne riešenie $OPT(X)$, ak tento problém relaxujeme do podoby LP (nazvime RLP), nájdeme optimum LP a vypočítame riešenie pôvodného problému metódou zaokrúhľovania, čo vieme povedať o výsledku $RLP(X)$:
+
+Výber: $RLP(X) \leq OPT(X)$, $RLP(X) \geq OPT(X)$, $RLP(X) = OPT(X)$, nevieme určiť
 \\
 
-c) Máme štandardný random walk, chceme sa dostač na pozíciu 100, začíname na pozícii 36, aký je očakávaný počet krokov? (zdôvodnite)
+c)
+\\
+
+d) Máme štandardný random walk, chceme sa dostač na pozíciu 100, začíname na pozícii 34, aký je očakávaný počet krokov? (zdôvodnite)
 
 Výber: 0, 128, 8844, iná hodnota
 \\
 
-d) 
+e) 
 
 \subsection*{Úloha 2 - Z LV do MC}
 
@@ -96,9 +101,9 @@ a) Aká je pravdepodobnosť, že Las Vegas algoritmus skončí za menej ako $10n
 b) Napíšte pseudokód Monte Carlo algoritmu využívajúceho Las Vegas algorimus.
 \\
 
-c) Čo musíme spraviť aby chyba Monte Carlo algoritmu bola manšia ako $1\%$?
+c) Čo musíme spraviť aby chyba Monte Carlo algoritmu bola menšia ako $1\%$?
 
-\subsection*{Úloha 3 - Mediánové slovo}
+\subsection*{Úloha 3 - Medianové slovo}
 
 Máme množinu m slov dĺžky n, slovo je postupnosť znakov z množiny $\{a,b\}$ (príklad: $\{abba, baba, bbbb\}$). Vzdialenosť dvoch slov definujeme ako počet pozícii na ktorých sa slová nezhodujú (príklady: $d(aba, aaa) = 1$, $d(aba, bab) = 3$). Hľadáme medianové slovo, čiže slovo s najmenšou vzdialenosťou od najvzdialenejšieho slova $x_{med} = \min_y(\max(\forall x_i, d(y, x_i)))$. Profesor Premúdretý tvrdí, že medianové slovo musí patriť do množiny slov, takže stačí skontrolovať vzájomné vzdialenosti všetkých slov z množiny a nájsť najlepšie.
 \\
